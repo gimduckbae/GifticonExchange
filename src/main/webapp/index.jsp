@@ -1,6 +1,3 @@
-<%@page import="dbconn.DBConnectionManager"%>
-<%@page import="sample.SampleDto"%>
-<%@page import="sample.SampleDao"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -10,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>index 페이지</h1>
-	<%
-		SampleDao dao = new SampleDao();
-		SampleDto dto = dao.selectMemberByNo(1001);
-		out.println(dto.toString());
-	%>
+	<h1>진입 페이지</h1>
+	<p>여기서 로그인/회원가입 페이지로 넘겨줘야함</p>
 
 </body>
 </html>
+

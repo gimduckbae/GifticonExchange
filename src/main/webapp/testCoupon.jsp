@@ -28,7 +28,6 @@
 			<button class="btn btn-outline-secondary" type="button" id="button">Button</button>
 		</div>
 	</div>
-
 </body>
 <script>
 	$(function() {

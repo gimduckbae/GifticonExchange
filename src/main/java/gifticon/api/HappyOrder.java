@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class HappyOrder {
 
+	/** 배스킨라빈스 기프티콘 번호로 API 호출 결과값 받기 */
 	public static String getResponseByGifticonNumber(String number) throws IOException {
 		URL url = new URL("https://www.happyorder.co.kr/api");
 		HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
