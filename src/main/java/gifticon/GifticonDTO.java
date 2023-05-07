@@ -1,6 +1,6 @@
 package gifticon;
 
-public class GifticonDto {
+public class GifticonDTO {
 	String resultMsg;
 	int resultCode;
 
