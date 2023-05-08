@@ -32,9 +32,37 @@
 <script>
 	$(function() {
 		$("#button").click(function() {
-			let couponNumber = $("#input").val();
-			location.href = "./testCoupon_action.jsp?num=" + couponNumber;
+			checkCoupon();
 		});
+		
+		// 조회한 기프티콘 결과값을 비활성화 된 input그룹에 자동입력 시켜서 등록하자
+		function checkCoupon() {
+			let couponNumber = $("#input").val();
+
+			$.ajax({
+				async : true, // 비동기 true
+				type : 'GET', // GET 타입
+				data : { // 넘겨줄 매개변수, 실제로 ?id=input_id 형식으로 넘어감
+					"num" : couponNumber
+				},
+				url : "./actions/testCoupon_action.jsp", // 타겟 url 주소
+				dataType : "json", // json 형태로 받아오겠다
+				contentType : "application/json; charset=UTF-8",
+				success : function(data) {
+					console.log(data);
+					if(data.status === "Y") {
+						alert("판매 가능한 쿠폰");
+						
+					} else {
+						alert("등록 불가능한 쿠폰");
+					}
+					
+				},
+				error : function() {
+					alert("오류가 발생했습니다. 다시 시도해주세요.");
+				}
+			})
+		}
 	});
 </script>
 </html>
