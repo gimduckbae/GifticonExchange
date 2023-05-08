@@ -6,15 +6,15 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 
-public class GifticonDao {
+public class GifticonDAO {
 	
 	/** API호출 후 리턴된 response로 기프티콘 정보 Json을 파싱해서 Dto에 담아 리턴하는 메소드 */
-	public GifticonDto getGifticonStatusByResponse(String response) {
+	public GifticonDTO getGifticonStatusByResponse(String response) {
 		JSONParser parser = new JSONParser();
-		GifticonDto resultDto = null;
+		GifticonDTO resultDto = null;
 		
 		try {
-			resultDto = new GifticonDto();
+			resultDto = new GifticonDTO();
 			JSONObject resultResponse = (JSONObject) ((JSONObject) parser.parse(response)).get("result");	// response -> result 가져오기
 			
 			int resultCode = Integer.parseInt((String) resultResponse.get("resultCode"));					// result -> resultCode 이걸로 결과 구분
