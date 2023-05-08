@@ -4,39 +4,39 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dbconn.DBConnectionManager;
 
 public class SampleDao {
 
 	/** member 테이블에서 no로 한명 찾기 */
-	public SampleDto selectMemberByNo(int no) {
+	public List<SampleDto> selectAllProduct() {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
 		SampleDto sampleDto = null;
+		List<SampleDto> items = new ArrayList<SampleDto>();
 		
 		try {
 			conn = DBConnectionManager.getConnection();
 			
-			String sql = "SELECT * FROM member WHERE no = ?";
+			String sql = "SELECT * FROM sale_sample";
 			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setInt(1, no);
 			
 			rs = psmt.executeQuery();
 			
 			
-			if (rs.next()) {				
+			while (rs.next()) {				
 				sampleDto = new SampleDto();
-				sampleDto.setNo(rs.getInt("no"));
-				sampleDto.setName(rs.getString("name"));
-				sampleDto.setJumin(rs.getString("jumin"));
-				sampleDto.setPasswd(rs.getString("passwd"));
-				sampleDto.setId(rs.getString("id"));
-				sampleDto.setAn_key(rs.getString("an_key"));
-				sampleDto.setAn_key_dap(rs.getString("an_key_dap"));
+				sampleDto.setBrandname(rs.getString("brandname"));
+				sampleDto.setBrandcode(rs.getString("brandcode"));
+				sampleDto.setSaleprice(rs.getInt("saleprice"));
+				sampleDto.setImg(rs.getString("img"));
+				items.add(sampleDto);
 			}
 			
 		} catch (SQLException e) {
@@ -45,6 +45,38 @@ public class SampleDao {
 			DBConnectionManager.close(rs, psmt, conn);
 		}
 
-		return sampleDto;
+		return items;
 	}
+	
+	//insert
+			public int insertSampleInfo(String brandname, String brandcode, int saleprice, String img) {
+
+				Connection conn = null;
+				PreparedStatement psmt = null;
+				ResultSet rs = null;
+				int result = 0;
+				try {
+					conn = DBConnectionManager.getConnection();
+
+					// 쿼리문!
+					String sql = "insert into sale_sample"
+							+" values( ?, ?, ?, ?)";
+
+					psmt = conn.prepareStatement(sql);
+					psmt.setString(1, brandname);
+					psmt.setString(2, brandcode);
+					psmt.setInt(3, saleprice);
+					psmt.setString(4, img);
+					result = psmt.executeUpdate();
+
+					System.out.println("처리결과:" + result);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} finally {
+					DBConnectionManager.close(rs, psmt, conn);
+				}
+
+				return result;
+			}
 }

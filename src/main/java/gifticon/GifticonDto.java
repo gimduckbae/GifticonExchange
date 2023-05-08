@@ -4,14 +4,11 @@ public class GifticonDto {
 	String resultMsg;
 	int resultCode;
 
-	String virtualCouponName;
 	String brandCode;
 	String brandName;
 	int consumerPrice;
 	int salePrice;
 	int usableAmount;
-	String validityStartDate;
-	String validityEndDate;
 	String status;
 
 	public String getResultMsg() {
@@ -28,14 +25,6 @@ public class GifticonDto {
 
 	public void setResultCode(int resultCode) {
 		this.resultCode = resultCode;
-	}
-
-	public String getVirtualCouponName() {
-		return virtualCouponName;
-	}
-
-	public void setVirtualCouponName(String virtualCouponName) {
-		this.virtualCouponName = virtualCouponName;
 	}
 
 	public String getBrandCode() {
@@ -78,22 +67,6 @@ public class GifticonDto {
 		this.usableAmount = usableAmount;
 	}
 
-	public String getValidityStartDate() {
-		return validityStartDate;
-	}
-
-	public void setValidityStartDate(String validityStartDate) {
-		this.validityStartDate = validityStartDate;
-	}
-
-	public String getValidityEndDate() {
-		return validityEndDate;
-	}
-
-	public void setValidityEndDate(String validityEndDate) {
-		this.validityEndDate = validityEndDate;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -104,10 +77,10 @@ public class GifticonDto {
 
 	@Override
 	public String toString() {
-		return "GifticonDto [resultMsg=" + resultMsg + ", resultCode=" + resultCode + ", virtualCouponName="
-				+ virtualCouponName + ", brandCode=" + brandCode + ", brandName=" + brandName + ", consumerPrice="
-				+ consumerPrice + ", salePrice=" + salePrice + ", usableAmount=" + usableAmount + ", validityStartDate="
-				+ validityStartDate + ", validityEndDate=" + validityEndDate + ", status=" + status + "]";
+		return "GifticonDto [resultMsg=" + resultMsg + ", resultCode=" + resultCode + 
+				", brandCode=" + brandCode + ", brandName=" + brandName + 
+				", consumerPrice=" + consumerPrice + ", salePrice=" + salePrice
+				+ ", usableAmount=" + usableAmount + ", status=" + status + "]";
 	}
 
 }
