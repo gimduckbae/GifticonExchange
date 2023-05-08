@@ -19,8 +19,8 @@
 	GifticonDTO gifticonDto = gifticonDao.getGifticonStatusByResponse(res);
 	%>
 	<script>
-		const msg = "<%=gifticonDto.toString()%>
-		";
+		const msg = `<%=gifticonDto.toString()%>
+		`;
 		alert(msg);
 		location.href = history.back();
 	</script>
