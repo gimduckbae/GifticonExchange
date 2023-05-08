@@ -24,23 +24,51 @@
 	<div class="container" style="margin: 0 auto; margin-top: 10vh;">
 		<div class="input-group mb-3">
 			<input type="text" id="input" class="form-control"
-				placeholder="기프티콘 번호">
+				placeholder="기프티콘 번호" value="92006400447496">
 			<button class="btn btn-outline-secondary" type="button" id="button">Button</button>
+		</div>
+
+		<div class="form-floating mb-3">
+			<input disabled type="texet" class="form-control" id="brandName"
+				placeholder="브랜드이름"> <label for="brandName">브랜드이름</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input disabled type="texet" class="form-control"
+				id="virtualCouponName" placeholder="쿠폰이름"> <label
+				for="virtualCouponName">쿠폰이름</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input disabled type="texet" class="form-control" id="salePrice"
+				placeholder="가격"> <label for="salePrice">가격</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input disabled type="texet" class="form-control"
+				id="validityStartDate" placeholder="발급일"> <label
+				for="validityStartDate">발급일</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input disabled type="texet" class="form-control"
+				id="validityEndDate" placeholder="만료일"> <label
+				for="validityEndDate">만료일</label>
 		</div>
 	</div>
 </body>
 <script>
 	$(function() {
+		var checkData;
+
 		$("#button").click(function() {
-			checkCoupon();
+			checkData = checkCoupon();
+			console.log(checkData);
 		});
-		
+
 		// 조회한 기프티콘 결과값을 비활성화 된 input그룹에 자동입력 시켜서 등록하자
 		function checkCoupon() {
 			let couponNumber = $("#input").val();
+			var result;
 
 			$.ajax({
-				async : true, // 비동기 true
+				async : false, // 비동기 = true
 				type : 'GET', // GET 타입
 				data : { // 넘겨줄 매개변수, 실제로 ?id=input_id 형식으로 넘어감
 					"num" : couponNumber
@@ -50,18 +78,27 @@
 				contentType : "application/json; charset=UTF-8",
 				success : function(data) {
 					console.log(data);
-					if(data.status === "Y") {
-						alert("판매 가능한 쿠폰");
-						
+					result = data;
+					if (data.status === "Y") {
+						let register = confirm("판매 가능한 쿠폰입니다. 등록 하시겠습니까?");
+						if (register) {
+							$("brandName").val(data.brandName);
+							$("virtualCouponName").val(data.virtualCouponName);
+							$("salePrice").val(data.salePrice);
+							$("validityStartDate").val(data.validityStartDate);
+							$("validityEndDate").val(data.validityEndDate);
+						}
+
 					} else {
-						alert("등록 불가능한 쿠폰");
+						alert("등록 불가능한 쿠폰 입니다.");
 					}
-					
+
 				},
 				error : function() {
 					alert("오류가 발생했습니다. 다시 시도해주세요.");
 				}
-			})
+			});
+			return result;
 		}
 	});
 </script>
