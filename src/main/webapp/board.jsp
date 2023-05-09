@@ -31,51 +31,29 @@
 		$("#btn-insert").click(insertBoard);
 
 		function insertBoard() {
-			var title;
-			var content;
-			
+			let title = $("#title").val();
+			let content = $("#content").val();
+			let writer = "testid";
+			let nickname = "휴먼";
+
 			$.ajax({
 				async : false, // 비동기 = true
 				type : 'GET', // GET 타입
 				data : { // 넘겨줄 매개변수, 실제로 ?id=input_id 형식으로 넘어감
-					"num" : couponNumber
+					"title" : title,
+					"content" : content,
+					"writer" : writer,
+					"nickname" : nickname
 				},
 				url : "./actions/insertBoard.jsp", // 타겟 url 주소
 				dataType : "json", // json 형태로 받아오겠다
 				contentType : "application/json; charset=UTF-8",
 				success : function(data) {
 					//console.log(data);
-					
-				},
-				error : function() {
-					alert("오류가 발생했습니다. 다시 시도해주세요.");
-				}
-			});
-		}
-
-		function insertCoupon() {
-			let couponNumber = $("#input").val().replace(/\s/gi, "");
-			if (couponNumber == "") {
-				return;
-			}
-
-			$.ajax({
-				async : false, // 비동기 = true
-				type : 'GET', // GET 타입
-				data : { // 넘겨줄 매개변수, 실제로 ?id=input_id 형식으로 넘어감
-					"num" : couponNumber
-				},
-				url : "./actions/insertCoupon.jsp", // 타겟 url 주소
-				dataType : "json", // json 형태로 받아오겠다
-				contentType : "application/json; charset=UTF-8",
-				success : function(data) {
-					//console.log(data);
-
-					if (data.result === "true") {
-						alert("판매 등록이 정상 처리되었습니다.");
-					} else {
-						alert("판매 등록에 실패 했습니다.");
+					if(data.result === "true") {
+						alert("문의내용이 정상적으로 등록 되었습니다.");
 					}
+
 				},
 				error : function() {
 					alert("오류가 발생했습니다. 다시 시도해주세요.");
