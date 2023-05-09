@@ -1,0 +1,55 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 화요일-5월-09-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table BOARD_INFO
+--------------------------------------------------------
+
+  CREATE TABLE "SCOTT"."BOARD_INFO" 
+   (	"CREATE_DATE" DATE DEFAULT SYSDATE, 
+	"NO" NUMBER, 
+	"CATEGORY" NUMBER, 
+	"TITLE" VARCHAR2(20 BYTE), 
+	"WRITER" VARCHAR2(30 BYTE), 
+	"NICKNAME" VARCHAR2(30 BYTE), 
+	"STATUS" NUMBER(1,0) DEFAULT 0
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "EXAMPLE" ;
+
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."CREATE_DATE" IS '작성날짜';
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."NO" IS '글번호';
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."CATEGORY" IS '카테고리';
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."TITLE" IS '글제목';
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."WRITER" IS '작성자 아이디';
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."NICKNAME" IS '작성자 닉네임';
+   COMMENT ON COLUMN "SCOTT"."BOARD_INFO"."STATUS" IS '답변여부';
+REM INSERTING into SCOTT.BOARD_INFO
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index BOARD_INFO_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SCOTT"."BOARD_INFO_PK" ON "SCOTT"."BOARD_INFO" ("NO") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "EXAMPLE" ;
+--------------------------------------------------------
+--  Constraints for Table BOARD_INFO
+--------------------------------------------------------
+
+  ALTER TABLE "SCOTT"."BOARD_INFO" MODIFY ("CREATE_DATE" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."BOARD_INFO" MODIFY ("NO" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."BOARD_INFO" MODIFY ("CATEGORY" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."BOARD_INFO" MODIFY ("TITLE" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."BOARD_INFO" MODIFY ("WRITER" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."BOARD_INFO" MODIFY ("NICKNAME" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."BOARD_INFO" ADD CONSTRAINT "BOARD_INFO_PK" PRIMARY KEY ("NO")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "EXAMPLE"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table BOARD_INFO
+--------------------------------------------------------
+
+  ALTER TABLE "SCOTT"."BOARD_INFO" ADD CONSTRAINT "BOARD_INFO_FK1" FOREIGN KEY ("WRITER")
+	  REFERENCES "SCOTT"."MEMBER_TB" ("LOGIN_ID") ENABLE;
