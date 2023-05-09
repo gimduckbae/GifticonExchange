@@ -4,6 +4,8 @@ public class GifticonDTO {
 	String resultMsg;
 	int resultCode;
 
+	String couponNumber;
+
 	String virtualCouponName;
 	String brandCode;
 	String brandName;
@@ -28,6 +30,14 @@ public class GifticonDTO {
 
 	public void setResultCode(int resultCode) {
 		this.resultCode = resultCode;
+	}
+
+	public String getCouponNumber() {
+		return couponNumber;
+	}
+
+	public void setCouponNumber(String couponNumber) {
+		this.couponNumber = couponNumber;
 	}
 
 	public String getVirtualCouponName() {
@@ -101,13 +111,5 @@ public class GifticonDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	@Override
-	public String toString() {
-		return "GifticonDto [resultMsg=" + resultMsg + ", resultCode=" + resultCode + ", virtualCouponName="
-				+ virtualCouponName + ", brandCode=" + brandCode + ", brandName=" + brandName + ", consumerPrice="
-				+ consumerPrice + ", salePrice=" + salePrice + ", usableAmount=" + usableAmount + ", validityStartDate="
-				+ validityStartDate + ", validityEndDate=" + validityEndDate + ", status=" + status + "]";
-	}
-
+	
 }

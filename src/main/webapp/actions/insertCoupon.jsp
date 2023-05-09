@@ -15,17 +15,11 @@ GifticonDAO gifticonDao = new GifticonDAO();
 String res = HappyOrder.getResponseByGifticonNumber(couponNumber);
 GifticonDTO gifticonDto = gifticonDao.getGifticonStatusByResponse(res);
 
-obj.put("resultMsg", gifticonDto.getResultMsg());
-obj.put("resultCode", gifticonDto.getResultCode());
-obj.put("virtualCouponName", gifticonDto.getVirtualCouponName());
-obj.put("brandCode", gifticonDto.getBrandCode());
-obj.put("brandName", gifticonDto.getBrandName());
-obj.put("consumerPrice", gifticonDto.getConsumerPrice());
-obj.put("salePrice", gifticonDto.getSalePrice());
-obj.put("usableAmount", gifticonDto.getUsableAmount());
-obj.put("validityStartDate", gifticonDto.getValidityStartDate());
-obj.put("validityEndDate", gifticonDto.getValidityEndDate());
-obj.put("status", gifticonDto.getStatus());
-
+boolean result = gifticonDao.insertGifticon(gifticonDto);
+if (result) {
+	obj.put("result", "true");
+} else {
+	obj.put("result", "false");
+}
 response.getWriter().write(obj.toString()); // 최종으로 만들어둔 json 객체를 완성해서 뿌림
 %>
