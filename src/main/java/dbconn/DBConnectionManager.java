@@ -8,6 +8,7 @@ import java.sql.SQLException;
 public class DBConnectionManager {
 	//DB 연결을 도와주는 기능을 가진 클래스
 	
+	/** DB연결 메소드 */
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -30,6 +31,7 @@ public class DBConnectionManager {
 		return conn;
 	}
 	
+	/** DB연결 끊기 메소드 */
 	public static void close(ResultSet rs, PreparedStatement psmt, Connection conn) {
 		try {
 			if(rs != null) {

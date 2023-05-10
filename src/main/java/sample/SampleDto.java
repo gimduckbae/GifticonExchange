@@ -8,6 +8,7 @@ public class SampleDto {
 	String id;
 	String an_key;
 	String an_key_dap;
+	
 
 	public int getNo() {
 		return no;
@@ -63,11 +64,5 @@ public class SampleDto {
 
 	public void setAn_key_dap(String an_key_dap) {
 		this.an_key_dap = an_key_dap;
-	}
-
-	@Override
-	public String toString() {
-		return "SampleDto [no=" + no + ", name=" + name + ", jumin=" + jumin + ", passwd=" + passwd + ", id=" + id
-				+ ", an_key=" + an_key + ", an_key_dap=" + an_key_dap + "]";
 	}
 }
