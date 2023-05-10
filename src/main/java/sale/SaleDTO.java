@@ -1,10 +1,10 @@
-package sample;
+package sale;
 
-public class SampleDto {
-	int saleprice;
+public class SaleDTO {
 	String brandname;
 	String brandcode;
-	String img;
+	String item_img;
+	int saleprice;
 
 	public int getSaleprice() {
 		return saleprice;
@@ -29,14 +29,13 @@ public class SampleDto {
 	public void setBrandcode(String brandcode) {
 		this.brandcode = brandcode;
 	}
-	
-	public String getImg() {
-		return img;
+
+	public String getItem_img() {
+		return item_img;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setItem_img(String item_img) {
+		this.item_img = item_img;
 	}
-	
 
 }

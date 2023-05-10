@@ -1,4 +1,4 @@
-package sample;
+package sale;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,20 +9,19 @@ import java.util.List;
 
 import dbconn.DBConnectionManager;
 
-public class SampleDao {
+public class SaleDAO {
 
-	/** member 테이블에서 no로 한명 찾기 */
-	public List<SampleDto> selectAllProduct() {
+	public List<SaleDTO> selectAllProduct() {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
-		SampleDto sampleDto = null;
-		List<SampleDto> items = new ArrayList<SampleDto>();
+		SaleDTO saleDTO = null;
+		List<SaleDTO> items = new ArrayList<SaleDTO>();
 		
 		try {
 			conn = DBConnectionManager.getConnection();
 			
-			String sql = "SELECT * FROM sale_sample";
+			String sql = "SELECT * FROM sale_item";
 			
 			psmt = conn.prepareStatement(sql);
 			
@@ -31,12 +30,12 @@ public class SampleDao {
 			
 			
 			while (rs.next()) {				
-				sampleDto = new SampleDto();
-				sampleDto.setBrandname(rs.getString("brandname"));
-				sampleDto.setBrandcode(rs.getString("brandcode"));
-				sampleDto.setSaleprice(rs.getInt("saleprice"));
-				sampleDto.setImg(rs.getString("img"));
-				items.add(sampleDto);
+				saleDTO = new SaleDTO();
+				saleDTO.setBrandname(rs.getString("brandname"));
+				saleDTO.setBrandcode(rs.getString("brandcode"));
+				saleDTO.setItem_img(rs.getString("item_img"));
+				saleDTO.setSaleprice(rs.getInt("saleprice"));
+				items.add(saleDTO);
 			}
 			
 		} catch (SQLException e) {
@@ -49,7 +48,7 @@ public class SampleDao {
 	}
 	
 	//insert
-			public int insertSampleInfo(String brandname, String brandcode, int saleprice, String img) {
+			public int insertSaleInfo(String brandname, String brandcode, String item_img, int saleprice) {
 
 				Connection conn = null;
 				PreparedStatement psmt = null;
@@ -59,14 +58,14 @@ public class SampleDao {
 					conn = DBConnectionManager.getConnection();
 
 					// 쿼리문!
-					String sql = "insert into sale_sample"
+					String sql = "insert into sale_item"
 							+" values( ?, ?, ?, ?)";
 
 					psmt = conn.prepareStatement(sql);
 					psmt.setString(1, brandname);
 					psmt.setString(2, brandcode);
-					psmt.setInt(3, saleprice);
-					psmt.setString(4, img);
+					psmt.setString(3, item_img);
+					psmt.setInt(4, saleprice);
 					result = psmt.executeUpdate();
 
 					System.out.println("처리결과:" + result);

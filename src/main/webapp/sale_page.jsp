@@ -1,22 +1,18 @@
-<%@page import="brand.BrandDAO"%>
-<%@page import="brand.BrandDTO"%>
 <%@page import="event.EventDTO"%>
 <%@page import="event.EventDAO"%>
-<%@page import="sample.SampleDto"%>
+<%@page import="sale.SaleDTO"%>
+<%@page import="sale.SaleDAO"%>
 <%@page import="java.util.List"%>
-<%@page import="sample.SampleDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 
 
 <%
-SampleDao sampleDao = new SampleDao();
-List<SampleDto> items = sampleDao.selectAllProduct();
+SaleDAO saleDAO = new SaleDAO();
+List<SaleDTO> items = saleDAO.selectAllProduct();
 EventDAO eventDAO = new EventDAO();
 List<EventDTO> events = eventDAO.selectAllEvents();
-BrandDAO brandDAO = new BrandDAO();
-List<BrandDTO> brands = brandDAO.selectAllBrands();
 %>
 
 
@@ -39,6 +35,7 @@ List<BrandDTO> brands = brandDAO.selectAllBrands();
 	crossorigin="anonymous"></script>
 
 </head>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <body>
 	<div class="container" style="text-align: center;">
 		<div class="banner d-flex flex-row">
@@ -46,7 +43,7 @@ List<BrandDTO> brands = brandDAO.selectAllBrands();
 				<%
 				for (int i = 0; i < 5; i++) {
 				%>
-				<li><img src="<%=events.get(i).getEvt_img()%>"></li>
+				<li><img src="<%=events.get(i).getEvt_img()%>" class="evt-img"></li>
 				<%
 				}
 				%>
@@ -57,13 +54,6 @@ List<BrandDTO> brands = brandDAO.selectAllBrands();
 
 		<div class="brand-logo">
 			<div class="brand-logoList">
-				<%
-				for (int i = 0; i < 5; i++) {
-				%>
-				<img src="<%=brands.get(i).getBr_img()%>" alt="..." class="brand-img">
-				<%
-				}
-				%>
 			</div>
 		</div>
 
@@ -77,7 +67,7 @@ List<BrandDTO> brands = brandDAO.selectAllBrands();
 			<div class="card-group" style="margin: 0 auto;">
 
 				<div class="card">
-					<img src="<%=items.get(i).getImg()%>" class="card-img-top images"
+					<img src="<%=items.get(i).getItem_img()%>" class="card-img-top images"
 						alt="...">
 					<div class="card-body">
 						<h6 class="card-title">
@@ -90,7 +80,7 @@ List<BrandDTO> brands = brandDAO.selectAllBrands();
 					</div>
 				</div>
 				<div class="card">
-					<img src="<%=items.get(i + 1).getImg()%>"
+					<img src="<%=items.get(i + 1).getItem_img()%>"
 						class="card-img-top images" alt="...">
 					<div class="card-body">
 						<h6 class="card-title">
@@ -103,7 +93,7 @@ List<BrandDTO> brands = brandDAO.selectAllBrands();
 					</div>
 				</div>
 				<div class="card">
-					<img src="<%=items.get(i + 2).getImg()%>"
+					<img src="<%=items.get(i + 2).getItem_img()%>"
 						class="card-img-top images" alt="...">
 					<div class="card-body">
 						<h6 class="card-title">
