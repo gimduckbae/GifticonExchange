@@ -8,7 +8,7 @@ public class Main {
 		
 		EventDAO eventDAO = new EventDAO();
 		
-		eventDAO.insertEventInfo("베스킨라빈스 이벤트", "./img/evt1.png");
+		eventDAO.insertEventInfo("해피오더 이벤트", "./img/evt1.png");
 		eventDAO.insertEventInfo("KFC 이벤트", "./img/evt2.png");
 		eventDAO.insertEventInfo("피자헛 이벤트", "./img/evt3.png");
 		eventDAO.insertEventInfo("던킨도너츠 이벤트", "./img/evt4.png");

@@ -1,12 +1,49 @@
 @charset "UTF-8";
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.banner {
+	position: relative;
+	width: 1100px;
+	height: 400px;
+	top: 50px;
+	margin: 0 auto;
+	padding: 0;
+	overflow: hidden;
+}
+
+.banner ul {
+	position: absolute;
+	margin: 0px;
+	padding: 0;
+	list-style: none;
+}
+
+.banner ul li {
+	float: left;
+	width: 1100px;
+	height: 400px;
+	margin: 0;
+	padding: 0;
+}
+
 .images {
 	width: 150px;
 	height: 150px;
 }
 
 .card {
-	border : 0;
-	width : 200px;
-	width : 200px;
+	border: 0;
+	width: 200px;
+	width: 200px;
 }
+
+.brand-img {
+	border-radius: 100px;
+	margin: 0 auto;
+}
+
+
