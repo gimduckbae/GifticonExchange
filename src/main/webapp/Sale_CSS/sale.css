@@ -7,16 +7,16 @@
 
 .banner {
 	position: relative;
-	width: 100%;
+	width: 100vw;
 	height: 400px;
-	top: 50px;
-	margin: 0 auto;
 	padding: 0;
 	overflow: hidden;
 }
 
 .banner ul {
 	position: absolute;
+	width: 100vw;
+	height: 400px;
 	margin: 0px;
 	padding: 0;
 	list-style: none;
@@ -24,19 +24,33 @@
 
 .banner ul li {
 	float: left;
-	height: 400px;
 	margin: 0;
 	padding: 0;
+	height: 400px;
+}
+
+.evt-img {
+	width: 100vw;
+	height: 400px;
+	cursor: pointer;
+}
+
+.br-logobox{
+	width:80vw;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.br-text {
+	margin-top: 100px;
+	text-align: center;
+	color: #535151;
+	font-weight:bold;
 }
 
 .images {
 	width: 150px;
 	height: 150px;
-}
-
-.evt-img {
-	width:100%;
-	height:400px;
 }
 
 .card {
@@ -45,9 +59,27 @@
 	width: 200px;
 }
 
-.brand-img {
-	border-radius: 100px;
-	margin: 0 auto;
+.item-img {
+	width:20vw;
+	height:25vh;
 }
 
+.d-flex {
+	justify-content: space-between;
+}
 
+.d-flex:before {
+  display: inline-block;
+  width: 10px;
+  content: '';
+}
+
+.d-flex:after {
+  display: inline-block;
+  width: 10px;
+  content: '';
+}
+
+.container-fluid {
+	text-align:center;
+}

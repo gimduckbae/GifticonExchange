@@ -1,10 +1,21 @@
 $(function() {
-	var $banner = $(".banner").find("ul");
-
-	var $bannerWidth = $banner.children().outerWidth();//이미지의 폭
-	var $bannerHeight = $banner.children().outerHeight(); // 높이
-	var $length = $banner.children().length;//이미지의 갯수
 	var rollingId;
+	var $banner;
+	var $bannerWidth;
+	var $bannerHeight;
+	var $length;
+
+	$(window).resize(function() {
+		$banner = $(".banner").find("ul");
+		$bannerWidth = $banner.children().outerWidth();//이미지의 폭
+		$bannerHeight = $banner.children().outerHeight(); // 높이
+		$length = $banner.children().length;//이미지의 갯수
+	});
+
+	$banner = $(".banner").find("ul");
+	$bannerWidth = $banner.children().outerWidth();//이미지의 폭
+	$bannerHeight = $banner.children().outerHeight(); // 높이
+	$length = $banner.children().length;//이미지의 갯수
 
 	//정해진 초마다 함수 실행
 	rollingId = setInterval(function() {
@@ -12,8 +23,8 @@ $(function() {
 	}, 3000);//다음 이미지로 롤링 애니메이션 할 시간차
 
 	function rollingStart() {
-		$banner.css("width", $bannerWidth * $length + "px");
-		$banner.css("height", $bannerHeight + "px");
+		$banner.css("width", $bannerWidth * $length + "vw");
+		$banner.css("height", $bannerHeight + "vw");
 		//alert(bannerHeight);
 		//배너의 좌측 위치를 옮겨 준다.
 		$banner.animate({

@@ -1,7 +1,7 @@
 <%@page import="event.EventDTO"%>
 <%@page import="event.EventDAO"%>
-<%@page import="sale.SaleDTO"%>
-<%@page import="sale.SaleDAO"%>
+<%@page import="item.ItemDTO"%>
+<%@page import="item.ItemDAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -9,10 +9,10 @@
 
 
 <%
-SaleDAO saleDAO = new SaleDAO();
-List<SaleDTO> items = saleDAO.selectAllProduct();
 EventDAO eventDAO = new EventDAO();
 List<EventDTO> events = eventDAO.selectAllEvents();
+ItemDAO itemDAO = new ItemDAO();
+List<ItemDTO> items = itemDAO.selectAllItems();
 %>
 
 
@@ -36,81 +36,74 @@ List<EventDTO> events = eventDAO.selectAllEvents();
 
 </head>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+
 <body>
-	<div class="container" style="text-align: center;">
-		<div class="banner d-flex flex-row">
-			<ul>
-				<%
-				for (int i = 0; i < 5; i++) {
-				%>
-				<li><img src="<%=events.get(i).getEvt_img()%>" class="evt-img"></li>
-				<%
-				}
-				%>
-			</ul>
-		</div>
-		
-		<h3 style="margin-top: 100px;">BRAND</h3>
-
-		<div class="brand-logo">
-			<div class="brand-logoList">
-			</div>
-		</div>
-
-
-
-		<div class="card-box" style="margin-top: 100px;">
+	<%--상단 이벤트 배너--%>
+	<div class="banner d-flex flex-row">
+		<ul>
 			<%
-			int arrsize = items.size() / 1;
-			for (int i = 0; i < arrsize; i += 3) {
+			for (int i = 0; i < 5; i++) {
 			%>
-			<div class="card-group" style="margin: 0 auto;">
+			<li><img src="<%=events.get(i).getEvt_img()%>" class="evt-img"></li>
+			<%
+			}
+			%>
+		</ul>
+	</div>
+	<div class="container">
 
-				<div class="card">
-					<img src="<%=items.get(i).getItem_img()%>" class="card-img-top images"
-						alt="...">
-					<div class="card-body">
-						<h6 class="card-title">
-							상품명 :
-							<%=items.get(i).getBrandname()%></h6>
-						<h6>
-							가격 :
-							<%=items.get(i).getSaleprice()%>원
-						</h6>
-					</div>
+		<h3 class="br-text">HOT BRAND</h3>
+		<br>
+
+		<div class="container text-center">
+			<div class="row">
+				<div class="col">
+					<img src="./img/logo1.png" class="rounded" alt="...">
 				</div>
-				<div class="card">
-					<img src="<%=items.get(i + 1).getItem_img()%>"
-						class="card-img-top images" alt="...">
-					<div class="card-body">
-						<h6 class="card-title">
-							상품명 :
-							<%=items.get(i + 1).getBrandname()%></h6>
-						<h6>
-							가격 :
-							<%=items.get(i + 1).getSaleprice()%>원
-						</h6>
-					</div>
+				<div class="col">
+					<img src="./img/logo2.png" class="rounded" alt="...">
 				</div>
-				<div class="card">
-					<img src="<%=items.get(i + 2).getItem_img()%>"
-						class="card-img-top images" alt="...">
-					<div class="card-body">
-						<h6 class="card-title">
-							상품명 :
-							<%=items.get(i + 2).getBrandname()%></h6>
-						<h6>
-							가격 :
-							<%=items.get(i + 2).getSaleprice()%>원
-						</h6>
-					</div>
+				<div class="col">
+					<img src="./img/logo3.png" class="rounded" alt="...">
+				</div>
+				<div class="col">
+					<img src="./img/logo4.png" class="rounded" alt="...">
+				</div>
+				<div class="col">
+					<img src="./img/logo5.png" class="rounded" alt="...">
+				</div>
+				<div class="col">
+					<img src="./img/logo6.png" class="rounded" alt="...">
 				</div>
 			</div>
+		</div>
+		<br>
+
+
+		<div class="card-group flex-row">
+		<%
+		for (int i = 0; i < 18; i++) {
+		%>
+
+			<div class="card">
+				<img src="<%=items.get(i).getIt_img()%>" class="card-img-top images"
+					alt="...">
+				<div class="card-body">
+					<h5 class="card-title">
+						상품명 :
+						<%=items.get(i).getIt_name()%></h5>
+					<h5>
+						가격 :
+						<%=items.get(i).getIt_price()%>원
+					</h5>
+				</div>
+			</div>
+
 			<%
 			}
 			%>
 		</div>
-	</div>
 </body>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
