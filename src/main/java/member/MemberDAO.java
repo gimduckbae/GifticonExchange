@@ -28,9 +28,9 @@ public class MemberDAO {
 			if (rs.next()) {
 				memberDTO = new MemberDTO();
 				memberDTO.setLogin_id(rs.getString("login_id"));
-				memberDTO.setLogin_pw(rs.getString("login_pw"));
-				memberDTO.setName(rs.getString("name"));
-				memberDTO.setNickName(rs.getString("nickname"));
+				memberDTO.setPassword(rs.getString("password"));
+				memberDTO.setMember_name(rs.getString("member_name"));
+				memberDTO.setNickname(rs.getString("nickname"));
 			}
 
 		} catch (SQLException e) {
@@ -57,13 +57,14 @@ public class MemberDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "INSERT INTO member_tb (login_id, login_pw, name, nickname) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO member (member_no, login_id, password, member_name, nickname)"
+					+ " VALUES ( (SELECT NVL( ( MAX(member_no) ), 0)+1 FROM member), ?, ?, ?, ? )";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getLogin_id());
-			psmt.setString(2, member.getLogin_pw());
-			psmt.setString(3, member.getName());
-			psmt.setString(4, member.getNickName());
+			psmt.setString(2, member.getPassword());
+			psmt.setString(3, member.getMember_name());
+			psmt.setString(4, member.getNickname());
 
 			result = psmt.executeUpdate();
 
@@ -89,8 +90,6 @@ public class MemberDAO {
 
 		try {
 			conn = DBConnectionManager.getConnection();
-																			//id값을 불러오면 pw 등 값이 같이 넘어오니까
-																				//굳이 pw까지 부를 필요가 없다.
 			String sql = "SELECT * FROM member_tb WHERE login_id = ?";
 
 			psmt = conn.prepareStatement(sql);
@@ -100,7 +99,7 @@ public class MemberDAO {
 			if (rs.next()) {
 					memberDTO = new MemberDTO();
 					memberDTO.setLogin_id(rs.getString("login_id"));
-					memberDTO.setLogin_pw(rs.getString("login_pw"));			
+					memberDTO.setPassword(rs.getString("password"));			
 			}
 
 		} catch (SQLException e) {
@@ -132,7 +131,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				memberDTO = new MemberDTO();
-				memberDTO.setLogin_pw(rs.getString("login_pw"));
+				memberDTO.setPassword(rs.getString("password"));
 				
 			}
 

@@ -44,7 +44,7 @@ public class GifticonDAO {
 			JSONObject virtualCouponInfo = (JSONObject) virtualCouponList.get(0); // 버추얼쿠폰리스트가 JSONArray 형식이라 0번 인덱스만
 																					// JSONObject 형식으로 쓸 것임
 
-			String couponNo = (String) resultData.get("couponNo");	// 쿠폰번호
+			String couponNo = (String) resultData.get("couponNo"); // 쿠폰번호
 			String virtualCouponName = (String) virtualCouponInfo.get("virtualCouponName"); // 기프티콘 풀네임
 			String brandCode = (String) virtualCouponInfo.get("brandCode"); // "BR000B" 이런 형식인데 대충 브랜드명+지점번호 느낌인듯
 			String brandName = (String) virtualCouponInfo.get("brandName"); // 배스킨라빈스
@@ -55,17 +55,22 @@ public class GifticonDAO {
 			String validityEndDate = (String) virtualCouponInfo.get("validityEndDate"); // 유효기간
 			String status = (String) virtualCouponInfo.get("status"); // 사용가능 여부
 
+			if (status.equals("N")) {
+				return null;
+			}
+
+			if (usableAmount != salePrice) {
+				return null;
+			}
+
 			// Dto에 값 담아주기
-			resultDto.setCouponNumber(couponNo);
-			resultDto.setVirtualCouponName(virtualCouponName);
-			resultDto.setBrandCode(brandCode);
-			resultDto.setBrandName(brandName);
-			resultDto.setConsumerPrice(consumerPrice);
-			resultDto.setSalePrice(salePrice);
-			resultDto.setUsableAmount(usableAmount);
-			resultDto.setValidityStartDate(validityStartDate);
-			resultDto.setValidityEndDate(validityEndDate);
-			resultDto.setStatus(status);
+			resultDto.setCoupon_number(couponNo);
+			resultDto.setCoupon_name(virtualCouponName);
+			resultDto.setBrand_code(brandCode);
+			resultDto.setBrand_name(brandName);
+			resultDto.setPurchase_price(usableAmount);
+			resultDto.setStart_date(validityStartDate);
+			resultDto.setEnd_date(validityEndDate);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -83,20 +88,20 @@ public class GifticonDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "INSERT INTO gifticon (COUPONNUMBER, VIRTUALCOUPONNAME, BRANDCODE, BRANDNAME, CONSUMERPRICE, SALEPRICE, USABLEAMOUNT, VALIDITYSTARTDATE, VALIDITYENDDATE) "
-					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO gifticon (register_no, brand_code, brand_name, coupon_number, coupon_name, purchase_price, sale_price, start_date, end_date, login_id) "
+					+ " VALUES( (SELECT NVL(MAX(register_no), 0)+1 FROM gifticon) , ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, itemDto.getCouponNumber());
-			psmt.setString(2, itemDto.getVirtualCouponName());
-			psmt.setString(3, itemDto.getBrandCode());
-			psmt.setString(4, itemDto.getBrandName());
-			psmt.setInt(5, itemDto.getConsumerPrice());
-			psmt.setInt(6, itemDto.getSalePrice());
-			psmt.setInt(7, itemDto.getUsableAmount());
-			psmt.setString(8, itemDto.getValidityStartDate());
-			psmt.setString(9, itemDto.getValidityEndDate());
+			psmt.setString(1, itemDto.getBrand_code());
+			psmt.setString(2, itemDto.getBrand_name());
+			psmt.setString(3, itemDto.getCoupon_number());
+			psmt.setString(4, itemDto.getCoupon_name());
+			psmt.setInt(5, itemDto.getPurchase_price());
+			psmt.setInt(6, itemDto.getSale_price());
+			psmt.setString(7, itemDto.getStart_date());
+			psmt.setString(8, itemDto.getEnd_date());
+			psmt.setString(9, itemDto.getLogin_id());
 
 			result = psmt.executeUpdate();
 
