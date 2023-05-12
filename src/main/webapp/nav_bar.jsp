@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,11 +21,11 @@
 </head>
 
 <body>
-    <!-- ªÛ¥‹ ≥◊∫ÒπŸ -->
+    <!-- ÏÉÅÎã® ÎÑ§ÎπÑÎ∞î -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <img src="../2nd_project/images/æ∆¿Ãƒ‹.png" id="icon">
-            <a class="navbar-brand" href="#">¿Ã¡ˆƒ‹</a>
+            <img src="../2nd_project/images/ÏïÑÏù¥ÏΩò.png" id="icon">
+            <a class="navbar-brand" href="#">Ïù¥ÏßÄÏΩò</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -34,16 +34,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link nav-menu" aria-current="page" href="#">»®</a>
+                        <a class="nav-link nav-menu" aria-current="page" href="#">Ìôà</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-menu" href="#">∑©≈∑</a>
+                        <a class="nav-link nav-menu" href="#">Îû≠ÌÇπ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-menu" href="#">∫Í∑£µÂ</a>
+                        <a class="nav-link nav-menu" href="#">Î∏åÎûúÎìú</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-menu" href="#">º±π∞«‘</a>
+                        <a class="nav-link nav-menu" href="#">ÏÑ†Î¨ºÌï®</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -54,7 +54,7 @@
         </div>
     </nav>
 
-    <!-- ¿€æ˜∞¯∞£ workspace æ»ø°º≠ -->
+    <!-- ÏûëÏóÖÍ≥µÍ∞Ñ workspace ÏïàÏóêÏÑú -->
     <div class="container work-space" style="margin-top: 100px;">
         <div class="card mb-3" style="max-width: 100%; border-style: none;">
             <div class="row g-0">
