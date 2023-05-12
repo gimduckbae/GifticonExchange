@@ -42,8 +42,6 @@ public class MemberDAO {
 		return memberDTO;
 	}
 
-
-	
 	
 	/**
 	 * MemberDTO 형식을 매개변수로 받아서 member_tb 테이블에 insert 하는 메소드. 성공하면 true 리턴
@@ -99,7 +97,7 @@ public class MemberDAO {
 
 			if (rs.next()) {
 					memberDTO = new MemberDTO();
-					memberDTO.setLogin_id(rs.getString("login_id"));
+					memberDTO.setLogin_id(rs.getString("id"));
 					memberDTO.setLogin_pw(rs.getString("login_pw"));			
 			}
 
@@ -127,7 +125,7 @@ public class MemberDAO {
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, pw);
-		
+
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
@@ -141,8 +139,7 @@ public class MemberDAO {
 		} finally {
 			DBConnectionManager.close(rs, psmt, conn);
 		}
-
+		
 		return memberDTO;
 	}
-
 }
