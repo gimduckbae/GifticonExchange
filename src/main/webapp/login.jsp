@@ -7,71 +7,79 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="loginCSS.css" rel="stylesheet" type="text/css">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+	crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+</head>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+	crossorigin="anonymous"></script>
 </head>
 <body>
+	<header>
+		<div></div>
+		<div></div>
+	</header>
 
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-		crossorigin="anonymous">
-	<!-- JavaScript Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
-</head>
-<body>
-	<form>
+	<form action="./actions/login_action.jsp" method="post">
 		<div>
 			<div class="input-group mb-3">
-				<input type="text" id="input_id" class="form-control"
-					placeholder="아이디" aria-label="Recipient's username"
-					aria-describedby="button-addon2" name="input_id">
+				<input type="text"  class="form-control"
+					placeholder="아이디" name="input_id" id="input_id">
 			</div>
 			<input type="text" class="form-control mb-3" placeholder="비번"
-				id="input_pw">
+				name="input_pw" id="input_pw">
 		</div>
-		<button id="join_btn" class="btn btn-primary" type="button">로그인</button>
+		<button id="join_btn" class="btn btn-primary" type="submit" onclick="trylogin()">로그인</button>
+		<input type="checkbox" name="loginsave" value="true"  id="loginsave">아이디저장<br>
+		<br><button id="join_btn" class="btn btn-primary" type="submit">아이디찾기</button>
+		<button id="join_btn" class="btn btn-primary" type="submit">비밀번호찾기</button>
 	</form>
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.4.js"
 	integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
 	crossorigin="anonymous"></script>
-<script>
-	$(function() {
-		$("#join_btn").click(idCheck);
 
-		function idCheck() {
-			let input_id = $("#input_id").val();
-			let input_pw = $("#input_pw").val(); //입력창에 받은 값  
 
-			$.ajax({
-				async : true, // 비동기 true
-				type : 'get', // GET 타입
-				data : { // 넘겨줄 매개변수, 실제로 ?id=input_id 형식으로 넘어감
-					"input_id" : input_id,
-					"input_pw" : input_pw
-				},
-				url : "./actions/login_action.jsp", // 타겟 url 주소
-				dataType : "json", // json 형태로 받아오겠다
-				contentType : "application/json; charset=UTF-8",
-				success : function(data) {
-					if (data.result === "true") {
-						alert("로그인성공");
-					} else if (data.result === "wrongpw") {
-						alert("비밀번호 틀림");
-					} else {
-						alert("회원정보를 찾을 수 없다.");
-					}
-				},
-				error : function() {
-					alert(" 오류가 발생했습니다. 다시 시도해주세요.");
-				}
-			})
-		}
-	});
+<script>// 아이디저장 
+window.onload = () => {
+	  const btn = document.getElementById('loginChk');
+	  const inputId = document.getElementById('input_id');
+	  const inputPw = document.getElementById('input_pw');
+	  const inputCheck = document.getElementById('loginsave');
+
+	  let loginId_LocalStorage = localStorage.getItem('input_id');
+	  console.log(loginId_LocalStorage);
+
+	  if (loginId_LocalStorage !== null) {
+	    inputId.value = loginId_LocalStorage; 
+	    inputCheck.checked = true;
+	  }
+
+	  if (btn) {
+	    btn.addEventListener('click', function () {
+	      if (inputCheck.checked) {
+	        console.log(inputCheck.checked);
+	        localStorage.setItem('input_id', inputId.value);
+	      } else {
+	        console.log(inputCheck.checked);
+	        localStorage.removeItem('input_id');
+	      }
+
+	      inputId.value = ''; 
+	      inputPw.value = '';
+	    });
+	  }
+	}
 </script>
+
 
 </body>
 </html>

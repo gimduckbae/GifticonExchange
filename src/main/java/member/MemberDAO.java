@@ -144,4 +144,12 @@ public class MemberDAO {
 		return memberDTO;
 	}
 
+
+
+
+	public static MemberDAO getInstance() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
