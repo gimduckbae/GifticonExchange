@@ -8,11 +8,12 @@ public class BoardDTO {
 	String title;
 	String create_date;
 	String modify_date;
+	String status;
 
 //	게시글 필드
 	String content;
 	String answer;
-	int status;
+	String answer_date;
 
 	public int getBoard_no() {
 		return board_no;
@@ -78,12 +79,20 @@ public class BoardDTO {
 		this.answer = answer;
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getAnswer_date() {
+		return answer_date;
+	}
+
+	public void setAnswer_date(String answer_date) {
+		this.answer_date = answer_date;
 	}
 
 }

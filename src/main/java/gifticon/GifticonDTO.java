@@ -11,6 +11,7 @@ public class GifticonDTO {
 	String coupon_name;
 	int purchase_price;
 	int sale_price;
+	int origin_price;
 	String start_date;
 	String end_date;
 	String login_id;
@@ -85,6 +86,14 @@ public class GifticonDTO {
 
 	public void setSale_price(int sale_price) {
 		this.sale_price = sale_price;
+	}
+
+	public int getOrigin_price() {
+		return origin_price;
+	}
+
+	public void setOrigin_price(int origin_price) {
+		this.origin_price = origin_price;
 	}
 
 	public String getStart_date() {
