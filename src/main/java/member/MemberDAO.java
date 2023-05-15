@@ -19,7 +19,7 @@ public class MemberDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "SELECT * FROM member_tb WHERE login_id = ?";
+			String sql = "SELECT member_no, login_id, password, member_name, nickname, TO_CHAR(join_date, 'YYYY-MM-dd') join_date FROM member WHERE login_id = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
@@ -27,10 +27,12 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				memberDTO = new MemberDTO();
+				memberDTO.setMember_no(rs.getInt("member_no"));
 				memberDTO.setLogin_id(rs.getString("login_id"));
 				memberDTO.setPassword(rs.getString("password"));
 				memberDTO.setMember_name(rs.getString("member_name"));
 				memberDTO.setNickname(rs.getString("nickname"));
+				memberDTO.setJoin_date(rs.getString("join_date"));
 			}
 
 		} catch (SQLException e) {
@@ -79,6 +81,7 @@ public class MemberDAO {
 
 		return false;
 	}
+	
 	
 	/** member_tb 테이블에서 한사람의 정보를 login_id 값으로 조회 */
 	public MemberDTO id_pw_Check(String id) {
@@ -152,3 +155,5 @@ public class MemberDAO {
 		return null;
 	}
 
+
+}

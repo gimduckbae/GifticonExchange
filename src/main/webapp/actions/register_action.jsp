@@ -1,8 +1,7 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="member.MemberDTO"%>
 <%@page import="member.MemberDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%
 response.setContentType("application/json"); // HTML 형식이 아닌 JSON 형식으로 쓰겠다

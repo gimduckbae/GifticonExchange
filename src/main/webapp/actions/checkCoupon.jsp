@@ -2,8 +2,7 @@
 <%@page import="gifticon.api.HappyOrder"%>
 <%@page import="gifticon.GifticonDTO"%>
 <%@page import="gifticon.GifticonDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 response.setContentType("application/json"); // HTML 형식이 아닌 JSON 형식으로 쓰겠다
 JSONObject obj = new JSONObject(); // JSON 객체를 담기위해 선언
@@ -15,18 +14,19 @@ GifticonDAO gifticonDao = new GifticonDAO();
 String res = HappyOrder.getResponseByGifticonNumber(couponNumber);
 GifticonDTO gifticonDto = gifticonDao.getGifticonStatusByResponse(res);
 
-obj.put("resultMsg", gifticonDto.getResultMsg());
-obj.put("resultCode", gifticonDto.getResultCode());
-obj.put("couponNo", gifticonDto.getCouponNumber());
-obj.put("virtualCouponName", gifticonDto.getVirtualCouponName());
-obj.put("brandCode", gifticonDto.getBrandCode());
-obj.put("brandName", gifticonDto.getBrandName());
-obj.put("consumerPrice", gifticonDto.getConsumerPrice());
-obj.put("salePrice", gifticonDto.getSalePrice());
-obj.put("usableAmount", gifticonDto.getUsableAmount());
-obj.put("validityStartDate", gifticonDto.getValidityStartDate());
-obj.put("validityEndDate", gifticonDto.getValidityEndDate());
-obj.put("status", gifticonDto.getStatus());
-
+if (gifticonDto != null) {
+	obj.put("resultMsg", gifticonDto.getResultMsg());
+	obj.put("resultCode", gifticonDto.getResultCode());
+	obj.put("coupon_number", gifticonDto.getCoupon_number());
+	obj.put("coupon_name", gifticonDto.getCoupon_name());
+	obj.put("brand_code", gifticonDto.getBrand_code());
+	obj.put("brand_name", gifticonDto.getBrand_name());
+	obj.put("origin_price", gifticonDto.getOrigin_price());
+	obj.put("start_date", gifticonDto.getStart_date());
+	obj.put("end_date", gifticonDto.getEnd_date());
+	obj.put("status", true);
+} else {
+	obj.put("status", false);
+}
 response.getWriter().write(obj.toString()); // 최종으로 만들어둔 json 객체를 완성해서 뿌림
 %>

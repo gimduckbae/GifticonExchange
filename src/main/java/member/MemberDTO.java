@@ -12,14 +12,11 @@ public class MemberDTO {
 
 	}
 
-	public MemberDTO(int member_no, String login_id, String password, String member_name, String nickname,
-			String join_date) {
-		this.member_no = member_no;
+	public MemberDTO(String login_id, String password, String member_name, String nickname) {
 		this.login_id = login_id;
 		this.password = password;
 		this.member_name = member_name;
 		this.nickname = nickname;
-		this.join_date = join_date;
 	}
 
 	public int getMember_no() {
