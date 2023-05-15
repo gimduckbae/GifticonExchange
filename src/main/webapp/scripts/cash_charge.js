@@ -9,7 +9,8 @@ $(function() {
 
 	/** 결제수단 클릭시 텍스트 변경 */
 	$("img").click(function() {
-		$("#paymethod_text").text($(this).attr("alt"));
+		const paymethod = $(this).attr("alt");
+		$("#paymethod_text").text(paymethod);
 	});
 
 
@@ -21,7 +22,33 @@ $(function() {
 		amountInput.val(currentValue + (plusValue * 10000));
 	});
 
-	$("#payment_action").click(payment);
+	$("#payment_action").click(function() {
+		const check_input = $("amount").val() || 0;
+		if (check_input <= 0) {
+			alert("충전금액을 올바르게 입력해주세요.");
+			return;
+		}
+
+
+		const current_medthod = $("#paymethod_text").text();
+		if (current_medthod == "네이버페이") {
+
+		}
+		if (current_medthod == "카카오페이") {
+			payment();
+		}
+		if (current_medthod == "토스페이") {
+
+		}
+		if (current_medthod == "페이코") {
+
+		}
+		if (current_medthod == "알리페이") {
+
+		}
+
+
+	});
 
 	function payment() {
 
