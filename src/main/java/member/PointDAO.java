@@ -39,4 +39,29 @@ public class PointDAO {
 		return pointDTO;
 	}
 
+	/** login_id 와 충전금액으로 포인트 충전하기 (UPDATE 쿼리문) */
+	public int chargePoint(String login_id, int add_amount) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "UPDATE point SET" + " point = point+?" + " WHERE login_id = ?";
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setInt(1, add_amount);
+			psmt.setString(2, login_id);
+			result = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return result;
+	}
+
 }
