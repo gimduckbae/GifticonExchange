@@ -43,7 +43,7 @@ public class Gifticon_ImageDAO {
 	}
 
 	/** GIFTICON_IMAGE 테이블의 모든 정보를 List<Gifticon_ImageDTO> 형식으로 가져오는 메소드 */
-	public List<Gifticon_ImageDTO> selectAllGifticon_Image() {
+	public List<Gifticon_ImageDTO> selectAllGifticon_ImageList() {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -87,6 +87,30 @@ public class Gifticon_ImageDAO {
 			psmt.setInt(1, gifticon_ImageDTO.getRegister_no());
 			psmt.setString(2, gifticon_ImageDTO.getFile_path());
 			psmt.setString(3, gifticon_ImageDTO.getFile_name());
+			result = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return result;
+	}
+
+	public int insertGifticon_Image(int register_no, String file_path, String file_name) {
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "INSERT INTO gifticon_image " + " VALUES( ? ,?, ?)";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, register_no);
+			psmt.setString(2, file_path);
+			psmt.setString(3, file_name);
 			result = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

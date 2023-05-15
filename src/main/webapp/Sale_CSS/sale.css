@@ -55,7 +55,6 @@
 
 .rounded {
 	cursor: pointer;
-	
 }
 
 .card {
@@ -91,4 +90,9 @@
 
 .container-fluid {
 	text-align: center;
+}
+
+.item-img, .item-name {
+	width: 300px;
+	cursor: pointer;
 }

@@ -99,5 +99,31 @@ public class Banner_ImageDAO {
 
 		return result;
 	}
+	
+	public int insertBanner_Image(int banner_no, String file_path, String file_name) {
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "INSERT INTO banner_image " + " VALUES( ? ,?, ?)";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, banner_no);
+			psmt.setString(2, file_path);
+			psmt.setString(3, file_name);
+			result = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return result;
+	}
 
 }
