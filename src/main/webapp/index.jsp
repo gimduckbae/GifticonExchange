@@ -1,15 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>ÁøÀÔ ÆäÀÌÁö</h1>
-	<p>¿©±â¼­ ·Î±×ÀÎ/È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î ³Ñ°ÜÁà¾ßÇÔ</p>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./header.jsp"%>
 
-</body>
-</html>
+<div class="container-fluid">
+	ì§„ìž…íŽ˜ì´ì§€(ë©”ì¸?) <br> <br> <br>
+	<%
+	if (login_id == null) {
+		out.print("ë¡œê·¸ì¸ì„ í•´ì£¼ì„¸ìš”");
+	} else {
+		out.print(login_id + " ë‹˜ ë°˜ê°‘ìŠµë‹ˆë‹¤.");
+	}
+	%>
+</div>
 
+<%@ include file="./footer.jsp"%>
