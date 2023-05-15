@@ -21,7 +21,7 @@ public class EventDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 			
-			String sql = "SELECT * FROM event";
+			String sql = "SELECT * FROM banner_image";
 			
 			psmt = conn.prepareStatement(sql);
 			

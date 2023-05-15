@@ -1,6 +1,7 @@
 package event;
 
 public class EventDTO {
+	
 
 	String evtname;
 	String evt_img;

@@ -20,7 +20,7 @@ List<ItemDTO> items = itemDAO.selectAllItems();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매 메인페이지</title>
 <!-- CSS only -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -82,21 +82,102 @@ List<ItemDTO> items = itemDAO.selectAllItems();
 
 
 		<div class="card-group flex-row">
-		<%
-		for (int i = 0; i < 18; i++) {
-		%>
+			<%
+			for (int i = 0; i < 4; i++) {
+			%>
 
 			<div class="card">
 				<img src="<%=items.get(i).getIt_img()%>" class="card-img-top images"
 					alt="...">
 				<div class="card-body">
-					<h5 class="card-title">
-						상품명 :
-						<%=items.get(i).getIt_name()%></h5>
-					<h5>
-						가격 :
+					<h6 class="card-title">
+
+						<%=items.get(i).getIt_name()%></h6>
+					<h6>
+
 						<%=items.get(i).getIt_price()%>원
-					</h5>
+					</h6>
+				</div>
+				<div>
+					<input type="button" value="구매하기" onclick="javascript:window.location='sell.jsp'">
+				</div>
+			</div>
+
+			<%
+			}
+			%>
+		</div>
+		<div class="card-group flex-row">
+			<%
+			for (int i = 4; i < 8; i++) {
+			%>
+
+			<div class="card">
+				<img src="<%=items.get(i).getIt_img()%>" class="card-img-top images"
+					alt="...">
+				<div class="card-body">
+					<h6 class="card-title">
+
+						<%=items.get(i).getIt_name()%></h6>
+					<h6>
+
+						<%=items.get(i).getIt_price()%>원
+					</h6>
+				</div>
+				<div>
+					<input type="button" value="구매하기" onclick="javascript:window.location='sell.jsp'">
+				</div>
+			</div>
+
+			<%
+			}
+			%>
+		</div>
+		<div class="card-group flex-row">
+			<%
+			for (int i = 8; i < 12; i++) {
+			%>
+
+			<div class="card">
+				<img src="<%=items.get(i).getIt_img()%>" class="card-img-top images"
+					alt="...">
+				<div class="card-body">
+					<h6 class="card-title">
+
+						<%=items.get(i).getIt_name()%></h6>
+					<h6>
+
+						<%=items.get(i).getIt_price()%>원
+					</h6>
+				</div>
+				<div>
+					<input type="button" value="구매하기" onclick="javascript:window.location='sell.jsp'">
+				</div>
+			</div>
+
+			<%
+			}
+			%>
+		</div>
+		<div class="card-group flex-row">
+			<%
+			for (int i = 12; i < 16; i++) {
+			%>
+
+			<div class="card">
+				<img src="<%=items.get(i).getIt_img()%>" class="card-img-top images"
+					alt="...">
+				<div class="card-body">
+					<h6 class="card-title">
+
+						<%=items.get(i).getIt_name()%></h6>
+					<h6>
+
+						<%=items.get(i).getIt_price()%>원
+					</h6>
+				</div>
+				<div>
+					<input type="button" value="구매하기" onclick="javascript:window.location='sell.jsp'">
 				</div>
 			</div>
 

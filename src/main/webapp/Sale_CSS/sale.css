@@ -35,8 +35,8 @@
 	cursor: pointer;
 }
 
-.br-logobox{
-	width:80vw;
+.br-logobox {
+	width: 80vw;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -45,12 +45,17 @@
 	margin-top: 100px;
 	text-align: center;
 	color: #535151;
-	font-weight:bold;
+	font-weight: bold;
 }
 
 .images {
 	width: 150px;
 	height: 150px;
+}
+
+.rounded {
+	cursor: pointer;
+	
 }
 
 .card {
@@ -59,9 +64,13 @@
 	width: 200px;
 }
 
+.card-body {
+	padding: 0;
+}
+
 .item-img {
-	width:20vw;
-	height:25vh;
+	width: 20vw;
+	height: 25vh;
 }
 
 .d-flex {
@@ -69,17 +78,17 @@
 }
 
 .d-flex:before {
-  display: inline-block;
-  width: 10px;
-  content: '';
+	display: inline-block;
+	width: 10px;
+	content: '';
 }
 
 .d-flex:after {
-  display: inline-block;
-  width: 10px;
-  content: '';
+	display: inline-block;
+	width: 10px;
+	content: '';
 }
 
 .container-fluid {
-	text-align:center;
+	text-align: center;
 }
