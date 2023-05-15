@@ -4,17 +4,17 @@ public class GifticonDTO {
 	String resultMsg;
 	int resultCode;
 
-	String couponNumber;
-
-	String virtualCouponName;
-	String brandCode;
-	String brandName;
-	int consumerPrice;
-	int salePrice;
-	int usableAmount;
-	String validityStartDate;
-	String validityEndDate;
-	String status;
+	int register_no;
+	String brand_code;
+	String brand_name;
+	String coupon_number;
+	String coupon_name;
+	int purchase_price;
+	int sale_price;
+	int origin_price;
+	String start_date;
+	String end_date;
+	String login_id;
 
 	public String getResultMsg() {
 		return resultMsg;
@@ -32,84 +32,92 @@ public class GifticonDTO {
 		this.resultCode = resultCode;
 	}
 
-	public String getCouponNumber() {
-		return couponNumber;
+	public int getRegister_no() {
+		return register_no;
 	}
 
-	public void setCouponNumber(String couponNumber) {
-		this.couponNumber = couponNumber;
+	public void setRegister_no(int register_no) {
+		this.register_no = register_no;
 	}
 
-	public String getVirtualCouponName() {
-		return virtualCouponName;
+	public String getBrand_code() {
+		return brand_code;
 	}
 
-	public void setVirtualCouponName(String virtualCouponName) {
-		this.virtualCouponName = virtualCouponName;
+	public void setBrand_code(String brand_code) {
+		this.brand_code = brand_code;
 	}
 
-	public String getBrandCode() {
-		return brandCode;
+	public String getBrand_name() {
+		return brand_name;
 	}
 
-	public void setBrandCode(String brandCode) {
-		this.brandCode = brandCode;
+	public void setBrand_name(String brand_name) {
+		this.brand_name = brand_name;
 	}
 
-	public String getBrandName() {
-		return brandName;
+	public String getCoupon_number() {
+		return coupon_number;
 	}
 
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
+	public void setCoupon_number(String coupon_number) {
+		this.coupon_number = coupon_number;
 	}
 
-	public int getConsumerPrice() {
-		return consumerPrice;
+	public String getCoupon_name() {
+		return coupon_name;
 	}
 
-	public void setConsumerPrice(int consumerPrice) {
-		this.consumerPrice = consumerPrice;
+	public void setCoupon_name(String coupon_name) {
+		this.coupon_name = coupon_name;
 	}
 
-	public int getSalePrice() {
-		return salePrice;
+	public int getPurchase_price() {
+		return purchase_price;
 	}
 
-	public void setSalePrice(int salePrice) {
-		this.salePrice = salePrice;
+	public void setPurchase_price(int purchase_price) {
+		this.purchase_price = purchase_price;
 	}
 
-	public int getUsableAmount() {
-		return usableAmount;
+	public int getSale_price() {
+		return sale_price;
 	}
 
-	public void setUsableAmount(int usableAmount) {
-		this.usableAmount = usableAmount;
+	public void setSale_price(int sale_price) {
+		this.sale_price = sale_price;
 	}
 
-	public String getValidityStartDate() {
-		return validityStartDate;
+	public int getOrigin_price() {
+		return origin_price;
 	}
 
-	public void setValidityStartDate(String validityStartDate) {
-		this.validityStartDate = validityStartDate;
+	public void setOrigin_price(int origin_price) {
+		this.origin_price = origin_price;
 	}
 
-	public String getValidityEndDate() {
-		return validityEndDate;
+	public String getStart_date() {
+		return start_date;
 	}
 
-	public void setValidityEndDate(String validityEndDate) {
-		this.validityEndDate = validityEndDate;
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getEnd_date() {
+		return end_date;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
-	
+
+	public String getLogin_id() {
+		return login_id;
+	}
+
+	public void setLogin_id(String login_id) {
+		this.login_id = login_id;
+	}
+
 }

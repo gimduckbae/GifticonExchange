@@ -19,7 +19,7 @@ public class MemberDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "SELECT * FROM member_tb WHERE login_id = ?";
+			String sql = "SELECT member_no, login_id, password, member_name, nickname, TO_CHAR(join_date, 'YYYY-MM-dd') join_date FROM member WHERE login_id = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
@@ -27,10 +27,12 @@ public class MemberDAO {
 
 			if (rs.next()) {
 				memberDTO = new MemberDTO();
+				memberDTO.setMember_no(rs.getInt("member_no"));
 				memberDTO.setLogin_id(rs.getString("login_id"));
-				memberDTO.setLogin_pw(rs.getString("login_pw"));
-				memberDTO.setName(rs.getString("name"));
-				memberDTO.setNickName(rs.getString("nickname"));
+				memberDTO.setPassword(rs.getString("password"));
+				memberDTO.setMember_name(rs.getString("member_name"));
+				memberDTO.setNickname(rs.getString("nickname"));
+				memberDTO.setJoin_date(rs.getString("join_date"));
 			}
 
 		} catch (SQLException e) {
@@ -57,13 +59,14 @@ public class MemberDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "INSERT INTO member_tb (login_id, login_pw, name, nickname) VALUES (?,?,?,?)";
+			String sql = "INSERT INTO member (member_no, login_id, password, member_name, nickname)"
+					+ " VALUES ( (SELECT NVL( ( MAX(member_no) ), 0)+1 FROM member), ?, ?, ?, ? )";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getLogin_id());
-			psmt.setString(2, member.getLogin_pw());
-			psmt.setString(3, member.getName());
-			psmt.setString(4, member.getNickName());
+			psmt.setString(2, member.getPassword());
+			psmt.setString(3, member.getMember_name());
+			psmt.setString(4, member.getNickname());
 
 			result = psmt.executeUpdate();
 
@@ -78,71 +81,6 @@ public class MemberDAO {
 		}
 
 		return false;
-	}
-	
-	/** member_tb 테이블에서 한사람의 정보를 login_id 값으로 조회 */
-	public MemberDTO id_pw_Check(String id) {
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		MemberDTO memberDTO = null;
-
-		try {
-			conn = DBConnectionManager.getConnection();
-																			//id값을 불러오면 pw 등 값이 같이 넘어오니까
-																				//굳이 pw까지 부를 필요가 없다.
-			String sql = "SELECT * FROM member_tb WHERE login_id = ?";
-
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-					memberDTO = new MemberDTO();
-					memberDTO.setLogin_id(rs.getString("login_id"));
-					memberDTO.setLogin_pw(rs.getString("login_pw"));			
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBConnectionManager.close(rs, psmt, conn);
-		}
-
-		return memberDTO;
-	}
-
-	
-	/** member_tb 테이블에서 한사람의 정보를 login_id 값으로 조회 */
-	public MemberDTO pwCheck(String pw) {
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		MemberDTO memberDTO = null;
-
-		try {
-			conn = DBConnectionManager.getConnection();
-
-			String sql = "SELECT * FROM member_tb WHERE login_id and login_pw = ?";
-
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, pw);
-		
-			rs = psmt.executeQuery();
-
-			if (rs.next()) {
-				memberDTO = new MemberDTO();
-				memberDTO.setLogin_pw(rs.getString("login_pw"));
-				
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBConnectionManager.close(rs, psmt, conn);
-		}
-
-		return memberDTO;
 	}
 
 }
