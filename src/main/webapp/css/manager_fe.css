@@ -6,49 +6,37 @@
 	box-sizing: border-box;
 }
 
-h2 {
-	font-size: 25px;
-}
-
 ul, li {
 	list-style: none;
 }
 
-.wrapper-main .mypage-lnb {
+.manager-wrap .manager-lnb {
 	position: relative;
-	top: -62px;
+	top: 0px;
 	float: left;
 	width: 250px;
 	padding-left: 10px;
 }
 
-.wrapper-main .mypage-lnb ul li a {
+.manager-wrap .manager-lnb ul li a {
 	text-decoration: none;
 	color: black;
 }
 
-.wrapper-main .mypage-main {
+.manager-title {
 	width: 75%;
-	height: auto;
-	align-item: center;
 	margin-left: 285px;
-	border: 1px solid lightgrey;
 }
 
-.wrapper-main .mypage-main li {
-	display: inline;
-	margin-left: -20px;
-	margin-right: 300px;
-}
-
-.wrapper-main .mypage-contents {
+.waiting-answer {
 	width: 75%;
-	margin-left:  285px;
-	
+	margin-left: 285px;
+	margin-top: 50px;
 }
 
-.clearfix {
-	clear: both;
+.table a {
+	text-decoration: none;
+	color: black;
 }
 
 footer {
