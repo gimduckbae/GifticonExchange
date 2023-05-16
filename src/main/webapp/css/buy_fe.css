@@ -15,6 +15,7 @@ a {
 	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
+	position:relative;
 }
 
 .buy-img-wrap {
@@ -44,10 +45,3 @@ a {
 	white-space: nowrap;
 }
 
-footer {
-	width: 100%;
-	height: 10%; /* footer의 높이 */
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}
