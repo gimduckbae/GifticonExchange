@@ -49,4 +49,8 @@ $(function() {
 			rollingStart();
 		}, 2000);
 	});
+	
+	$(".temp-link").click(function() {
+		location.href = "./productDetail.jsp";
+	});
 });

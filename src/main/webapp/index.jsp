@@ -9,8 +9,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
-<script src="./Sale_JS/sale.js"></script>
-<link href="./Sale_CSS/sale.css" rel="stylesheet">
+<script src="./scripts/index.js"></script>
+<link href="./css/index.css" rel="stylesheet">
 
 
 
@@ -24,7 +24,7 @@ List<Gifticon_ImageDTO> gifticon_ImageDTOs = gifticon_ImageDAO.selectAllGifticon
 %>
 
 <%--상단 이벤트 배너--%>
-<div class="banner d-flex flex-row">
+<div class="banner d-flex flex-row temp-link">
 	<ul>
 		<%
 		for (int i = 0; i < 5; i++) {

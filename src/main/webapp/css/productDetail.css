@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.banner {
+	position: relative;
+	width: 90vw;
+	height: 400px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.banner ul {
+	position: absolute;
+	width: 90vw;
+	height: 400px;
+	margin: 0px;
+	padding: 0;
+	list-style: none;
+}
+
+.banner ul li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 400px;
+}
+
+.evt2 {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 150px;	
+}
+
+.evt-img {
+	width: 90vw;
+	height: 400px;
+	cursor: pointer;
+}
+
+.evt2-img {
+	width: 100vw;
+	height: 150px;
+	cursor: pointer;
+	margin-top:150px;
+} 
+
+.br-logobox {
+	width: 80vw;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.br-text {
+	margin-top: 100px;
+	text-align: center;
+	color: #535151;
+	font-weight: bold;
+}
+
+.images {
+	width: 150px;
+	height: 150px;
+}
+
+.rounded {
+	cursor: pointer;
+}
+
+.card {
+	border: 0;
+	width: 200px;
+	width: 200px;
+}
+
+.card-body {
+	padding: 0;
+}
+
+.item-img {
+	width: 20vw;
+	height: 25vh;
+}
+
+.d-flex {
+	justify-content: space-between;
+}
+
+.d-flex:before {
+	display: inline-block;
+	width: 10px;
+	content: '';
+}
+
+.d-flex:after {
+	display: inline-block;
+	width: 10px;
+	content: '';
+}
+
+.container-fluid {
+	text-align: center;
+}
+
+.item-img, .item-name {
+	width: 300px;
+	cursor: pointer;
+}
