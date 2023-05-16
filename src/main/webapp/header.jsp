@@ -21,7 +21,7 @@ String login_id = null;
 
 		<form class="d-flex" role="search">
 			<input class="form-control me-2" type="search" placeholder="상품검색" aria-label="Search">
-			<button class="btn btn-outline-secondary" type="submit">Search</button>
+			<button class="btn btn-outline-secondary btn-sm" type="submit">Search</button>
 		</form>
 
 

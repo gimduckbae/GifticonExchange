@@ -12,26 +12,57 @@ import event.EventDTO;
 
 public class Image_FileDAO {
 
-	public List<Image_FileDTO> selectAllImage_FileList() {
+	public List<Image_FileDTO> selectAllProductImage() {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
-		Image_FileDTO image_FileDTO = null;
 		List<Image_FileDTO> image_fileDTOs = new ArrayList<Image_FileDTO>();
 
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "SELECT * FROM image_file";
-
+			String sql = "SELECT file_no, file_name, banner_no,"
+					+ " SUBSTR(file_name, 1, INSTR(file_name, '.')-1) org_name"
+					+ " FROM image_file WHERE banner_no IS NULL";
 			psmt = conn.prepareStatement(sql);
-
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				image_FileDTO = new Image_FileDTO();
-				image_FileDTO.setFile_path(rs.getString("file_path"));
+				Image_FileDTO image_FileDTO = new Image_FileDTO();
+				image_FileDTO.setFile_no(rs.getInt("file_no"));
 				image_FileDTO.setFile_name(rs.getString("file_name"));
+				image_FileDTO.setBanner_no(rs.getInt("banner_no"));
+				image_FileDTO.setOrg_name(rs.getString("org_name"));
+				image_fileDTOs.add(image_FileDTO);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return image_fileDTOs;
+	}
+
+	/** 배너로 등록된 모든 이미지 가져오기 */
+	public List<Image_FileDTO> selectAllBannerImage() {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<Image_FileDTO> image_fileDTOs = new ArrayList<Image_FileDTO>();
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "SELECT file_no, file_name, banner_no FROM image_file" + " WHERE banner_no IS NOT NULL";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				Image_FileDTO image_FileDTO = new Image_FileDTO();
+				image_FileDTO.setFile_no(rs.getInt("file_no"));
+				image_FileDTO.setFile_name(rs.getString("file_name"));
+				image_FileDTO.setBanner_no(rs.getInt("banner_no"));
 				image_fileDTOs.add(image_FileDTO);
 			}
 

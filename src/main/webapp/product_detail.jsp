@@ -2,19 +2,10 @@
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
-<%@page import="image_file.Banner_ImageDAO"%>
-<%@page import="image_file.Banner_ImageDTO"%>
-<%@page import="image_file.Gifticon_ImageDAO"%>
-<%@page import="image_file.Gifticon_ImageDTO"%>
 <%@page import="java.util.List"%>
 <%@ include file="./header.jsp"%>
 <%
 Image_FileDAO image_FileDAO = new Image_FileDAO();
-List<Image_FileDTO> image_FileDTOs = image_FileDAO.selectAllImage_FileList();
-Banner_ImageDAO banner_ImageDAO = new Banner_ImageDAO();
-List<Banner_ImageDTO> banner_ImageDTOs = banner_ImageDAO.selectAllBanner_ImageList();
-Gifticon_ImageDAO gifticon_ImageDAO = new Gifticon_ImageDAO();
-List<Gifticon_ImageDTO> gifticon_ImageDTOs = gifticon_ImageDAO.selectAllGifticon_ImageList();
 %>
 <div class="container">
 	<div class="item-view">
@@ -24,7 +15,7 @@ List<Gifticon_ImageDTO> gifticon_ImageDTOs = gifticon_ImageDAO.selectAllGifticon
 				for (int i = 0; i < 1; i++) {
 				%>
 				<div class="col">
-					<img src="<%=gifticon_ImageDTOs.get(i).getFile_path()%>" class="item-img" alt="...">
+					<img src="" class="item-img" alt="...">
 				</div>
 				<%
 				}
@@ -35,7 +26,7 @@ List<Gifticon_ImageDTO> gifticon_ImageDTOs = gifticon_ImageDAO.selectAllGifticon
 				for (int i = 0; i < 1; i++) {
 				%>
 				<div>
-					<h4 class="it-info"><%=gifticon_ImageDTOs.get(i).getFile_name()%></h4>
+					<h4 class="it-info"></h4>
 					</h3>
 				</div>
 				<br>
@@ -63,7 +54,7 @@ List<Gifticon_ImageDTO> gifticon_ImageDTOs = gifticon_ImageDAO.selectAllGifticon
 				<%
 				for (int i = 5; i < 8; i++) {
 				%>
-				<li class="evt2"><img src="<%=banner_ImageDTOs.get(i).getFile_path()%>" class="evt2-img"></li>
+				<li class="evt2"><img src="" class="evt2-img"></li>
 				<%
 				}
 				%>

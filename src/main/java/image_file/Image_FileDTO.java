@@ -2,15 +2,17 @@ package image_file;
 
 public class Image_FileDTO {
 
-	String file_path;
+	int file_no;
 	String file_name;
+	int banner_no;
+	String org_name;
 
-	public String getFile_path() {
-		return file_path;
+	public int getFile_no() {
+		return file_no;
 	}
 
-	public void setFile_path(String file_path) {
-		this.file_path = file_path;
+	public void setFile_no(int file_no) {
+		this.file_no = file_no;
 	}
 
 	public String getFile_name() {
@@ -20,4 +22,21 @@ public class Image_FileDTO {
 	public void setFile_name(String file_name) {
 		this.file_name = file_name;
 	}
+
+	public int getBanner_no() {
+		return banner_no;
+	}
+
+	public void setBanner_no(int banner_no) {
+		this.banner_no = banner_no;
+	}
+
+	public String getOrg_name() {
+		return org_name;
+	}
+
+	public void setOrg_name(String org_name) {
+		this.org_name = org_name;
+	}
+
 }

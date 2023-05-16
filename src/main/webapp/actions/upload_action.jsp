@@ -11,6 +11,6 @@ String fileSysName01 = multi.getFilesystemName("file");
 System.out.println(fileSysName01);
 
 Image_FileDAO image_FileDAO = new Image_FileDAO();
-//image_FileDAO.insertProductImage(fileSysName01);
-image_FileDAO.insertBannerImage(fileSysName01);
+image_FileDAO.insertProductImage(fileSysName01);
+//image_FileDAO.insertBannerImage(fileSysName01);
 %>
