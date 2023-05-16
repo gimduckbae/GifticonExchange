@@ -9,6 +9,3 @@ MultipartRequest multi = new MultipartRequest(request, directory, sizeLimit, "UT
 String fileSysName01 = multi.getFilesystemName("file");
 System.out.println(fileSysName01);
 %>
-<script>
-	location.href = "upload.jsp";
-</script>
