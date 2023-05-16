@@ -1,10 +1,6 @@
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
-<%@page import="image_file.Banner_ImageDAO"%>
-<%@page import="image_file.Banner_ImageDTO"%>
-<%@page import="image_file.Gifticon_ImageDAO"%>
-<%@page import="image_file.Gifticon_ImageDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -17,10 +13,6 @@
 <%
 Image_FileDAO image_FileDAO = new Image_FileDAO();
 List<Image_FileDTO> image_FileDTOs = image_FileDAO.selectAllImage_FileList();
-Banner_ImageDAO banner_ImageDAO = new Banner_ImageDAO();
-List<Banner_ImageDTO> banner_ImageDTOs = banner_ImageDAO.selectAllBanner_ImageList();
-Gifticon_ImageDAO gifticon_ImageDAO = new Gifticon_ImageDAO();
-List<Gifticon_ImageDTO> gifticon_ImageDTOs = gifticon_ImageDAO.selectAllGifticon_ImageList();
 %>
 
 <%--상단 이벤트 배너--%>

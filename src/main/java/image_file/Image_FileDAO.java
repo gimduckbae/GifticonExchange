@@ -44,8 +44,8 @@ public class Image_FileDAO {
 		return image_fileDTOs;
 	}
 
-	/** IMAGE_FILE 테이블에 정보 집어넣는 메소드 */
-	public int insertImage_File(Image_FileDTO image_FileDTO) {
+	/** 배너 이미지 추가 */
+	public int insertBannerImage(String file_path) {
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -55,11 +55,12 @@ public class Image_FileDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "INSERT INTO image_file" + " VALUES(?, ?)";
+			String sql = "INSERT INTO image_file (file_no, file_name, banner_no)"
+					+ " VALUES ((SELECT NVL(MAX(file_no), 0)+1 FROM image_file), ?,"
+					+ " (SELECT NVL(MAX(banner_no), 0)+1 FROM image_file))";
 
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, image_FileDTO.getFile_path());
-			psmt.setString(2, image_FileDTO.getFile_name());
+			psmt.setString(1, file_path);
 			result = psmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -71,8 +72,8 @@ public class Image_FileDAO {
 		return result;
 	}
 
-	/** IMAGE_FILE 테이블에 정보 집어넣는 메소드 */
-	public int insertImage_File(String file_path, String file_name) {
+	/** 상품 이미지 추가 */
+	public int insertProductImage(String file_path) {
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -82,11 +83,11 @@ public class Image_FileDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "INSERT INTO image_file" + " VALUES(?, ?)";
+			String sql = "INSERT INTO image_file (file_no, file_name)"
+					+ " VALUES ((SELECT NVL(MAX(file_no), 0)+1 FROM image_file), ?)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, file_path);
-			psmt.setString(2, file_name);
 			result = psmt.executeUpdate();
 
 		} catch (SQLException e) {

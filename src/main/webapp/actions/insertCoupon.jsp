@@ -8,7 +8,7 @@
 JSONObject obj = new JSONObject(); // JSON 객체를 담기위해 선언
 
 request.setCharacterEncoding("UTF-8"); //한글 정상 인식을 위해
-String couponNumber = request.getParameter("input");
+String couponNumber = request.getParameter("num");
 
 GifticonDAO gifticonDao = new GifticonDAO();
 String res = HappyOrder.getResponseByGifticonNumber(couponNumber);

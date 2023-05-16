@@ -110,3 +110,31 @@
 	width: 300px;
 	cursor: pointer;
 }
+
+.item-img {
+	width: 400px;
+	height: 400px;
+}
+
+.it-text {
+	color: #C4C4C4;
+}
+
+.btn-red {
+	background-color: #EF6253;
+	color: white;
+}
+
+.btn-blue {
+	background-color: #41B979;
+	color: white;
+}
+
+
+.item-view {
+	margin-top: 200px;
+}
+
+.it-info {
+	font-weight: bold;
+}

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 	
 <%@ include file="./header.jsp"%>
-<link rel="stylesheet" href="./css/buy_fe.css">
+<link rel="stylesheet" href="./css/product_list.css">
 
 	<div class="container h-auto buy-wrap">
 		<div class="buy-icon">

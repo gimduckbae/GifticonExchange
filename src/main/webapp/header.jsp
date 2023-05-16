@@ -27,7 +27,7 @@ String login_id = null;
 
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="">구매</a></li>
+				<li class="nav-item"><a class="nav-link" href="./product_list.jsp">구매</a></li>
 				<li class="nav-item"><a class="nav-link" href="./coupon.jsp">판매</a></li>
 				<li class="nav-item"><a class="nav-link" href="./board_main.jsp">고객센터</a></li>
 				<%
