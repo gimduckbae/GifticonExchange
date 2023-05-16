@@ -7,7 +7,7 @@
 		<hr>
 	</div>
 	<div class="cart-main">
-		<table class="table">
+		<table class="table align-middle">
 			<thead>
 				<tr>
 					<th scope="col"><input type="checkbox"> 선택</th>
@@ -20,18 +20,16 @@
 			<tbody>
 				<tr>
 					<th scope="row"><input type="checkbox"></th>
-					<td><img src="#"></td>
+					<td><img src="./images/ex_pic2.png" class="img-fluid img-thumbnail" style="max-width:10%;"> 배스킨 라빈스</td>
 					<td>20,000</td>
 				</tr>
 				<tr>
 					<th scope="row"><input type="checkbox"></th>
-					<td><img src="#">Jacob</td>
-					<td>20,000</td>
+<td><img src="./images/ex_pic.jpg" class="img-fluid img-thumbnail" style="max-width:10%;"> 배스킨 라빈스</td>					<td>20,000</td>
 				</tr>
 				<tr>
 					<th scope="row"><input type="checkbox"></th>
-					<td><img src="#">Larry the Bird</td>
-					<td>20,000</td>
+<td><img src="./images/ex_pic.jpg" class="img-fluid img-thumbnail" style="max-width:10%;"> 배스킨 라빈스</td>					<td>20,000</td>
 
 				</tr>
 			</tbody>
@@ -50,10 +48,10 @@
 
 
 	<div class="cart-btn-wrap">
-		<button type="button" class="btn btn-outline-dark btn-sm">삭제</button>
+		<button type="button" class="btn btn-outline-dark btn-sm">선택상품 삭제</button>
 
 		<button type="button" class="btn btn-outline-dark btn-sm">선택상품 구매하기</button>
-		<button type="button" class="btn btn-outline-dark btn-sm">전체상품 구매하기</button>
+		
 	</div>
 
 
