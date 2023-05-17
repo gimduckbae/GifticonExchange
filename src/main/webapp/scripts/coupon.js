@@ -16,12 +16,6 @@ $(function() {
 
 	$("#button").click(function() { // 조회버튼
 		data = checkCoupon();
-		$("#couponNo").val(data.coupon_number);
-		$("#brandName").val(data.brand_name);
-		$("#virtualCouponName").val(data.coupon_name);
-		$("#salePrice").val(data.origin_price);
-		$("#validityStartDate").val(data.start_date);
-		$("#validityEndDate").val(data.end_date);
 	});
 
 	// 조회한 기프티콘 결과값을 비활성화 된 input그룹에 자동입력 시켜서 등록하자
@@ -33,7 +27,7 @@ $(function() {
 		var result;
 
 		$.ajax({
-			async: true, // 비동기 = true
+			async: false, // 비동기 = true
 			type: 'GET', // GET 타입
 			data: { // 넘겨줄 매개변수, 실제로 ?id=input_id 형식으로 넘어감
 				"num": couponNumber
@@ -85,10 +79,11 @@ $(function() {
 			contentType: "application/json; charset=UTF-8",
 			success: function(data) {
 				result = data;
-				//console.log(data);
+				console.log(data);
 
-				if (data.result === true) {
+				if (data.result === "true") {
 					alert("판매등록이 정상 처리되었습니다.");
+					location.href = "./coupon.jsp";
 				} else {
 					alert("판매등록에 실패 했습니다.");
 				}
@@ -97,7 +92,6 @@ $(function() {
 				alert("오류가 발생했습니다. 다시 시도해주세요.");
 			}
 		});
-		location.href = "./coupon.jsp";
 		return result;
 	}
 });
