@@ -55,13 +55,6 @@
 		<button type="button" class="btn btn-outline-dark btn-sm">선택상품 구매하기</button>
 		<button type="button" class="btn btn-outline-dark btn-sm">전체상품 구매하기</button>
 	</div>
-
-
-
-
-
-
-
 </div>
 
 <%@ include file="./footer.jsp"%>

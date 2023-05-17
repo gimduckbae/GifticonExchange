@@ -38,7 +38,6 @@ List<BoardDTO> postList = boardDAO.selectAllBoardList();
 			%>
 		</tbody>
 	</table>
-
 	<button type="button" class="btn btn-secondary" id="newpost">문의등록</button>
 	<div class="bottom-hr">
 		<hr>

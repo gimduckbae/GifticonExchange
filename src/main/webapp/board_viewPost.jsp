@@ -33,7 +33,8 @@ BoardDTO boardDTO = boardDAO.selectPostByPost_No(post_no);
 		</div>
 	</div>
 	<hr>
-	<button type="button" id="btn_back" class="btn btn-dark">목록보기</button>
+	<button type="button" i
+	d="btn_back" class="btn btn-dark">목록보기</button>
 </div>
 <script src="./scripts/board_viewPost.js"></script>
 <%@ include file="footer.jsp"%>

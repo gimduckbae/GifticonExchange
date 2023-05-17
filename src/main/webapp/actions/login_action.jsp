@@ -15,15 +15,13 @@ boolean findId = memberDTO != null; // 중복아이디가 아니면 DTO는 null 
 if (findId) { //아이디를 찾으면 true            
 	if (pw.equals(memberDTO.getPassword())) { //id , pw 모두 일치 
 		session.setAttribute("login_id", memberDTO.getLogin_id());
-		session.setMaxInactiveInterval(7200);	// 로그인 세션 2시간 설정
 		out.print("<script>location.href='../index.jsp'</script> ");
-
+		
 	} else { //비밀번호만 틀림.
 		out.print("<script>alert('비밀번호가 틀렸습니다.');</script> ");
 		out.print("<script>history.back();</script> ");
 	}
-
-} else { //아이디부터 틀림.
+} else {
 	out.print("<script>alert('회원정보를 찾을 수 없습니다.');</script> ");
 	out.print("<script>history.back();</script> ");
 }

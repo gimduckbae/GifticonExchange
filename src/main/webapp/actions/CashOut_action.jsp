@@ -1,32 +1,27 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="CashMember.CashMemberDAO"%>
-<%@page import="CashMember.CashMemberDTO"%>    
+	pageEncoding="UTF-8"%>
+<%@page import="member.PointDAO"%>
+<%@page import="member.PointDTO"%>
 
 <%
 
-request.setCharacterEncoding("UTF-8"); // 한글 정상 인식을 위해
-String name = request.getParameter("name"); 
-int account = Integer.parseInt(request.getParameter("account"));
-int cash = Integer.parseInt(request.getParameter("cash"));
-int cashOut = Integer.parseInt(request.getParameter("cashout"));
 
-CashMemberDAO cashMemberDAO = new CashMemberDAO();
+if (session.getAttribute("login_id") != null) {
+	request.setCharacterEncoding("UTF-8"); // 한글 정상 인식을 위해
+	String login_id = (String) session.getAttribute("login_id"); //*********
+	int withdraw = Integer.parseInt(request.getParameter("withdraw"));
+	PointDAO pointDAO = new PointDAO();
+	int result = pointDAO.withdraw(login_id, withdraw);
 
-
-//놓친부분	
-if (cashout==true) {     
-	%>
-		<script> 	alert("출금이 되었습니다.");</script>
-<% 
-	}else{
-		%>
-		<script> 	alert("출금이 실패했습니다");</script>
-		<% 
-};
+	if (result == 1) {
+		// 출금이 성공한 경우
+		out.print("<script>alert('출금 신청이 완료되었습니다.');</script> ");
+		out.print("<script>location.href='../CashOutMain.jsp'</script> ");
+	} else {
+		// 출금이 실패한 경우
+		out.print("<script>alert('오류가 발생했습니다.');</script> ");
+		out.print("<script>history.back();</script> ");
+	}
+}
 %>
 
-
-</body>
-</html>
