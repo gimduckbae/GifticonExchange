@@ -24,10 +24,11 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 		for (GifticonDTO product : product_infos) {
 		%>
 		<div class="buy-list-wrap col">
-			<img src="./images/<%=product.getCoupon_name()%>.png">
-			<div class="product-name text-nowrap fw-semibold fs-6"><%=product.getCoupon_name()%></div>
-			<div class="product-price fw-bold fs-5"><%=product.getSale_price()%>원
-			</div>
+			<a href="./product_detail.jsp?no=<%=product.getRegister_no()%>"> <img src="./images/<%=product.getCoupon_name()%>.png">
+				<div class="product-name text-nowrap fw-semibold fs-6"><%=product.getCoupon_name()%></div>
+				<div class="product-price fw-bold fs-5"><%=product.getSale_price()%>원
+				</div>
+			</a>
 		</div>
 		<%
 		}

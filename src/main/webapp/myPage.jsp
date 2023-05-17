@@ -11,7 +11,7 @@ if (login_id == null) {
 PointDAO pointDAO = new PointDAO();
 PointDTO pointDTO = pointDAO.selectPointById(login_id);
 %>
-<link rel="stylesheet" href="./css/myPage.css">
+<link rel="stylesheet" href="./css/mypage.css">
 <div class="wrapper-main">
 	<div class="mypage-lnb">
 		<h2>마이페이지</h2>
