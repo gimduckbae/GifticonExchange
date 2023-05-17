@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
@@ -15,7 +16,7 @@ Image_FileDAO image_FileDAO = new Image_FileDAO();
 				for (int i = 0; i < 1; i++) {
 				%>
 				<div class="col">
-					<img src="" class="item-img" alt="...">
+					<img src="./images/ex_pic.jpg" class="item-img" alt="...">
 				</div>
 				<%
 				}
@@ -49,18 +50,45 @@ Image_FileDAO image_FileDAO = new Image_FileDAO();
 				%>
 			</div>
 		</div>
-		<div class="banner d-flex flex-row">
-			<ul>
-				<%
-				for (int i = 5; i < 8; i++) {
-				%>
-				<li class="evt2"><img src="" class="evt2-img"></li>
-				<%
-				}
-				%>
-			</ul>
-		</div>
 	</div>
 </div>
+<div class="banner d-flex flex-row">
+	<ul>
+		<%
+		for (int i = 5; i < 8; i++) {
+		%>
+		<li class="evt2"><img src="./images/ex_pic.jpg" class="evt2-img"></li>
+		<%
+		}
+		%>
+	</ul>
+</div>
+
+
+<div class="container text-center">
+	<h3 class="br-text">동일 브랜드 추천상품</h3>
+	<div class="row">
+		<div class="col it-imgbox">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+			<h5>4500원</h5>
+		</div>
+		<div class="col it-imgbox">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+			<h5>4500원</h5>
+		</div>
+		<div class="col it-imgbox">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+			<h5>4500원</h5>
+		</div>
+		<div class="col it-imgbox">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+			<h5>4500원</h5>
+		</div>
+	</div>
+</div><br><br>
+<%@ include file="./footer.jsp"%>
+
+
+
 <script src="./scripts/product_detail.js"></script>
 <link href="./css/product_detail.css" rel="stylesheet">

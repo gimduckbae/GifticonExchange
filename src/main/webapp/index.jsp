@@ -2,7 +2,8 @@
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
 <script src="./scripts/index.js"></script>
 <link href="./css/index.css" rel="stylesheet">
@@ -33,24 +34,43 @@ List<Image_FileDTO> products = image_FileDAO.selectAllProductImage();
 <div class="container text-center">
 	<div class="row">
 		<div class="col">
-			<img src="./img/logo1.png" class="rounded" alt="...">
+			<img src="./img/logo1.png" class="rounded logo-img" alt="...">
 		</div>
 		<div class="col">
-			<img src="./img/logo2.png" class="rounded" alt="...">
+			<img src="./img/logo2.png" class="rounded logo-img" alt="...">
 		</div>
 		<div class="col">
-			<img src="./img/logo3.png" class="rounded" alt="...">
+			<img src="./img/logo3.png" class="rounded logo-img" alt="...">
 		</div>
 		<div class="col">
-			<img src="./img/logo4.png" class="rounded" alt="...">
+			<img src="./img/logo4.png" class="rounded logo-img" alt="...">
 		</div>
 		<div class="col">
-			<img src="./img/logo5.png" class="rounded" alt="...">
+			<img src="./img/logo5.png" class="rounded logo-img" alt="...">
 		</div>
 	</div>
 </div>
 <br>
 <br>
+<div class="container text-center">
+	<div class="row it-imgbox">
+		<h3 class="br-text">인기상품 BEST!</h3>
+		<br>
+		<br>
+		<div class="col" style="border: 1px solid; border-color: lightgray;">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+		</div>
+		<div class="col" style="border: 1px solid; border-color: lightgray;">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+		</div>
+		<div class="col" style="border: 1px solid; border-color: lightgray;">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+		</div>
+		<div class="col" style="border: 1px solid; border-color: lightgray;">
+			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
+		</div>
+	</div>
+</div>
 
 <div class="container d-flex justify-content-between">
 	<div class="">
@@ -74,15 +94,19 @@ List<Image_FileDTO> products = image_FileDAO.selectAllProductImage();
 		<h4>오늘은 던킨과 함께!</h4>
 
 		<div class="item">
-			<img src="./images/마이멜로디 딸기 츄이스티 1ea+쿠로미 초코 츄이스티 1ea+아이스아메리카노(S) 1잔.png" class="item-img" alt="...">
+			<img
+				src="./images/마이멜로디 딸기 츄이스티 1ea+쿠로미 초코 츄이스티 1ea+아이스아메리카노(S) 1잔.png"
+				class="item-img" alt="...">
 			<h5 class="item-name"></h5>
 		</div>
 		<div class="item">
-			<img src="./images/아메리카노(S) 1잔+먼치킨 10개팩.png" class="item-img" alt="...">
+			<img src="./images/아메리카노(S) 1잔+먼치킨 10개팩.png" class="item-img"
+				alt="...">
 			<h5 class="item-name"></h5>
 		</div>
 		<div class="item">
-			<img src="./images/아메리카노(S) 2잔+도너츠 6개팩.png" class="item-img" alt="...">
+			<img src="./images/아메리카노(S) 2잔+도너츠 6개팩.png" class="item-img"
+				alt="...">
 			<h5 class="item-name"></h5>
 		</div>
 

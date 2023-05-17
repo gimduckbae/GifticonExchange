@@ -56,10 +56,9 @@
 }
 
 .br-text {
-	margin-top: 100px;
-	text-align: center;
 	color: #535151;
 	font-weight: bold;
+	margin-bottom:50px;
 }
 
 .images {
@@ -137,4 +136,15 @@
 
 .it-info {
 	font-weight: bold;
+}
+
+.it-img {
+	width:250px;
+	height:250px;
+	cursor:pointer;
+}
+
+.it-imgbox {
+	border: 1px solid;
+	border-color: lightgray;
 }

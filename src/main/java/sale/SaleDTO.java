@@ -5,7 +5,7 @@ public class SaleDTO {
 	String brandcode;
 	String item_img;
 	int saleprice;
-
+	
 	public int getSaleprice() {
 		return saleprice;
 	}
