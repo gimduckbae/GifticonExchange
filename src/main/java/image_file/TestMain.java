@@ -6,8 +6,8 @@ public class TestMain {
 		// TODO Auto-generated method stub
 
 		Image_FileDAO image_FileDAO = new Image_FileDAO();
-		
-		image_FileDAO.insertBannerImage("test.png");
+
+		image_FileDAO.deleteBannerByNo(4);
 //		
 //		image_FileDAO.insertImage_File("./img/evt2-1.png", "해피오더 이벤트1");
 //		image_FileDAO.insertImage_File("./img/evt2-2.png", "해피오더 이벤트2");

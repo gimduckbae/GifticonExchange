@@ -24,7 +24,7 @@ $(function() {
 		}
 	}
 
-	// Delete button click event handler
+	// 삭제버튼 이벤트
 	$(document).on("click", ".btn-del", function() {
 		const dataTranster = new DataTransfer();
 		var index = $(this).closest("tr").index();
@@ -39,8 +39,17 @@ $(function() {
 		document.querySelector("#file").files = dataTranster.files;
 	});
 
+	// 파일 업로드 버튼 이벤트
 	$("#submit").click(function() {
+		var isProduct = $("#option2").is(":checked");
 		var status = true;
+		var URL = "";
+
+		if (isProduct) {
+			URL = './actions/upload_action.jsp';
+		} else {
+			URL = './actions/upload_banner.jsp'
+		}
 
 		var fl = document.querySelector("#file").files;
 
@@ -50,14 +59,14 @@ $(function() {
 			formData.append("file", item);
 
 			$.ajax({
-				url: './actions/upload_action.jsp',
+				url: URL,
 				async: false,
 				type: 'POST',
 				data: formData,
 				cache: false,
 				contentType: false,
 				processData: false
-			}).fail(function(data) {
+			}).fail(function() {
 				status = false;
 			});
 		}
@@ -67,5 +76,13 @@ $(function() {
 		} else {
 			alert("업로드 실패.");
 		}
+	});
+
+
+	/** 배너 삭제버튼 이벤트 */
+	$("#select-banner").change(function() {
+		var selectedOption = $(this).children("option:selected");
+		var bannerId = selectedOption.val();
+		$("#banner_input").val(bannerId);
 	});
 });

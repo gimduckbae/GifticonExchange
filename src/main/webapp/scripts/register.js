@@ -13,7 +13,7 @@ $(function() {
 		$("#join_btn").attr('disabled', true);
 	});
 
-	/** 아이디 중복체크하는 함수 ajax 방식으로 호출해서 json 형태로 리턴받음 */
+	/** 아이디 중복체크하는 함수 ajax 비동기로 호출해서 json 형태로 리턴받음 */
 	function checkId() {
 		let input_id = $("#input_id").val();
 
