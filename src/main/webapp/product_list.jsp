@@ -1,6 +1,6 @@
-<%@page import="java.util.List"%>
 <%@page import="gifticon.GifticonDTO"%>
 <%@page import="gifticon.GifticonDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
