@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -134,5 +136,43 @@ public class GifticonDAO {
 		}
 
 		return false;
+	}
+
+	public List<GifticonDTO> selectAllProduct() {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<GifticonDTO> products = new ArrayList<GifticonDTO>();
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "SELECT register_no, brand_name, coupon_name, sale_price,"
+					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date"
+					+ " FROM gifticon WHERE login_id IS NULL";
+
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				GifticonDTO dto = new GifticonDTO();
+				dto.setRegister_no(rs.getInt("register_no"));
+				dto.setBrand_name(rs.getString("brand_name"));
+				dto.setCoupon_name(rs.getString("coupon_name"));
+				dto.setSale_price(rs.getInt("sale_price"));
+				dto.setStart_date(rs.getString("start_date"));
+				dto.setEnd_date(rs.getString("end_date"));
+				products.add(dto);
+				System.out.println(dto.coupon_name);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return products;
+
 	}
 }
