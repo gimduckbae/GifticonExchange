@@ -1,5 +1,3 @@
-<%@page import="gifticon.GifticonDAO"%>
-<%@page import="gifticon.GifticonDTO"%>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
