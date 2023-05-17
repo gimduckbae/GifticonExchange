@@ -23,7 +23,7 @@ $(function() {
 	});
 
 	$("#payment_action").click(function() {
-		const check_input = $("amount").val() || 0;
+		const check_input = $("#amount").val() || 0;
 		if (check_input <= 0) {
 			alert("충전금액을 올바르게 입력해주세요.");
 			return;

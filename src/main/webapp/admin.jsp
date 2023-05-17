@@ -63,7 +63,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<img src="./images/복숭아 아이스티.png">
 		<div class="bottom-hr">
 			<hr>
 		</div>

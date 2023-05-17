@@ -9,8 +9,8 @@ import dbconn.DBConnectionManager;
 
 public class PointDAO {
 
-	/** 한 사람의 포인트 정보를 login_id로 조회하고 PointDTO 형식으로 가져오는 메소드 */
-	public PointDTO selectMemberById(String login_id) {
+	/** 한 사람의 포인트 테이블 정보를 login_id로 조회하고 PointDTO 형식으로 가져오는 메소드 */
+	public PointDTO selectPointById(String login_id) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -18,7 +18,8 @@ public class PointDAO {
 
 		try {
 			conn = DBConnectionManager.getConnection();
-			String sql = "SELECT login_id, point, withdraw FROM point WHERE login_id = ?";
+			String sql = "SELECT login_id, point, withdraw, TO_CHAR(point, '999,999,999') point_char,"
+					+ " TO_CHAR(withdraw, '999,999,999') withdraw_char FROM point WHERE login_id = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, login_id);
 			rs = psmt.executeQuery();
@@ -28,6 +29,8 @@ public class PointDAO {
 				pointDTO.setLogin_id(rs.getString("login_id"));
 				pointDTO.setPoint(rs.getInt("point"));
 				pointDTO.setWithdraw(rs.getInt("withdraw"));
+				pointDTO.setPoint_char(rs.getString("point_char"));
+				pointDTO.setWithdraw_char(rs.getString("withdraw_char"));
 			}
 
 		} catch (SQLException e) {

@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="col-6 mx-auto">
 		<form class="form-control" action="./actions/login_action.jsp" method="post">
-			<label for="login_id" class="form-label">아이디</label> <input type="text" name="login_id" id="login_id" class="form-control"> <label for="password" class="form-label">비밀번호</label> <input type="text" name="password" id="password" class="form-control">
+			<label for="login_id" class="form-label">아이디</label> <input type="text" name="login_id" id="login_id" class="form-control"> <label for="password" class="form-label">비밀번호</label> <input type="password" name="password" id="password" class="form-control">
 			<div class="d-grid">
 				<button id="join_btn" class="btn btn-outline-dark btn-block my-3">로그인</button>
 			</div>

@@ -4,7 +4,7 @@ String login_id = null;
 %>
 <!DOCTYPE html>
 <head>
-<title>이지콘</title>
+<title>콘팔이</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -13,7 +13,7 @@ String login_id = null;
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-black navbar-dark">
-		<a class="navbar-brand ms-3" href="index.jsp">이지콘</a>
+		<a class="navbar-brand ms-3" href="index.jsp">콘팔이</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
