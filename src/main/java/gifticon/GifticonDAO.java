@@ -98,6 +98,7 @@ public class GifticonDAO {
 	}
 
 	/** 쿠폰DTO를 받아서 테이블에 저장하는 메소드 */
+	
 	public boolean insertGifticon(GifticonDTO itemDto) {
 		Connection conn = null;
 		PreparedStatement psmt = null;

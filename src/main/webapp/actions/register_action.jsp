@@ -27,3 +27,4 @@ if (result) {
 response.getWriter().write(obj.toString()); // 최종으로 만들어둔 json 객체를 완성해서 뿌림
 %>
 
+

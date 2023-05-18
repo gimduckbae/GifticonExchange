@@ -3,7 +3,8 @@
 <%@page import="board.BoardDTO"%>
 <%@page import="board.BoardDAO"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 response.setContentType("application/json"); // HTML 형식이 아닌 JSON 형식으로 쓰겠다
 JSONObject obj = new JSONObject(); // JSON 객체를 담기위해 선언

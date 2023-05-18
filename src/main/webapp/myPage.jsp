@@ -31,6 +31,7 @@ PointDTO pointDTO = pointDAO.selectPointById(login_id);
 			<li><span>내 정보수정<a href="#"></a></span></li>
 		</ul>
 	</div>
+
 	<div class="mypage-contents">
 		<hr>
 		<h4>보유쿠폰</h4>
