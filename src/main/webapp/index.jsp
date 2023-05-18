@@ -2,8 +2,7 @@
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
 <link href="./css/index.css" rel="stylesheet">
 

@@ -6,10 +6,17 @@
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration-line: none;
+}
+
 .br-text {
 	text-align: center;
 	color: #535151;
 	font-weight: bold;
+	white-space: nowarp;
+	max-height: 30px;
+	overflow: hidden;
 }
 
 .it-img {

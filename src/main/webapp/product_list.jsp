@@ -3,8 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 GifticonDAO gifticonDAO = new GifticonDAO();
 List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
@@ -16,27 +15,30 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 <div class="container text-center">
 	<br>
 	<h3 class="br-text mt-4">판매 상품</h3>
-	<h4 class="row row-cols-4 it-imgbox br-text mt-5">All(12)</h4>
-	
+	<h4 class="row row-cols-4 it-imgbox br-text mt-5">
+		All(<%=product_infos.size()%>)
+	</h4>
+
 	<div class="row row-cols-4 it-imgbox">
 		<%
-		for (int i = 0; i < 13; i++) {
+		for (GifticonDTO product : product_infos) {
 		%>
-		<div class="col pd-box"><br>
-			<img src="./images/MSGR 블라스트.png" class="it-img" alt="..."><br>
-			<br>
-			<p class="br-text fs-5">MSGR 블라스트</p>
-			<br>
-			<p class="br-text fs-5">5,000원</p>
-			<button type="button" class="btn btn-outline-dark pd-btn btn-red">장바구니</button>
-			<button type="button" class="btn btn-outline-dark pd-btn btn-blue">구매하기</button>
-			<br> <br>
+		<div class="col pd-box">
+			<a href="./product_detail.jsp?no=<%=product.getRegister_no()%>"> <br> <img src="./images/<%=product.getCoupon_name()%>.png" class="it-img" alt="..."><br> <br>
+				<p class="br-text fs-5"><%=product.getCoupon_name()%></p> <br>
+				<p class="br-text fs-5"><%=product.getSale_price()%>원
+				</p>
+				<button type="button" class="btn btn-outline-dark pd-btn btn-red">장바구니</button>
+				<button type="button" class="btn btn-outline-dark pd-btn btn-blue">구매하기</button> <br> <br>
+			</a>
 		</div>
 		<%
 		}
 		%>
 	</div>
-</div><br><br>
+</div>
+<br>
+<br>
 
 
 <%@ include file="./footer.jsp"%>
