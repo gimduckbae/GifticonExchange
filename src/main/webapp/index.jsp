@@ -52,21 +52,6 @@ List<Image_FileDTO> product_images = image_FileDAO.selectAllProductImage();
 </div>
 <br>
 <br>
-<div class="container text-center">
-	<div class="row it-imgbox">
-		<h3 class="br-text">인기상품 BEST!</h3>
-		<br> <br>
-		<%
-		for (int i = 0; i < 148; i++) {
-		%>
-		<div class="col">
-			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
-		</div>
-		<%
-		}
-		%>
-	</div>
-</div>
 
 <script src="./scripts/index.js"></script>
 

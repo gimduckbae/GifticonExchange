@@ -1,5 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="board.BoardDAO"%>
+<%@page import="board.BoardDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
+<%
+BoardDAO boardDAO = new BoardDAO();
+List<BoardDTO> postList = boardDAO.selectAllBoardList();
+%>
 
 
 <div class="manager-wrap">
@@ -19,13 +27,15 @@
 				</tr>
 			</thead>
 			<tbody>
+				<%
+				for (BoardDTO post : postList) {
+				%>
 				<tr>
-					<th scope="row">no</th>
-					<td>garam</td>
-					<td>
-						<a href="#">안녕하세요 문의 드려요</a>
-					</td>
-					<td>2023-03-03</td>
+					<th scope="row"><%=post.getPost_no()%></th>
+					<td><%=post.getLogin_id()%></td>
+					<td><a
+						href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a></td>
+					<td><%=post.getCreate_date()%></td>
 					<td>
 						<button type="button" class="btn btn-secondary" id="newpost">답변등록</button>
 					</td>
@@ -33,34 +43,9 @@
 						<button type="button" class="btn btn-danger" id="newpost">삭제</button>
 					</td>
 				</tr>
-				<tr>
-					<th scope="row">no</th>
-					<td>sadsa</td>
-					<td>
-						<a href="#">안녕</a>
-					</td>
-					<td>2023-03-03</td>
-					<td>
-						<button type="button" class="btn btn-secondary" id="newpost">답변등록</button>
-					</td>
-					<td>
-						<button type="button" class="btn btn-danger" id="newpost">삭제</button>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">no</th>
-					<td>sadsa</td>
-					<td>
-						<a href="#">안녕</a>
-					</td>
-					<td>2023-03-03</td>
-					<td>
-						<button type="button" class="btn btn-secondary" id="newpost">답변등록</button>
-					</td>
-					<td>
-						<button type="button" class="btn btn-danger" id="newpost">삭제</button>
-					</td>
-				</tr>
+				<%
+				}
+				%>
 			</tbody>
 		</table>
 		<div class="bottom-hr">
@@ -68,4 +53,5 @@
 		</div>
 	</div>
 </div>
+<script src="./scripts/admin.js"></script>
 <%@ include file="footer.jsp"%>

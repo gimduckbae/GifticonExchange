@@ -10,7 +10,7 @@ List<BoardDTO> postList = boardDAO.selectAllBoardList();
 %>
 <link rel="stylesheet" href="./css/board_main.css">
 <div class="container">
-	<h2>1:1 문의 게시판</h2>
+	<h2 class="mt-5">1:1 문의 게시판</h2>
 	<hr>
 	<table class="table">
 		<thead>

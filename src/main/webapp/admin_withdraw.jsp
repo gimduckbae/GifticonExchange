@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
-<div class="manager-wrap">
+<div class="manager-wrap ms-5">
 	<%@ include file="./admin_menu.jsp"%>
 	<div class="waiting-answer">
-		<h4>출금 신청 대기 리스트</h4>
+		<h3>출금 신청 대기 리스트</h3>
 		<hr>
 		<table class="table">
 			<thead>
-				<tr>
+				<tr class="fs-5">
 					<th scope="col">대기 번호</th>
 					<th scope="col">출금 신청자</th>
 					<th scope="col">보유포인트</th>
@@ -16,7 +17,7 @@
 					<th scope="col">신청거절</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="fs-5">
 				<tr>
 					<th scope="row">no</th>
 					<td>garam</td>

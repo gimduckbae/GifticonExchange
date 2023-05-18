@@ -3,7 +3,8 @@
 <%@ include file="./header.jsp"%>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link rel="stylesheet" href="./css/login.css">
-<h1>LOGIN</h1>
+
+<p class="mt-5 fs-3">LOGIN</p>
 <div class="container">
 	<div class="col-6 mx-auto">
 		<form class="form-control" action="./actions/login_action.jsp" method="post">

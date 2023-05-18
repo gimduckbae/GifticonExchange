@@ -11,6 +11,7 @@ if (login_id == null) {
 PointDAO pointDAO = new PointDAO();
 PointDTO pointDTO = pointDAO.selectPointById(login_id);
 %>
+
 <link rel="stylesheet" href="./css/myPage.css">
 <div class="wrapper-main">
 	<div class="mypage-lnb">
@@ -24,7 +25,7 @@ PointDTO pointDTO = pointDAO.selectPointById(login_id);
 		</ul>
 
 	</div>
-	<div class="mypage-main">
+	<div class="mypage-main mt-5">
 		<h2>내 정보</h2>
 		<ul class="mypage-info-ul">
 			<li><span><%=pointDTO.getPoint_char()%>콘 보유중</span></li>

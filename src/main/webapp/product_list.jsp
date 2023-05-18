@@ -15,9 +15,8 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 <%--인덱스 포문 --%>
 <div class="container text-center">
 	<br>
-	<h3 class="br-text">판매 상품</h3>
-	<br><br>
-	<h4 class="row row-cols-4 it-imgbox br-text">All(12)</h4>
+	<h3 class="br-text mt-4">판매 상품</h3>
+	<h4 class="row row-cols-4 it-imgbox br-text mt-5">All(12)</h4>
 	
 	<div class="row row-cols-4 it-imgbox">
 		<%
@@ -26,9 +25,9 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 		<div class="col pd-box"><br>
 			<img src="./images/MSGR 블라스트.png" class="it-img" alt="..."><br>
 			<br>
-			<p>MSGR 블라스트</p>
+			<p class="br-text fs-5">MSGR 블라스트</p>
 			<br>
-			<p class="br-text">5,000원</p>
+			<p class="br-text fs-5">5,000원</p>
 			<button type="button" class="btn btn-outline-dark pd-btn btn-red">장바구니</button>
 			<button type="button" class="btn btn-outline-dark pd-btn btn-blue">구매하기</button>
 			<br> <br>
