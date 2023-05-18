@@ -37,7 +37,7 @@ GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(no);
 						<p>구매 후 환불 불가</p>
 					</div>
 				</div>
-				<button type="button" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-red btn-lg buy">바로구매</button>
+				<button type="button" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-red btn-lg buy">구매하기</button>
 				<button type="button" class="btn btn-blue btn-lg">판매하기</button>
 
 			</div>
@@ -46,9 +46,9 @@ GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(no);
 			<ul>
 				<%
 				//배너 사진 띄울 곳
-				for (int i = 5; i < 8; i++) {
+				for (int i = 1; i < 4; i++) {
 				%>
-				<li class="evt2"><img src="" class="evt2-img"></li>
+				<li class="evt2"><img src="./images/evtt<%=i%>.png" class="evt2-img"></li>
 				<%
 				}
 				%>

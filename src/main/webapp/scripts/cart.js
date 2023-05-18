@@ -32,6 +32,29 @@ $(function() {
 		})
 	}
 
+	// 장바구니 금액 계산
+	$("input[name='checks']").click(sumPrice);
+
+	// 체크된 항목 금액 합계
+	function sumPrice() {
+		var sum = 0;
+		$("input[name='checks']:checked").each(function() {
+			sum += $(this).data("price");
+		});
+
+		$("#total_price").data("price", sum);
+		$("#total_price").text(addCommasToNumber(sum) + "콘");
+	}
+
+	// 숫자 3자리마다 컴마찍기
+	function addCommasToNumber(number) {
+		var parts = number.toString().split(".");
+		parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		return parts.join(".");
+	}
+
+
+
 	// 장바구니 체크 삭제
 	$("#del-btn").click(function() {
 		var checkList = [];
@@ -59,6 +82,7 @@ $(function() {
 				console.log("here");
 				console.log(data);
 				if (data.result === 'true') { // 사용가능한 아이디면 가입버튼 활성화
+					location.href = "./cart.jsp"
 				}
 			},
 			error: function() {
@@ -66,6 +90,18 @@ $(function() {
 			}
 		})
 	}
+
+
+	// 전체선택 체크박스
+	$(".check-all").click(function() {
+		var isChecked = $(this).prop("checked"); // .check-all 체크박스의 상태 가져오기
+
+		$("input[name='checks']").each(function() {
+			$(this).prop("checked", isChecked); // 모든 name="checks" 체크박스의 상태 변경
+		});
+
+		sumPrice();
+	});
 
 
 

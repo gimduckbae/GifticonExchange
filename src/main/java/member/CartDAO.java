@@ -24,9 +24,10 @@ public class CartDAO {
 			conn = DBConnectionManager.getConnection();
 			String sql = "SELECT c.login_id, c.register_no,"
 					+ " g.brand_code, g.brand_name, g.coupon_number, g.coupon_name,"
-					+ " TO_CHAR(g.purchase_price, '999,999,999') purchase_price,"
-					+ " TO_CHAR(g.sale_price, '999,999,999') sale_price,"
-					+ " TO_CHAR(g.origin_price, '999,999,999') origin_price,"
+					+ " g.purchase_price, g.sale_price, g.origin_price,"
+					+ " TO_CHAR(g.purchase_price, '999,999,999') purchase_price_char,"
+					+ " TO_CHAR(g.sale_price, '999,999,999') sale_price_char,"
+					+ " TO_CHAR(g.origin_price, '999,999,999') origin_price_char,"
 					+ " TO_CHAR(g.start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(g.end_date, 'YYYY-MM-DD') end_date"
 					+ " FROM cart c" + " INNER JOIN gifticon g" + " ON c.register_no = g.register_no"
 					+ " AND c.login_id = ?";
@@ -41,7 +42,8 @@ public class CartDAO {
 				cartDTO.setRegister_no(rs.getInt("register_no"));
 				gifticonDTO.setBrand_name(rs.getString("brand_name"));
 				gifticonDTO.setCoupon_name(rs.getString("coupon_name"));
-				gifticonDTO.setSale_price_char(rs.getString("sale_price"));
+				gifticonDTO.setSale_price(rs.getInt("sale_price"));
+				gifticonDTO.setSale_price_char(rs.getString("sale_price_char"));
 				gifticonDTO.setStart_date(rs.getString("start_date"));
 				gifticonDTO.setEnd_date(rs.getString("end_date"));
 
