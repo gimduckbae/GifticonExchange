@@ -16,6 +16,7 @@ public class MemberDAO {
 
 	/** member_tb 테이블에서 한사람의 정보를 login_id 값으로 조회 */
 	public MemberDTO selectMemberById(String id) {
+		
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -47,6 +48,12 @@ public class MemberDAO {
 
 		return memberDTO;
 	}
+
+	
+	
+	
+	
+	
 
 	/**
 	 * MemberDTO 형식을 매개변수로 받아서 member_tb 테이블에 insert 하는 메소드. 성공하면 true 리턴
@@ -115,11 +122,12 @@ public class MemberDAO {
 		} finally {
 			DBConnectionManager.close(rs, psmt, conn);
 		}
-
 		return result;
 	}
 
-
+	
+	
+	
 	public int loginMember(String id, String pw) {
 		Connection conn = null;
 		PreparedStatement psmt = null;

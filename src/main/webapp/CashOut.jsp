@@ -29,20 +29,7 @@
 	<div class="block">
 		<form action="./actions/CashOut_action.jsp" method="post">
 			<div class="wrap">
-				<div class="header"></div>
 			</div>
-			<div class="form-group">
-				<div class="form-group">
-					<label><Span>아이디:</Span></label> <input type="text"
-						class="form-control" placeholder="출금계좌번호" name="account">
-				</div>
-				<div class="form-group">
-					<label for="wAccountPassword">출금계좌비밀번호:</label> <input
-						type="password" class="form-control" placeholder="출금계좌비밀번호"
-						id="wAccountPassword" name="pw">
-				</div>
-			</div>
-
 			<div class="container mt-5">
 				<div class="d-flex flex-column">
 					<div class="input-group mb-3">

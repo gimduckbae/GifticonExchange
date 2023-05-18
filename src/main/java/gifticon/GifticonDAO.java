@@ -96,6 +96,7 @@ public class GifticonDAO {
 	}
 
 	/** 쿠폰DTO를 받아서 테이블에 저장하는 메소드 */
+	
 	public boolean insertGifticon(GifticonDTO itemDto) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -135,4 +136,40 @@ public class GifticonDAO {
 
 		return false;
 	}
+	
+		
+	/** 양도하는 메세지 */         //번호,내아이디,상대아이디
+	public boolean insertGift(int register_no, String login_id ,String recive_id) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "UPDATE gifticon SET  login_id = ? "
+					+ "  where  register_no = ? and login_id= ? " ;
+
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1,login_id);
+			psmt.setInt(2, register_no);
+			psmt.setString(3, recive_id);
+			
+			result = psmt.executeUpdate();
+
+			if (result == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return false;
+	}
+	
+	
 }

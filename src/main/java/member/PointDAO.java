@@ -127,7 +127,7 @@ public class PointDAO {
 
 		try {
 			conn = DBConnectionManager.getConnection();
-			String sql = " select login_id,point, withdraw" + " from point  where withdraw>=0"; //놓친거
+			String sql = " select login_id,point, withdraw" + " from point  where withdraw>0"; //놓친거
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 

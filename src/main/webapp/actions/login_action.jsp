@@ -21,7 +21,6 @@ if (findId) { //아이디를 찾으면 true
 		out.print("<script>location.href='../index.jsp'</script> ");
 
 	} else { //비밀번호만 틀림.
-
 		out.print("<script>alert('비밀번호가 틀렸습니다.');</script> ");
 		out.print("<script>history.back();</script> ");
 

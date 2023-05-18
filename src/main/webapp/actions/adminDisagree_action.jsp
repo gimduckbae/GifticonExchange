@@ -21,7 +21,6 @@ if (result ==0) {
 %>	
 	<script>alert("출금이 완료되었습니다.") </script>
 	out.print("<script>location.href='../admin.jsp'</script> ");
-	
 	<% 
 } else {
 	

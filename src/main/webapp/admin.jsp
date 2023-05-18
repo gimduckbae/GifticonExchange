@@ -35,29 +35,26 @@
 	PointDAO dao = new PointDAO();
 	List<PointDTO> list = dao.selectAllWithdraw();
 	for (PointDTO item : list) {
-		
 	%>
-	
+
 	<form name='PayAgree' action='./actions/CashOut_action.jsp'
 		method="post">
 		<div class="mb-3">
 			<label for="formGroupExampleInput" class="form-label">ID</label> <input
 				type="hidden" class="form-control" id="formGroupExampleInput"
 				name="id" placeholder="Example input placeholder"
-				value="<%=item.getLogin_id()%>"> <%-- 출금자 아이디 --%>
+				value="<%=item.getLogin_id()%>">
+			<%-- 출금자 아이디 --%>
 		</div>
+
+
 		<div class="mb-3">
-			<label for="formGroupExampleInput2" class="form-label">Point</label>
-			<input type="text" class="form-control" id="inputName" name="name"
-				placeholder="Another input placeholder" value="<%=item.getPoint()%>">
-		</div><%-- 현재포인트 --%>
-		
-		<div class="mb-3">	
 			<label for="formGroupExampleInput3" class="form-label">Withdraw</label>
 			<input type="text" class="form-control" id="inputWithdraw"
 				name="withdraw" placeholder="Another input placeholder"
-				value="<%=item.getWithdraw()%>"> 		<%-- 결제대기금액 --%>
-			
+				value="<%=item.getWithdraw()%>">
+			<%-- 결제대기금액 --%>
+
 		</div>
 		<%-- 출금허가 --%>
 		<button id="updateBtn" type="submit" class="btn btn-warning">수락</button>
@@ -66,15 +63,11 @@
 	</form>
 	<%
 	}
-	%>	
+	%>
 	<%--   출금 거부하면 disagree 액션 페이지로 이동 --%>
-	
-	<script>
-function adjustWidth(input) {
-    input.style.width = (input.value.length + 2) + 'ch';
-}
-</script>
-	
+
+
+
 	<script>
 document.getElementById('deleteBtn').addEventListener('click', () => {
 	let form = document.PayAgree;
