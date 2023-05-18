@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.nav-search {
+	width:300px;
+}
+
+.main-icon {
+	width:40px;
+	height:40px;
+}
+
+.nav-bar {
+	color: #7633FA; 
+	font-weight: bold;
+}

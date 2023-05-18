@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link rel="stylesheet" href="./css/login.css">
 <h1>LOGIN</h1>
 <div class="container">
@@ -18,14 +19,8 @@
 			<label for="loginsave" class="form-label">아이디저장</label> <input
 				type="checkbox" name="loginsave" value="true" id="loginsave">
 		</form>
-		<ul>
-			<li><a href="javascript:void(0)"> <img alt=""
-					src="./images/kakao-Btn.png" onclick="kakaoLogin();">
-			</a></li>
-			<li onclick="kakaoLogout();"><a href="javascript:void(0)"> <span>카카오
-						로그아웃</span>
-			</a></li>
-		</ul>
+		<img alt="" src="./images/kakao-Btn.png" class="kakao-login mt-3">
+
 	</div>
 </div>
 <script src="./scripts/login.js"></script>
