@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="./css/board_register.css">
 <div class="inquiry-resister-wrap">
 	<div class="inquiry-resi-title">
-		<h3>문의 작성</h3>
+		<h3 class="mt-5">문의 작성</h3>
 		<hr>
 	</div>
 	<div class="inquiry-resister-main-wrap">

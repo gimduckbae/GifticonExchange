@@ -8,7 +8,7 @@ List<Image_FileDTO> banners = image_FileDAO.selectAllBannerImage();
 %>
 <%@ include file="./header.jsp"%>
 
-<div class="manager-wrap">
+<div class="manager-wrap ms-5">
 	<%@ include file="./admin_menu.jsp"%>
 	<div class="tb">
 		<table class="table">

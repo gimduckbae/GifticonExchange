@@ -55,7 +55,11 @@ GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(no);
 			</ul>
 		</div>
 	</div>
-</div>
+</div><br><br>
+<%@ include file="./footer.jsp"%>
+
+
+
 <script src="./scripts/product_detail.js"></script>
 <script src="./scripts/cart.js"></script>
 <link href="./css/product_detail.css" rel="stylesheet">

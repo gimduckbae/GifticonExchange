@@ -6,13 +6,46 @@
 }
 
 .payment-img {
-	width: 10%;
-	height: 10%;
+	width: 5%;
+	height: 5%;
 	margin: 1em;
 	padding: 0;
 	transition: all 0.1s linear;
+	cursor:pointer;
 }
 
 .payment-img:hover {
 	transform: scale(1.1);
+}
+
+.main-title {
+	color: #535151;
+	font-weight: bold;
+}
+
+.cash {
+	color: #535151;
+	font-weight: bold;
+}
+
+.cash-ch {
+	font-weight: bold;
+}
+
+.cash-icon {
+	width: 35px;
+	height: 35px;
+}
+
+.add-cash {
+	width: 300px;
+	height: 80px;
+	background-color: #4400AF;
+	color: white;
+	font-weight: bold;
+}
+
+.add-cash:hover {
+	background-color: #7633FA;
+	color: white;
 }

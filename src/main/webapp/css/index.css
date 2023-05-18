@@ -42,7 +42,6 @@
 }
 
 .br-text {
-	margin-top: 100px;
 	text-align: center;
 	color: #535151;
 	font-weight: bold;
@@ -55,6 +54,10 @@
 
 .rounded {
 	cursor: pointer;
+}
+
+.logo-img {
+	border-radius:10px
 }
 
 .card {
@@ -95,4 +98,10 @@
 .item-img, .item-name {
 	width: 300px;
 	cursor: pointer;
+}
+
+.it-img {
+	width:250px;
+	height:250px;
+	cursor:pointer;
 }

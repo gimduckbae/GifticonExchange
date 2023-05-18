@@ -1,24 +1,30 @@
 @charset "UTF-8";
 
-
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
-	
 
-
-
-h1{ text-align: center;
+p {
+	text-align: center;
 	font-size: 24px;
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
-.bottom-btn{
-	margin-top:10px;
-	float:right;
+.bottom-btn {
+	margin-top: 10px;
+	float: right;
 }
 
+.kakao-login {
+	width: 100%;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.kakao-login:hover {
+  transform: scale(0.95);
+}
 
 footer {
 	width: 100%;

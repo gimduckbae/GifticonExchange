@@ -1,19 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link rel="stylesheet" href="./css/login.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
-</head>
-<body>
 
-
-<h1>LOGIN</h1>
+<p class="mt-5 fs-3">LOGIN</p>
 <div class="container">
 	<div class="col-6 mx-auto">
 		<form class="form-control" action="./actions/login_action.jsp" method="post">
@@ -22,8 +13,11 @@
 				<button id="join_btn" class="btn btn-outline-dark btn-block my-3"  >로그인</button>
 			</div>
 
-			<label for="loginsave" class="form-label">아이디저장</label> <input type="checkbox" name="loginsave" value="true" id="loginsave">
+			<label for="loginsave" class="form-label">아이디저장</label> <input
+				type="checkbox" name="loginsave" value="true" id="loginsave">
 		</form>
+		<img alt="" src="./images/kakao-Btn.png" class="kakao-login mt-3">
+
 	</div>
 </div>
 
@@ -31,6 +25,8 @@
 
 	</script>
 <script src="./scripts/login.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="./scripts/kakao_login.js"></script>
 <%@ include file="./footer.jsp"%>
  	<script>
  
