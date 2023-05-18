@@ -120,4 +120,13 @@ public class GifticonDTO {
 		this.login_id = login_id;
 	}
 
+	@Override
+	public String toString() {
+		return "GifticonDTO [resultMsg=" + resultMsg + ", resultCode=" + resultCode + ", register_no=" + register_no
+				+ ", brand_code=" + brand_code + ", brand_name=" + brand_name + ", coupon_number=" + coupon_number
+				+ ", coupon_name=" + coupon_name + ", purchase_price=" + purchase_price + ", sale_price=" + sale_price
+				+ ", origin_price=" + origin_price + ", start_date=" + start_date + ", end_date=" + end_date
+				+ ", login_id=" + login_id + "]";
+	}
+
 }
