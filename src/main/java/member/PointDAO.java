@@ -69,4 +69,32 @@ public class PointDAO {
 		return result;
 	}
 
+	// 관리자 출금
+	public int withdraw(String login_id, int withdraw) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "UPDATE point SET point = point - ?, withdraw = withdraw + ?  WHERE login_id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, withdraw); // 출금할 포인트 설정
+			psmt.setInt(2, withdraw);
+			psmt.setString(3, login_id);
+
+			System.out.println("id" + login_id);
+			System.out.println("출금액: " + withdraw);
+
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+		return result;
+	}
+
 }
