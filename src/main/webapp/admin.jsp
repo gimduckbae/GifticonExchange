@@ -35,6 +35,7 @@
 	PointDAO dao = new PointDAO();
 	List<PointDTO> list = dao.selectAllWithdraw();
 	for (PointDTO item : list) {
+		
 	%>
 	
 	<form name='PayAgree' action='./actions/CashOut_action.jsp'

@@ -86,7 +86,7 @@ public class MemberDAO {
 
 	// 개인정보 수정하는 부분 1 chatgpt
 
-	public int updateMember(MemberDTO member, boolean isChangePass) {
+	public int updateMember(String nickname, String id, String pw) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -95,30 +95,15 @@ public class MemberDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			if (isChangePass) {
-
-				String sql = "UPDATE MEMBER SET LOGIN_ID = ?, MEMBER_ NAME = ? ,PASSWORD = ? , NICKNAME = ? "
+				String sql = "UPDATE MEMBER SET PASSWORD = ? , NICKNAME = ? "
 						+ "  WHERE login_id = ?";
 
 				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, member.getJoin_date());
-				psmt.setString(2, member.getPassword());
-				psmt.setString(3, member.getMember_name());
-				psmt.setString(4, member.getNickname());
-
+				psmt.setString(1, pw);
+				psmt.setString(2, nickname);
+				psmt.setString(3, id);
+				
 				result = psmt.executeUpdate();
-			} else {
-
-				String sql = "UPDATE MEMBER SET  LOGIN_ID = ?, MEMBER_ NAME = ? ,PASSWORD = ? , NICKNAME = ? "
-						+ "  WHERE login_id = ?";
-				psmt = conn.prepareStatement(sql);
-				psmt.setString(1, member.getJoin_date());
-				psmt.setString(2, member.getPassword());
-				psmt.setString(3, member.getMember_name());
-				psmt.setString(4, member.getNickname());
-
-				result = psmt.executeUpdate();
-			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -129,88 +114,17 @@ public class MemberDAO {
 		return result;
 	}
 
-	// 개인정보 수정하는 부분 2
-	public List<MemberDTO> updateMembe(String login_id) {
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		List<MemberDTO> updateMemberr = new ArrayList<MemberDTO>();
-
-		try {
-
-			conn = DBConnectionManager.getConnection();
-			String sql = "UPDATE MEMBER SET PASSWORD = ? , NICKNAME = ?  WHERE login_id = ?";
-			psmt = conn.prepareStatement(sql);
 
 	
-			psmt.setString(1, login_id);			
-			rs = psmt.executeQuery();
-			
-			System.out.println(login_id +"login_id");
-			while (rs.next()) {
-				MemberDTO memberDTO = new MemberDTO();
-				memberDTO.setLogin_id(rs.getString("Login_id"));
-				memberDTO.setPassword(rs.getString("Password"));
-				memberDTO.setMember_name(rs.getString("Member_name"));
-				memberDTO.setNickname(rs.getString("Nickname"));
-				updateMemberr.add(memberDTO);
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBConnectionManager.close(rs, psmt, conn);
-		}
-
-		return updateMemberr;
-	}
 
 	// 개인정보 수정하는 부분 3
-	public List<MemberDTO> updateMemberr(String login_id ) {
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		List<MemberDTO> updatedMembers = new ArrayList<>();
 
-		try {
-			conn = DBConnectionManager.getConnection();
-			String sql = "UPDATE MEMBER SET PASSWORD = ?, NICKNAME = ? WHERE login_id = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, password);
-			psmt.setString(2, nickname);
-			psmt.setString(3, login_id);
-			int rowsUpdated = psmt.executeUpdate();
+	
+	//홍재코드 
 
-			if (rowsUpdated > 0) {
-				System.out.println("Member updated successfully.");
-
-				// Retrieve the updated member details
-				String selectSql = "SELECT * FROM MEMBER WHERE login_id = ?";
-				psmt = conn.prepareStatement(selectSql);
-				psmt.setString(1, login_id);
-				rs = psmt.executeQuery();
-
-				while (rs.next()) {
-					MemberDTO memberDTO = new MemberDTO();
-					memberDTO.setLogin_id(rs.getString("login_id"));
-					memberDTO.setPassword(rs.getString("password"));
-					memberDTO.setMember_name(rs.getString("member_name"));
-					memberDTO.setNickname(rs.getString("nickname"));
-					updatedMembers.add(memberDTO);
-				}
-			} else {
-				System.out.println("Member update failed. No matching login_id found.");
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBConnectionManager.close(rs, psmt, conn);
-		}
-
-		return updatedMembers;
-	}
+	
+	
+	
 //업데이트 수정 대기
 
 //	public boolean updateMember(MemberDTO member) {
