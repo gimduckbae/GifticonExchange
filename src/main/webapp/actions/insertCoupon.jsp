@@ -18,7 +18,7 @@ if (gifticonDto != null) {
 	gifticonDto.setLogin_id((String) session.getAttribute("login_id"));
 	boolean result = gifticonDao.insertGifticon(gifticonDto);
 	if (result) {
-		obj.put("result", true);
+		obj.put("result", true);	
 	}
 }
 response.getWriter().write(obj.toString()); // 최종으로 만들어둔 json 객체를 완성해서 뿌림

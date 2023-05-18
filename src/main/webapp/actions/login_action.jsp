@@ -1,6 +1,9 @@
 <%@page import="member.MemberDTO"%>
 <%@page import="member.MemberDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
 <%
 request.setCharacterEncoding("UTF-8"); // 한글 정상 인식을 위해
 String id = request.getParameter("login_id"); // 매개변수로 담겨온 id값 변수에 저장하기. ?id=abcd 주소로 오는것
@@ -16,10 +19,12 @@ if (findId) { //아이디를 찾으면 true
 	if (pw.equals(memberDTO.getPassword())) { //id , pw 모두 일치 
 		session.setAttribute("login_id", memberDTO.getLogin_id());
 		out.print("<script>location.href='../index.jsp'</script> ");
-		
+
 	} else { //비밀번호만 틀림.
+
 		out.print("<script>alert('비밀번호가 틀렸습니다.');</script> ");
 		out.print("<script>history.back();</script> ");
+
 	}
 } else {
 	out.print("<script>alert('회원정보를 찾을 수 없습니다.');</script> ");
@@ -31,7 +36,9 @@ if (findId) { //아이디를 찾으면 true
 <head>
 <meta charset="UTF-8">
 <title></title>
+
 </head>
 <body>
+
 </body>
 </html>

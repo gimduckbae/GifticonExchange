@@ -15,7 +15,7 @@ if (memberDAO.updateMember(request.getParameter("nick"), request.getParameter("i
 %>
 <script>
 	alert("회원 정보 수정 성공!");
-	location.href = "member_info.jsp";
+	location.href = "../admin..jsp";
 </script>
 <%
 } else {

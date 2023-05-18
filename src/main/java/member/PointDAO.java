@@ -40,7 +40,7 @@ public class PointDAO {
 		return pointDTO;
 	}
 
-	// 출금
+	// 관리자 출금
 	public int withdraw(String login_id, int withdraw) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -52,7 +52,7 @@ public class PointDAO {
 			String sql = "UPDATE Point SET point = point - ?,withdraw= withdraw +?  WHERE login_id = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, withdraw); // 출금할 포인트 설정
-			psmt.setInt(2, withdraw); // 출금할 포인트 설정
+			psmt.setInt(2, withdraw); 
 			psmt.setString(3, login_id);
 
 			System.out.println("id" + login_id);
@@ -77,7 +77,47 @@ public class PointDAO {
 		return result;
 	}
 
-	/** 출금 대기 인원 조회 */
+
+	/** 유저 출금 */
+	public int Userwithdraw(String login_id, int point) {
+	    Connection conn = null;
+	    PreparedStatement psmt = null;
+	    ResultSet rs = null;
+	    int result = 0;
+
+	    try {
+	        conn = DBConnectionManager.getConnection();
+	        String sql = "UPDATE Member SET point = point - ? WHERE login_id = ?";
+	        
+	        psmt = conn.prepareStatement(sql);
+	        psmt.setInt(1, point);
+	        psmt.setString(2, login_id);
+
+	        System.out.println("id: " + login_id);
+	        System.out.println("출금액: " + point);
+
+	        result = psmt.executeUpdate();
+	        System.out.println("result: " + result);
+	        
+	        // 출금 후에 withdraw 변수를 0으로 초기화하는 부분이 미완성된 것 같습니다.
+	        // 필요한 처리를 추가해야 합니다.
+
+	         sql = "UPDATE Point SET withdraw = 0 WHERE login_id = ?";
+	   
+	         psmt.setString(1, login_id);
+	         psmt.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBConnectionManager.close(rs, psmt, conn);
+	    }
+
+	    return result;
+	}
+
+	
+	/** 관리자 출금 대기 인원 조회 */
 
 	public List<PointDTO> selectAllWithdraw() {
 		Connection conn = null;
@@ -110,7 +150,7 @@ public class PointDAO {
 	}
 
 	
-	// 거부했을 때
+	/** 출금 거부했을 때 */
 	public int deletePointInfo(String login_id) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -136,7 +176,7 @@ public class PointDAO {
 		return result;
 	}
 	
-//동의했을때
+/** 동의했을때 */
 	public int updatePointInfo(String login_id) {
 
 		Connection conn = null;

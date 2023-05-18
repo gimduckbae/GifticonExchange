@@ -5,19 +5,19 @@
 <%@page import="member.MemberDAO"%>
 <%@page import="member.MemberDTO"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/myPage.css">
 </head>
 <body>
 	<div class="w3-content w3-container w3-margin-top">
@@ -29,7 +29,7 @@
 				<form id="myForm" action="./actions/modifyPage_action.jsp"
 					method="post">
 					<p>
-						<label>이름</label> <input class="w3-input" type="text" id="email"
+						<label>Name</label> <input class="w3-input" type="text" id="email"
 							name="email" value="<%=session.getAttribute("")%>" required>
 					</p>
 					<p>
@@ -41,7 +41,7 @@
 					<br /> <input type="hidden" name="id"
 						value="<%--=item.getNickname()--%>">
 					<p>
-						<label>nickname</label> <input class="w3-input" name="nick"
+						<label>Nickname</label> <input class="w3-input" name="nick"
 							id="pw2">
 
 					</p>
@@ -55,8 +55,7 @@
 					</p>
 					<p class="w3-center">
 						<button type="submit"
-							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">회원정보
-							수정</button>
+							class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">수정완료</button>
 					</p>
 				</form>
 

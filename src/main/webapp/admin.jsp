@@ -57,6 +57,7 @@
 			<input type="text" class="form-control" id="inputWithdraw"
 				name="withdraw" placeholder="Another input placeholder"
 				value="<%=item.getWithdraw()%>"> 		<%-- 결제대기금액 --%>
+			
 		</div>
 		<%-- 출금허가 --%>
 		<button id="updateBtn" type="submit" class="btn btn-warning">수락</button>
@@ -67,6 +68,13 @@
 	}
 	%>	
 	<%--   출금 거부하면 disagree 액션 페이지로 이동 --%>
+	
+	<script>
+function adjustWidth(input) {
+    input.style.width = (input.value.length + 2) + 'ch';
+}
+</script>
+	
 	<script>
 document.getElementById('deleteBtn').addEventListener('click', () => {
 	let form = document.PayAgree;

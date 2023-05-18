@@ -8,8 +8,10 @@
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item"><a href="">내 이지콘머니 충전</a></li>
 			<li class="list-group-item"><a href="modifyPage.jsp">개인정보수정</a></li>
-			<li class="list-group-item"><a href="./CashOut.jsp">이지콘머니
-					출금신청</a></li>
+					<li class="list-group-item"><a href="./CashOutUser.jsp">
+				이지콘머니 출금신청</a></li>
+			<li class="list-group-item"><a href="./CashOut.jsp">
+				이지콘머니 출금신청(관리자)</a></li>
 			<li class="list-group-item"><a href="#">결제내역</a></li>
 			<li class="list-group-item"><a href="#">이지콘함</a></li>
 

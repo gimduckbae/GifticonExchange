@@ -6,6 +6,10 @@
 	box-sizing: border-box;
 }
 
+intput.form-group{
+	margin-top :20px;
+	width: 45vw;
+}
 h2 {
 	font-size: 25px;
 }
@@ -14,6 +18,9 @@ ul, li {
 	list-style: none;
 }
 
+
+
+
 .wrapper-main .mypage-lnb {
 	position: relative;
 	top: 0px;
@@ -21,6 +28,7 @@ ul, li {
 	width: 250px;
 	padding-left: 10px;
 }
+
 
 .wrapper-main .mypage-lnb ul li a {
 	text-decoration: none;
