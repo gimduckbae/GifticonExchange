@@ -203,7 +203,6 @@ public class GifticonDAO {
 				gifticonDTO.setStart_date(rs.getString("start_date"));
 				gifticonDTO.setEnd_date(rs.getString("end_date"));
 				gifticonDTO.setCoupon_number(rs.getString("coupon_number"));
-				System.out.println(gifticonDTO.getCoupon_number());
 			}
 
 		} catch (SQLException e) {

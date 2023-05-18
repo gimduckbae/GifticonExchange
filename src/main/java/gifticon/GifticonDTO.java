@@ -16,6 +16,10 @@ public class GifticonDTO {
 	String end_date;
 	String login_id;
 
+	String purchase_price_char;
+	String sale_price_char;
+	String origin_price_char;
+
 	public String getResultMsg() {
 		return resultMsg;
 	}
@@ -120,13 +124,28 @@ public class GifticonDTO {
 		this.login_id = login_id;
 	}
 
-	@Override
-	public String toString() {
-		return "GifticonDTO [resultMsg=" + resultMsg + ", resultCode=" + resultCode + ", register_no=" + register_no
-				+ ", brand_code=" + brand_code + ", brand_name=" + brand_name + ", coupon_number=" + coupon_number
-				+ ", coupon_name=" + coupon_name + ", purchase_price=" + purchase_price + ", sale_price=" + sale_price
-				+ ", origin_price=" + origin_price + ", start_date=" + start_date + ", end_date=" + end_date
-				+ ", login_id=" + login_id + "]";
+	public String getPurchase_price_char() {
+		return purchase_price_char;
+	}
+
+	public void setPurchase_price_char(String purchase_price_char) {
+		this.purchase_price_char = purchase_price_char;
+	}
+
+	public String getSale_price_char() {
+		return sale_price_char;
+	}
+
+	public void setSale_price_char(String sale_price_char) {
+		this.sale_price_char = sale_price_char;
+	}
+
+	public String getOrigin_price_char() {
+		return origin_price_char;
+	}
+
+	public void setOrigin_price_char(String origin_price_char) {
+		this.origin_price_char = origin_price_char;
 	}
 
 }

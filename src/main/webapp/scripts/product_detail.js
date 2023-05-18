@@ -42,15 +42,17 @@ $(function() {
 		});
 	}
 
+	// 배너 마우스오버시 슬라이드 멈춤, 마우스 벗어나면 재시작
 	$(".banner").hover(function() {
 		clearInterval(rollingId);
 	}, function() {
 		rollingId = setInterval(function() {
 			rollingStart();
-		}, 2000);
+		}, 3000);
 	});
-	
-	$(".temp-link").click(function() {
-		location.href = "./productDetail.jsp";
+
+	// 구매버튼 누르면 장바구니 동작으로 전송
+	$(".buy").click(function() {
+		const register_no = $(this).attr("id");
 	});
 });

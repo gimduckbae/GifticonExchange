@@ -35,7 +35,7 @@ String login_id = null;
 					login_id = (String) session.getAttribute("login_id");
 				%>
 				<li class="nav-item"><a class="nav-link" href="./logout.jsp">로그아웃</a></li>
-				<li class="nav-item"><a class="nav-link" href="./mypage.jsp">마이페이지</a></li>
+				<li class="nav-item"><a class="nav-link" href="./myPage.jsp">마이페이지</a></li>
 				<li class="nav-item"><a class="nav-link" href="./cart.jsp">장바구니</a></li>
 				<%
 				} else {

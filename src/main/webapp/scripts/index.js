@@ -47,9 +47,9 @@ $(function() {
 	}, function() {
 		rollingId = setInterval(function() {
 			rollingStart();
-		}, 2000);
+		}, 3000);
 	});
-	
+
 	$(".temp-link").click(function() {
 		location.href = "./productDetail.jsp";
 	});
