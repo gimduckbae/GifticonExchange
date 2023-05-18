@@ -24,7 +24,7 @@ String login_id = null;
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg bg-light">
+	<nav class="navbar navbar-expand-lg bg-light navbar-2">
 		<div class="container-fluid">
 			<span class="navbar-brand ms-5 fs-6 text-muted">쉽고,
 				빠르게!</span>
@@ -58,8 +58,7 @@ String login_id = null;
 			</div>
 		</div>
 	</nav>
-	<br>
-	<nav class="navbar navbar-expand-lg">
+	<nav class="navbar navbar-expand-lg navbar-2">
 		<div class="container-fluid">
 			<a class="navbar-brand ms-5 fs-2 nav-bar" href=""><img
 				src="./images/아이콘.png" class="me-2 mb-3 main-icon">콘팔이</a>

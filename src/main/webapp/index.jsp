@@ -14,7 +14,6 @@
 Image_FileDAO image_FileDAO = new Image_FileDAO();
 List<Image_FileDTO> banners = image_FileDAO.selectAllBannerImage();
 List<Image_FileDTO> product_images = image_FileDAO.selectAllProductImage();
-
 %>
 
 <%--상단 이벤트 배너--%>
@@ -56,8 +55,7 @@ List<Image_FileDTO> product_images = image_FileDAO.selectAllProductImage();
 <div class="container text-center">
 	<div class="row it-imgbox">
 		<h3 class="br-text">인기상품 BEST!</h3>
-		<br>
-		<br>
+		<br> <br>
 		<div class="col" style="border: 1px solid; border-color: lightgray;">
 			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
 		</div>
@@ -113,12 +111,6 @@ List<Image_FileDTO> product_images = image_FileDAO.selectAllProductImage();
 
 	</div>
 </div>
-
-
-
-
-
-
 
 
 <%@ include file="./footer.jsp"%>
