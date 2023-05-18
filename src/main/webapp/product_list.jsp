@@ -1,6 +1,6 @@
-<%@page import="java.util.List"%>
 <%@page import="gifticon.GifticonDTO"%>
 <%@page import="gifticon.GifticonDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -24,10 +24,11 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 		for (GifticonDTO product : product_infos) {
 		%>
 		<div class="buy-list-wrap col">
-			<img src="./images/<%=product.getCoupon_name()%>.png">
-			<div class="product-name text-nowrap fw-semibold fs-6"><%=product.getCoupon_name()%></div>
-			<div class="product-price fw-bold fs-5"><%=product.getSale_price()%>원
-			</div>
+			<a href="./product_detail.jsp?no=<%=product.getRegister_no()%>"> <img src="./images/<%=product.getCoupon_name()%>.png">
+				<div class="product-name text-nowrap fw-semibold fs-6"><%=product.getCoupon_name()%></div>
+				<div class="product-price fw-bold fs-5"><%=product.getSale_price()%>원
+				</div>
+			</a>
 		</div>
 		<%
 		}

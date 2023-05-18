@@ -1,7 +1,8 @@
-<%@page import="org.json.simple.JSONObject"%>
-<%@page import="gifticon.api.HappyOrder"%>
 <%@page import="gifticon.GifticonDTO"%>
 <%@page import="gifticon.GifticonDAO"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="gifticon.api.HappyOrder"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 response.setContentType("application/json"); // HTML 형식이 아닌 JSON 형식으로 쓰겠다

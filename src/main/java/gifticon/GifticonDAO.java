@@ -149,7 +149,7 @@ public class GifticonDAO {
 
 			String sql = "SELECT register_no, brand_name, coupon_name, sale_price,"
 					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date"
-					+ " FROM gifticon WHERE login_id IS NULL";
+					+ " FROM gifticon WHERE login_id IS NULL ORDER BY register_no DESC";
 
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -163,7 +163,6 @@ public class GifticonDAO {
 				dto.setStart_date(rs.getString("start_date"));
 				dto.setEnd_date(rs.getString("end_date"));
 				products.add(dto);
-				System.out.println(dto.coupon_name);
 			}
 
 		} catch (SQLException e) {
@@ -173,6 +172,47 @@ public class GifticonDAO {
 		}
 
 		return products;
+
+	}
+
+	/** 한개의 상품을 register_no로 조회하기 */
+	public GifticonDTO selectProductByNo(int no) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		GifticonDTO gifticonDTO = null;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "SELECT register_no, brand_name, coupon_name, sale_price, coupon_number,"
+					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date"
+					+ " FROM gifticon WHERE login_id IS NULL"
+					+ " AND register_no = ?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, no);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				gifticonDTO = new GifticonDTO();
+				gifticonDTO.setRegister_no(rs.getInt("register_no"));
+				gifticonDTO.setBrand_name(rs.getString("brand_name"));
+				gifticonDTO.setCoupon_name(rs.getString("coupon_name"));
+				gifticonDTO.setSale_price(rs.getInt("sale_price"));
+				gifticonDTO.setStart_date(rs.getString("start_date"));
+				gifticonDTO.setEnd_date(rs.getString("end_date"));
+				gifticonDTO.setCoupon_number(rs.getString("coupon_number"));
+				System.out.println(gifticonDTO.getCoupon_number());
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return gifticonDTO;
 
 	}
 }

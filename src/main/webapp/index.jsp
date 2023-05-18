@@ -1,5 +1,3 @@
-<%@page import="gifticon.GifticonDAO"%>
-<%@page import="gifticon.GifticonDTO"%>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
@@ -15,7 +13,6 @@
 Image_FileDAO image_FileDAO = new Image_FileDAO();
 List<Image_FileDTO> banners = image_FileDAO.selectAllBannerImage();
 List<Image_FileDTO> product_images = image_FileDAO.selectAllProductImage();
-
 %>
 
 <%--상단 이벤트 배너--%>
