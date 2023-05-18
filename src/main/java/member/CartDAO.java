@@ -161,4 +161,76 @@ public class CartDAO {
 		return false;
 	}
 
+	/** 구매된 상품 장바구니 테이블에서 제거 */
+	public boolean deleteCart() {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "DELETE cart WHERE register_no IN "
+					+ " (SELECT register_no FROM gifticon WHERE login_id IS NOT NULL)";
+			psmt = conn.prepareStatement(sql);
+			result = psmt.executeUpdate();
+
+			if (result >= 1) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return false;
+	}
+
+	/** 선택 상품을 모두 구매처리. 상품의 register_no로 동작. 반복적인 쿼리를 날리지 않고 한 건만 날림. */
+	public boolean buyProductByRegister_no(String login_id, int[] register_no) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		// 매개변수 register_no[] 길이만큼 ? 뒤에 ,? 를 반복해서 붙인다. ?,?,?,? ...
+		String sql_psmt = "?";
+		for (int i = 1; i < register_no.length; i++) {
+			sql_psmt += ", ?";
+			// System.out.println(register_no[i] + ", ? 갯수 늘리기");
+		}
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			
+			String sql = "UPDATE gifticon SET login_id = ? WHERE login_id IS NULL AND register_no IN (" + sql_psmt + ")";
+			System.out.println(sql);
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, login_id);
+
+			// 늘어난 ? 만큼 psmt 값 설정
+			for (int i = 0; i < register_no.length; i++) {
+				System.out.printf("psmt.setInt(%d, %d) 추가\n", (i + 2), register_no[i]);
+				psmt.setInt(i + 2, register_no[i]);
+			}
+
+			result = psmt.executeUpdate();
+			System.out.println(result + " 건 구매 처리완료");
+
+			if (result >= 1) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return false;
+	}
+
 }

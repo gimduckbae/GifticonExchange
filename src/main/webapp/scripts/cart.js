@@ -61,11 +61,25 @@ $(function() {
 		$("input[name='checks']:checked").each(function() {
 			checkList.push($(this).attr("id"));
 		});
-		console.log(checkList);
+		//console.log(checkList);
 		delCart(checkList);
 	});
 
-	// 1개씩 ajax 삭제처리
+
+	// 장바구니 체크 구매
+	$("#buy-btn").click(function() {
+		var checkList = [];
+		$("input[name='checks']:checked").each(function() {
+			checkList.push($(this).attr("id"));
+		});
+		//console.log(checkList);
+		buyCart(checkList);
+	});
+
+
+
+
+	// 선택한 상품을 배열로 넘겨서 한번에 장바구니에서 삭제
 	function delCart(register_no) {
 
 		$.ajax({
@@ -88,7 +102,37 @@ $(function() {
 			error: function() {
 				//alert("오류가 발생했습니다. 다시 시도해주세요.");
 			}
-		})
+		});
+	}
+
+	// 장바구니 선택 상품 한번에 구매 처리
+	function buyCart(register_no) {
+
+		$.ajax({
+			async: false,
+			type: 'GET',
+			data: {
+				"register_no": JSON.stringify(register_no),
+				"type": "buy"
+			},
+			url: "./actions/cart_action.jsp",
+			dataType: "json",
+			contentType: "application/json; charset=UTF-8",
+			success: function(data) {
+				//console.log(data);
+				if (data.result === 'true') {
+					location.href = "./cart.jsp"
+				}
+				if (data.point === "low") {
+					if(confirm("보유하고 있는 이지콘이 부족합니다.\n충전 페이지로 이동하시겠습니까?")) {
+						location.href = "./cash_charge.jsp";
+					}
+				}
+			},
+			error: function() {
+				//alert("오류가 발생했습니다. 다시 시도해주세요.");
+			}
+		});
 	}
 
 
