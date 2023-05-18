@@ -1,19 +1,39 @@
 @charset "UTF-8";
 
 .nav-search {
-	width:300px;
+	width: 300px;
+	border: 3px solid #4400AF;
 }
 
 .main-icon {
-	width:40px;
-	height:40px;
+	width: 40px;
+	height: 40px;
 }
 
 .nav-bar {
-	color: #7633FA; 
+	color: #4400AF;
 	font-weight: bold;
 }
 
+.nav-bar:hover {
+	color: #7633FA;
+}
+
 .navbar-2 {
-	border: solid 1px lightgray;	
+	border: solid 1px lightgray;
+}
+
+.search-btn {
+	border-top: 3px solid #4400AF;
+	border-right: 3px solid #4400AF;
+	border-bottom: 3px solid #4400AF;
+	border-left: 2px solid #4400AF;
+}
+
+.btn {
+	--bs-btn-hover-border-color: #4400AF;
+}
+
+.input {
+	outline: none;
 }

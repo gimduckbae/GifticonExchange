@@ -24,10 +24,9 @@ String login_id = null;
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg bg-light navbar-2">
+	<nav class="navbar navbar-expand-lg bg-light">
 		<div class="container-fluid">
-			<span class="navbar-brand ms-5 fs-6 text-muted">쉽고,
-				빠르게!</span>
+			<span class="navbar-brand ms-5 fs-6 text-muted">쉽고, 빠르게!</span>
 			<div class="d-flex justify-content-end">
 				<ul class="navbar-nav me-5">
 					<%
@@ -60,12 +59,12 @@ String login_id = null;
 	</nav>
 	<nav class="navbar navbar-expand-lg navbar-2">
 		<div class="container-fluid">
-			<a class="navbar-brand ms-5 fs-2 nav-bar" href=""><img
+			<a class="navbar-brand ms-5 fs-2 nav-bar" href="./index.jsp"><img
 				src="./images/아이콘.png" class="me-2 mb-3 main-icon">콘팔이</a>
 			<form class="d-flex" role="search">
-				<input class="form-control nav-search me-2" type="search"
-					placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
+				<input class="form-control nav-search  rounded-0" type="search"
+					aria-label="Search">
+				<button class="btn rounded-0 search-btn" type="submit">검색</button>
 			</form>
 			<div class="d-flex justify-content-end">
 				<ul class="navbar-nav me-5">
@@ -79,4 +78,3 @@ String login_id = null;
 			</div>
 		</div>
 	</nav>
-	<br>
