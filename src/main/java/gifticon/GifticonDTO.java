@@ -16,6 +16,10 @@ public class GifticonDTO {
 	String end_date;
 	String login_id;
 
+	String purchase_price_char;
+	String sale_price_char;
+	String origin_price_char;
+
 	public String getResultMsg() {
 		return resultMsg;
 	}
@@ -118,6 +122,30 @@ public class GifticonDTO {
 
 	public void setLogin_id(String login_id) {
 		this.login_id = login_id;
+	}
+
+	public String getPurchase_price_char() {
+		return purchase_price_char;
+	}
+
+	public void setPurchase_price_char(String purchase_price_char) {
+		this.purchase_price_char = purchase_price_char;
+	}
+
+	public String getSale_price_char() {
+		return sale_price_char;
+	}
+
+	public void setSale_price_char(String sale_price_char) {
+		this.sale_price_char = sale_price_char;
+	}
+
+	public String getOrigin_price_char() {
+		return origin_price_char;
+	}
+
+	public void setOrigin_price_char(String origin_price_char) {
+		this.origin_price_char = origin_price_char;
 	}
 
 }

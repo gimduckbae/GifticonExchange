@@ -6,6 +6,7 @@ public class TransActionDTO {
 	String history_date;
 	int amount;
 	int type;
+	String type_char;
 
 	public String getLogin_id() {
 		return login_id;
@@ -37,6 +38,14 @@ public class TransActionDTO {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public String getType_char() {
+		return type_char;
+	}
+
+	public void setType_char(String type_char) {
+		this.type_char = type_char;
 	}
 
 }

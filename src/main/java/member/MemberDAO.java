@@ -44,9 +44,6 @@ public class MemberDAO {
 		return memberDTO;
 	}
 
-
-	
-	
 	/**
 	 * MemberDTO 형식을 매개변수로 받아서 member_tb 테이블에 insert 하는 메소드. 성공하면 true 리턴
 	 */
@@ -59,18 +56,23 @@ public class MemberDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			String sql = "INSERT INTO member (member_no, login_id, password, member_name, nickname)"
-					+ " VALUES ( (SELECT NVL( ( MAX(member_no) ), 0)+1 FROM member), ?, ?, ?, ? )";
+			String sql = "INSERT ALL" + " INTO member (member_no, login_id, password, member_name, nickname)"
+					+ " VALUES ( (SELECT NVL( ( MAX(member_no) ), 0)+1 FROM member), ?, ?, ?, ? )"
+					+ " INTO point (login_id)" + " VALUES (?) SELECT * FROM dual";
+
+//			String sql = "INSERT INTO member (member_no, login_id, password, member_name, nickname)"
+//					+ " VALUES ( (SELECT NVL( ( MAX(member_no) ), 0)+1 FROM member), ?, ?, ?, ? )";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, member.getLogin_id());
 			psmt.setString(2, member.getPassword());
 			psmt.setString(3, member.getMember_name());
 			psmt.setString(4, member.getNickname());
+			psmt.setString(5, member.getLogin_id());
 
 			result = psmt.executeUpdate();
 
-			if (result == 1) {
+			if (result == 2) {
 				return true;
 			}
 

@@ -1,31 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="gifticon.GifticonDTO"%>
+<%@page import="gifticon.GifticonDAO"%>
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
 <%@page import="java.util.List"%>
 <%@ include file="./header.jsp"%>
 <%
-Image_FileDAO image_FileDAO = new Image_FileDAO();
+request.setCharacterEncoding("UTF-8"); // 한글 정상 인식을 위해
+int no = Integer.parseInt(request.getParameter("no"));
+GifticonDAO gifticonDAO = new GifticonDAO();
+GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(no);
 %>
 <div class="container">
 	<div class="item-view">
 		<div class="row">
 			<div class="col">
-				<%
-				for (int i = 0; i < 1; i++) {
-				%>
 				<div class="col">
-					<img src="./images/ex_pic.jpg" class="item-img" alt="...">
+					<img src="./images/<%=gifticonDTO.getCoupon_name()%>.png" class="item-img" alt="...">
 				</div>
-				<%
-				}
-				%>
 			</div>
 			<div class="col" style="margin-top: 100px;">
-				<%
-				for (int i = 0; i < 1; i++) {
-				%>
 				<div>
 					<h4 class="it-info"></h4>
 					</h3>
@@ -39,50 +33,26 @@ Image_FileDAO image_FileDAO = new Image_FileDAO();
 					</div>
 					<div class="col">
 						<p>가능</p>
-						<p>베스킨라빈스, baskinrobbins</p>
+						<p><%=gifticonDTO.getBrand_name()%></p>
 						<p>구매 후 환불 불가</p>
 					</div>
 				</div>
-				<button type="button" class="btn btn-red btn-lg">바로구매</button>
+				<button type="button" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-red btn-lg buy">바로구매</button>
 				<button type="button" class="btn btn-blue btn-lg">판매하기</button>
+
+			</div>
+		</div>
+		<div class="banner d-flex flex-row">
+			<ul>
+				<%
+				//배너 사진 띄울 곳
+				for (int i = 5; i < 8; i++) {
+				%>
+				<li class="evt2"><img src="" class="evt2-img"></li>
 				<%
 				}
 				%>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="banner d-flex flex-row">
-	<ul>
-		<%
-		for (int i = 5; i < 8; i++) {
-		%>
-		<li class="evt2"><img src="./images/ex_pic.jpg" class="evt2-img"></li>
-		<%
-		}
-		%>
-	</ul>
-</div>
-
-
-<div class="container text-center">
-	<h3 class="br-text">동일 브랜드 추천상품</h3>
-	<div class="row">
-		<div class="col it-imgbox">
-			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
-			<h5>4500원</h5>
-		</div>
-		<div class="col it-imgbox">
-			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
-			<h5>4500원</h5>
-		</div>
-		<div class="col it-imgbox">
-			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
-			<h5>4500원</h5>
-		</div>
-		<div class="col it-imgbox">
-			<img src="./images/ex_pic.jpg" class="it-img" alt="...">
-			<h5>4500원</h5>
+			</ul>
 		</div>
 	</div>
 </div><br><br>
@@ -91,4 +61,5 @@ Image_FileDAO image_FileDAO = new Image_FileDAO();
 
 
 <script src="./scripts/product_detail.js"></script>
+<script src="./scripts/cart.js"></script>
 <link href="./css/product_detail.css" rel="stylesheet">

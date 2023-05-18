@@ -1,9 +1,12 @@
 package member;
 
+import gifticon.GifticonDTO;
+
 public class CartDTO {
 
 	String login_id;
 	int register_no;
+	GifticonDTO gifticonDTO;
 
 	public String getLogin_id() {
 		return login_id;
@@ -19,6 +22,14 @@ public class CartDTO {
 
 	public void setRegister_no(int register_no) {
 		this.register_no = register_no;
+	}
+
+	public GifticonDTO getGifticonDTO() {
+		return gifticonDTO;
+	}
+
+	public void setGifticonDTO(GifticonDTO gifticonDTO) {
+		this.gifticonDTO = gifticonDTO;
 	}
 
 }
