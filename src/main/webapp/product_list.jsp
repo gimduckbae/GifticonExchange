@@ -5,8 +5,16 @@
 <%@page import="image_file.Image_FileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+request.setCharacterEncoding("UTF-8"); // 한글 정상 인식을 위해
+String search = request.getParameter("search").trim();
 GifticonDAO gifticonDAO = new GifticonDAO();
-List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
+List<GifticonDTO> product_infos = gifticonDAO.searchProduct(search);
+
+// 검색 결과가 없다면 전체상품 조회
+if(product_infos.size() < 1) {
+	product_infos = gifticonDAO.selectAllProduct();
+}
+
 %>
 <%@ include file="./header.jsp"%>
 <link rel="stylesheet" href="./css/product_list.css">
@@ -28,9 +36,10 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 				<p class="br-text fs-5"><%=product.getCoupon_name()%></p> <br>
 				<p class="br-text fs-5"><%=product.getSale_price()%>원
 				</p>
-				<button type="button" class="btn btn-outline-dark pd-btn btn-red">장바구니</button>
-				<button type="button" class="btn btn-outline-dark pd-btn btn-blue">구매하기</button> <br> <br>
 			</a>
+			<button type="button" id="<%=product.getRegister_no()%>" class="btn btn-outline-dark pd-btn btn-red buy">장바구니</button>
+			<button type="button" class="btn btn-outline-dark pd-btn btn-blue">구매하기</button>
+			<br> <br>
 		</div>
 		<%
 		}
@@ -40,5 +49,5 @@ List<GifticonDTO> product_infos = gifticonDAO.selectAllProduct();
 <br>
 <br>
 
-
+<script src="./scripts/cart.js"></script>
 <%@ include file="./footer.jsp"%>

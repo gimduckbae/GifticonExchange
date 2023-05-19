@@ -149,7 +149,8 @@ public class GifticonDAO {
 			conn = DBConnectionManager.getConnection();
 
 			String sql = "SELECT register_no, brand_name, coupon_name, sale_price,"
-					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date"
+					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date,"
+					+ " TO_CHAR(sale_price, '999,999,999') sale_price_char"
 					+ " FROM gifticon WHERE login_id IS NULL ORDER BY register_no DESC";
 
 			psmt = conn.prepareStatement(sql);
@@ -161,6 +162,50 @@ public class GifticonDAO {
 				dto.setBrand_name(rs.getString("brand_name"));
 				dto.setCoupon_name(rs.getString("coupon_name"));
 				dto.setSale_price(rs.getInt("sale_price"));
+				dto.setSale_price_char(rs.getString("sale_price_char"));
+				dto.setStart_date(rs.getString("start_date"));
+				dto.setEnd_date(rs.getString("end_date"));
+				products.add(dto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return products;
+
+	}
+
+	/** 키워드로 상품 조회하기 */
+	public List<GifticonDTO> searchProduct(String keyword) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<GifticonDTO> products = new ArrayList<GifticonDTO>();
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "SELECT register_no, brand_name, coupon_name, sale_price,"
+					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date,"
+					+ " TO_CHAR(sale_price, '999,999,999') sale_price_char"
+					+ " FROM gifticon WHERE login_id IS NULL AND coupon_name LIKE '%'||?||'%' OR brand_name LIKE '%'||?||'%'"
+					+ " ORDER BY register_no DESC";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, keyword);
+			psmt.setString(2, keyword);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				GifticonDTO dto = new GifticonDTO();
+				dto.setRegister_no(rs.getInt("register_no"));
+				dto.setBrand_name(rs.getString("brand_name"));
+				dto.setCoupon_name(rs.getString("coupon_name"));
+				dto.setSale_price(rs.getInt("sale_price"));
+				dto.setSale_price_char(rs.getString("sale_price_char"));
 				dto.setStart_date(rs.getString("start_date"));
 				dto.setEnd_date(rs.getString("end_date"));
 				products.add(dto);

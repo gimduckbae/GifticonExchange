@@ -33,19 +33,19 @@ List<Image_FileDTO> product_images = image_FileDAO.selectAllProductImage();
 <div class="container text-center">
 	<div class="row">
 		<div class="col">
-			<img src="./img/logo1.png" class="rounded logo-img" alt="...">
+			<a href="./product_list.jsp?search=던킨"><img src="./img/logo1.png" class="rounded logo-img" alt="..."></a>
 		</div>
 		<div class="col">
-			<img src="./img/logo2.png" class="rounded logo-img" alt="...">
+			<a href="./product_list.jsp?search=배스킨"><img src="./img/logo2.png" class="rounded logo-img" alt="..."></a>
 		</div>
 		<div class="col">
-			<img src="./img/logo3.png" class="rounded logo-img" alt="...">
+			<a href="./product_list.jsp?search=바게트"><img src="./img/logo3.png" class="rounded logo-img" alt="..."></a>
 		</div>
 		<div class="col">
-			<img src="./img/logo4.png" class="rounded logo-img" alt="...">
+			<a href="./product_list.jsp?search=파스"><img src="./img/logo4.png" class="rounded logo-img" alt="..."></a>
 		</div>
 		<div class="col">
-			<img src="./img/logo5.png" class="rounded logo-img" alt="...">
+			<a href="./product_list.jsp?search=쉐이크"><img src="./img/logo5.png" class="rounded logo-img" alt="..."></a>
 		</div>
 	</div>
 </div>

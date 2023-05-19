@@ -22,7 +22,8 @@ $(function() {
 			dataType: "json", // json 형태로 받아오겠다
 			contentType: "application/json; charset=UTF-8",
 			success: function(data) {
-				console.log(data.count);
+				//console.log(data.count);
+				$("#cart-count").text(data.count);
 				if (data.result === 'true') { // 사용가능한 아이디면 가입버튼 활성화
 				}
 			},

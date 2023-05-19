@@ -5,6 +5,7 @@ public class BoardDTO {
 	int board_no;
 	int post_no;
 	String login_id;
+	String login_id_org;
 	String title;
 	String create_date;
 	String modify_date;
@@ -93,6 +94,14 @@ public class BoardDTO {
 
 	public void setAnswer_date(String answer_date) {
 		this.answer_date = answer_date;
+	}
+
+	public String getLogin_id_org() {
+		return login_id_org;
+	}
+
+	public void setLogin_id_org(String login_id_org) {
+		this.login_id_org = login_id_org;
 	}
 
 }

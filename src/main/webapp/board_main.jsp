@@ -29,7 +29,9 @@ List<BoardDTO> postList = boardDAO.selectAllBoardList();
 			<tr>
 				<th scope="row"><%=post.getPost_no()%></th>
 				<td><%=post.getLogin_id()%></td>
-				<td><a href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a></td>
+				<td>
+					<a href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a>
+				</td>
 				<td><%=post.getCreate_date()%></td>
 				<td><%=post.getStatus()%></td>
 			</tr>

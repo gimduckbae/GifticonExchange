@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 
-#input_area {
+#input_area, #question_area {
 	min-height: 30vh;
 	resize: none;
 }

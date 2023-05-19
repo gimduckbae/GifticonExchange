@@ -1,6 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="member.PointDTO"%>
+<%@page import="member.PointDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
+<%
+PointDAO pointDAO = new PointDAO();
+List<PointDTO> withdrawList = pointDAO.selectWaitingWithdraw();
+%>
 <div class="manager-wrap ms-5">
 	<%@ include file="./admin_menu.jsp"%>
 	<div class="waiting-answer">
@@ -16,20 +22,26 @@
 					<th scope="col">신청거절</th>
 				</tr>
 			</thead>
+
 			<tbody class="fs-5">
+
+				<%
+				for (PointDTO item : withdrawList) {
+				%>
 				<tr>
-					<th scope="row">no</th>
-					<td>garam</td>
-					<td>600000</td>
-					<td>100000</td>
+					<td><%=item.getLogin_id()%></td>
+					<td><%=item.getPoint_char()%></td>
+					<td><%=item.getWithdraw_char()%></td>
 					<td>
-						<button type="button" class="btn btn-secondary" id="newpost">승인</button>
+						<button type="button" class="btn btn-secondary" id="yes">승인</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-danger" id="newpost">거절</button>
+						<button type="button" class="btn btn-danger" id="no">거절</button>
 					</td>
 				</tr>
-
+				<%
+				}
+				%>
 
 			</tbody>
 		</table>

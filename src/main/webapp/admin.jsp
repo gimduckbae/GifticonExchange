@@ -1,12 +1,11 @@
 <%@page import="java.util.List"%>
 <%@page import="board.BoardDAO"%>
 <%@page import="board.BoardDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
 <%
 BoardDAO boardDAO = new BoardDAO();
-List<BoardDTO> postList = boardDAO.selectAllBoardList();
+List<BoardDTO> postList = boardDAO.selectAllQuestionList();
 %>
 
 
@@ -33,14 +32,15 @@ List<BoardDTO> postList = boardDAO.selectAllBoardList();
 				<tr>
 					<th scope="row"><%=post.getPost_no()%></th>
 					<td><%=post.getLogin_id()%></td>
-					<td><a
-						href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a></td>
+					<td>
+						<a href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a>
+					</td>
 					<td><%=post.getCreate_date()%></td>
 					<td>
-						<button type="button" class="btn btn-secondary" id="newpost">답변등록</button>
+						<button type="button" class="btn btn-secondary answer" id="answer_btn" data-postno="<%=post.getPost_no()%>">답변등록</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-danger" id="newpost">삭제</button>
+						<button type="button" class="btn btn-danger" id="delete">삭제</button>
 					</td>
 				</tr>
 				<%

@@ -7,6 +7,8 @@ request.setCharacterEncoding("UTF-8"); //한글 정상 인식을 위해
 int post_no = Integer.parseInt(request.getParameter("post_no"));
 BoardDAO boardDAO = new BoardDAO();
 BoardDTO boardDTO = boardDAO.selectPostByPost_No(post_no);
+
+if (login_id.equals(boardDTO.getLogin_id()) || login_id.equals("admin")) {
 %>
 <link rel="stylesheet" href="./css/board_viewPost.css">
 
@@ -33,8 +35,15 @@ BoardDTO boardDTO = boardDAO.selectPostByPost_No(post_no);
 		</div>
 	</div>
 	<hr>
-	<button type="button" i
-	d="btn_back" class="btn btn-dark">목록보기</button>
+	<button type="button" id="btn_back" class="btn btn-dark" onclick="location.href='./board_main.jsp';">목록보기</button>
 </div>
 <script src="./scripts/board_viewPost.js"></script>
 <%@ include file="footer.jsp"%>
+
+
+<%
+} else {
+out.println("<script>alert('접근 권한이 없습니다.');</script>");
+out.println("<script>location.href = 'board_main.jsp';</script>");
+}
+%>

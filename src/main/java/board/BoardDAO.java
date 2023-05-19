@@ -66,7 +66,48 @@ public class BoardDAO {
 			String sql = "SELECT board_no, post_no, substr(login_id,1,length(login_id)-3)||lpad('*',3,'*') login_id, title"
 					+ ", TO_CHAR(create_date, 'YYYY-MM-DD') create_date"
 					+ ", TO_CHAR(modify_date, 'YYYY-MM-DD') modify_date"
-					+ ", DECODE(status, 0, '답변대기중', 1, '답변완료') status" + " FROM board ORDER BY post_no DESC";
+					+ ", DECODE(status, 0, '답변대기중', 1, '답변완료') status"
+					+ ", login_id login_id_org" + " FROM board ORDER BY post_no DESC";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				BoardDTO boardDTO = new BoardDTO();
+				boardDTO.setBoard_no(rs.getInt("board_no"));
+				boardDTO.setPost_no(rs.getInt("post_no"));
+				boardDTO.setLogin_id(rs.getString("login_id"));
+				boardDTO.setLogin_id_org(rs.getString("login_id_org"));
+				boardDTO.setTitle(rs.getString("title"));
+				boardDTO.setCreate_date(rs.getString("create_date"));
+				boardDTO.setModify_date(rs.getString("modify_date"));
+				boardDTO.setStatus(rs.getString("status"));
+				boardList.add(boardDTO);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return boardList;
+	}
+	
+	
+	/** 답변 대기중인 문의내용 불러오기 */
+	public List<BoardDTO> selectAllQuestionList() {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<BoardDTO> boardList = new ArrayList<BoardDTO>();
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "SELECT board_no, post_no, substr(login_id,1,length(login_id)-3)||lpad('*',3,'*') login_id, title"
+					+ ", TO_CHAR(create_date, 'YYYY-MM-DD') create_date"
+					+ ", TO_CHAR(modify_date, 'YYYY-MM-DD') modify_date"
+					+ ", DECODE(status, 0, '답변대기중', 1, '답변완료') status"
+					+ " FROM board WHERE status = 0 ORDER BY post_no DESC";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 
@@ -112,6 +153,57 @@ public class BoardDAO {
 			psmt.setString(3, boardDTO.getTitle());
 			psmt.setInt(4, boardDTO.getBoard_no());
 			psmt.setString(5, boardDTO.getContent());
+			result = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return result;
+	}
+
+	/** post_no로 해당 문의 답변하기 */
+	public int answerPost(int post_no, String answer) {
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "UPDATE post SET answer = ?, answer_date = SYSDATE WHERE post_no = ?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, answer);
+			psmt.setInt(2, post_no);
+			result = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return result;
+	}
+
+	/** post_no로 해당 문의 답변상태 완료로 업데이트 하기 */
+	public int answerPost2(int post_no) {
+
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "UPDATE board SET status = 1 WHERE post_no = ?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, post_no);
 			result = psmt.executeUpdate();
 
 		} catch (SQLException e) {

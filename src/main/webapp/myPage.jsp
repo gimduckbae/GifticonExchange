@@ -18,6 +18,7 @@ PointDTO pointDTO = pointDAO.selectPointById(login_id);
 		<h2>마이페이지</h2>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item"><a href="./cash_charge.jsp">콘 충전</a></li>
+			<li class="list-group-item"><a href="./cash_out.jsp">출금 신청</a></li>
 			<li class="list-group-item"><a href="#">충전내역</a></li>
 			<li class="list-group-item"><a href="#">출금내역</a></li>
 			<li class="list-group-item"><a href="#">구매내역</a></li>

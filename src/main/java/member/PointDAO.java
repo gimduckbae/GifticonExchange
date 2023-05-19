@@ -44,6 +44,39 @@ public class PointDAO {
 		return pointDTO;
 	}
 
+	/** 출금신청한 사람 정보조회 */
+	public List<PointDTO> selectWaitingWithdraw() {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<PointDTO> list = new ArrayList<PointDTO>();
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "SELECT login_id, point, withdraw, TO_CHAR(point, '999,999,999') point_char,"
+					+ " TO_CHAR(withdraw, '999,999,999') withdraw_char FROM point WHERE withdraw > 0";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				PointDTO pointDTO = new PointDTO();
+				pointDTO.setLogin_id(rs.getString("login_id"));
+				pointDTO.setPoint(rs.getInt("point"));
+				pointDTO.setWithdraw(rs.getInt("withdraw"));
+				pointDTO.setPoint_char(rs.getString("point_char"));
+				pointDTO.setWithdraw_char(rs.getString("withdraw_char"));
+				list.add(pointDTO);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return list;
+	}
+
 	/** login_id 와 충전금액으로 포인트 충전하기 (UPDATE 쿼리문) */
 	public int chargePoint(String login_id, int add_amount) {
 		Connection conn = null;
@@ -69,7 +102,7 @@ public class PointDAO {
 		return result;
 	}
 
-	// 관리자 출금
+	// 출금 처리
 	public int withdraw(String login_id, int withdraw) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
@@ -88,7 +121,35 @@ public class PointDAO {
 			System.out.println("출금액: " + withdraw);
 
 			result = psmt.executeUpdate();
-			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+		return result;
+	}
+
+	// 출금 처리
+	public int withdrawNo(String login_id, int withdraw) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "UPDATE point SET point = point + ?, withdraw = withdraw - ?  WHERE login_id = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, withdraw); // 출금할 포인트 설정
+			psmt.setInt(2, withdraw);
+			psmt.setString(3, login_id);
+
+			System.out.println("id" + login_id);
+			System.out.println("출금액: " + withdraw);
+
+			result = psmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
