@@ -1,32 +1,23 @@
+<%@page import="org.json.simple.JSONObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="member.PointDAO"%>
 <%@page import="member.PointDTO"%>
 <%
-request.setCharacterEncoding("utf-8");
-String login_id = (String) session.getAttribute("login_id");
-//String login_id = request.getParameter("login_id");
-// int login_id = Integer.parseInt(request.getParameter("login_id"));
-//** String login_id = request.getParameter("login_id"); */
-//int withdraw = Integer.parseInt(request.getParameter("withdraw"));
-PointDAO pointDAO = new PointDAO();
-int amount = pointDAO.selectPointById(login_id).getWithdraw();
+response.setContentType("application/json"); // HTML 형식이 아닌 JSON 
+JSONObject obj = new JSONObject(); // JSON 객체를 담기위해 선언
 
-int result = pointDAO.withdrawNo(login_id, amount);
+request.setCharacterEncoding("utf-8");
+String id = request.getParameter("login_id");
+PointDAO pointDAO = new PointDAO();
+int amount = pointDAO.selectPointById(id).getWithdraw();
+
+int result = pointDAO.withdrawNo(id, amount);
 
 if (result == 1) {
-	// Deletion successful
-%>
-<script>
-	alert("출금이 완료되었습니다.")
-</script>
-out.print("
-<script>
-	location.href = '../admin.jsp'
-</script>
-");
-<%
-} else {
+	obj.put("result", "true");
 
-out.print("<script>location.href='../admin.jsp'</script> ");
+} else {
+	obj.put("result", "false");
 }
+response.getWriter().write(obj.toString()); // 최종으로 만들어둔 json 객체를 완성해서 뿌림
 %>

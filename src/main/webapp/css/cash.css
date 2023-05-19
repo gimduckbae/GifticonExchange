@@ -1,0 +1,128 @@
+@charset "EUC-KR";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+intput.form-group{
+	margin-top :20px;
+	width: 45vw;
+}
+h2 {
+	font-size: 25px;
+}
+
+ul, li {
+	list-style: none;
+}
+
+form{
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+.block {
+  position: relative;
+  margin: 150px auto 0;
+  width: 65vw;
+  height: 30vh;
+  background: linear-gradient(0deg, #000, #272727);
+}
+
+.block:before, .block:after {	
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+    #0000ff, #00ff00,#ffff00, #ff0000);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+.block:after {
+  filter: blur(50px);
+}
+
+#charge{
+    margin-top: 40px;
+    padding-top:20px
+}
+
+#cashcontainer{
+
+
+}
+
+#cashmain{
+
+    width: 100%;
+    height: 100%;
+    margin-top: 200px;
+}
+
+.wrapper-main .mypage-lnb {
+	position: relative;
+	top: 0px;
+	float: left;
+	width: 250px;
+	padding-left: 10px;
+}
+
+
+.wrapper-main .mypage-lnb ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+.wrapper-main .mypage-main {
+	width: 75%;
+	height: auto;
+	margin-left: 285px;
+	border: 1px solid lightgrey;
+}
+
+.wrapper-main .mypage-main li {
+	display: inline;
+	margin-left: -20px;
+	margin-right: 300px;
+}
+
+.wrapper-main .mypage-contents {
+	width: 75%;
+	margin-left:  285px;
+	
+}
+
+
+.clearfix {
+	clear: both;
+}
+
+footer {
+	width: 100%;
+	height: 10%; /* footer�� ���� */
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}

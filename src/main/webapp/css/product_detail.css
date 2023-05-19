@@ -33,7 +33,7 @@
 	float: left;
 	margin: 0;
 	padding: 0;
-	height: 150px;	
+	height: 150px;
 }
 
 .evt-img {
@@ -46,8 +46,8 @@
 	width: 100vw;
 	height: 150px;
 	cursor: pointer;
-	margin-top:150px;
-} 
+	margin-top: 120px;
+}
 
 .br-logobox {
 	width: 80vw;
@@ -58,7 +58,11 @@
 .br-text {
 	color: #535151;
 	font-weight: bold;
-	margin-bottom:50px;
+	margin-bottom: 50px;
+}
+
+.it-box {
+	width: 80%;
 }
 
 .images {
@@ -119,29 +123,34 @@
 	color: rgb(0, 0, 0);
 }
 
-.btn-red {
-	background-color: #EF6253;
+.btn-purple {
+	background-color: #4400AF;
 	color: white;
+	font-weight: bold;
 }
 
 .btn-blue {
-	background-color: #41B979;
+	background-color: #ff0080;
 	color: white;
+	font-weight: bold;
 }
 
-
 .item-view {
-	margin-top: 200px;
+	margin-top: 100px;
 }
 
 .it-info {
 	font-weight: bold;
 }
 
+.pr-detail {
+	margin-top: 90px;
+}
+
 .it-img {
-	width:250px;
-	height:250px;
-	cursor:pointer;
+	width: 250px;
+	height: 250px;
+	cursor: pointer;
 }
 
 .it-imgbox {

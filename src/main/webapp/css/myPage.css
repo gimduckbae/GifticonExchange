@@ -6,10 +6,11 @@
 	box-sizing: border-box;
 }
 
-intput.form-group{
-	margin-top :20px;
+intput.form-group {
+	margin-top: 20px;
 	width: 45vw;
 }
+
 h2 {
 	font-size: 25px;
 }
@@ -18,8 +19,10 @@ ul, li {
 	list-style: none;
 }
 
-
-
+a {
+	text-decoration-line: none;
+	color: black;
+}
 
 .wrapper-main .mypage-lnb {
 	position: relative;
@@ -29,15 +32,13 @@ ul, li {
 	padding-left: 10px;
 }
 
-
 .wrapper-main .mypage-lnb ul li a {
 	text-decoration: none;
 	color: black;
 }
-.buttonbox{
-	
-	margin-top :20px;
-	
+
+.buttonbox {
+	margin-top: 20px;
 }
 
 .wrapper-main .mypage-main {
@@ -59,17 +60,14 @@ ul, li {
 	margin-left: 285px;
 }
 
-#giftbutton{
+#giftbutton {
 	clear: both;
-	margin-left : 80px;
-	
+	margin-left: 80px;
 }
+
 .clearfix {
 	clear: both;
 }
-
-
-
 
 footer {
 	width: 100%;

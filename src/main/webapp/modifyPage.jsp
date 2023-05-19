@@ -10,7 +10,7 @@ MemberDAO memberDAO = new MemberDAO();
 MemberDTO memberDTO = null;
 
 if (login_id != null) {
-memberDTO = memberDAO.selectMemberById(login_id);
+	memberDTO = memberDAO.selectMemberById(login_id);
 }
 %>
 

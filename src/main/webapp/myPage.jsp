@@ -30,7 +30,7 @@ PointDTO pointDTO = pointDAO.selectPointById(login_id);
 		<h2>내 정보</h2>
 		<ul class="mypage-info-ul">
 			<li><span><%=pointDTO.getPoint_char()%>콘 보유중</span></li>
-			<li><span>내 정보수정<a href="#"></a></span></li>
+			<li><a href="./modifyPage.jsp"><span>내 정보수정</span></a></li>
 		</ul>
 	</div>
 

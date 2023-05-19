@@ -33,10 +33,10 @@ List<PointDTO> withdrawList = pointDAO.selectWaitingWithdraw();
 					<td><%=item.getPoint_char()%></td>
 					<td><%=item.getWithdraw_char()%></td>
 					<td>
-						<button type="button" class="btn btn-secondary" id="yes">승인</button>
+						<button type="button" class="btn btn-secondary" id="yes" data-loginid="<%=item.getLogin_id()%>">승인</button>
 					</td>
 					<td>
-						<button type="button" class="btn btn-danger" id="no">거절</button>
+						<button type="button" class="btn btn-danger" id="no" data-loginid="<%=item.getLogin_id()%>">거절</button>
 					</td>
 				</tr>
 				<%
@@ -50,4 +50,5 @@ List<PointDTO> withdrawList = pointDAO.selectWaitingWithdraw();
 		</div>
 	</div>
 </div>
+<script src="scripts/admin_withdraw.js"></script>
 <%@ include file="./footer.jsp"%>

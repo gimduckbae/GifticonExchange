@@ -48,7 +48,7 @@ String login_id = null;
 		<div class="container-fluid">
 			<a class="navbar-brand ms-5 fs-2 nav-bar" href="./index.jsp"><img src="./images/아이콘.png" class="me-2 mb-3 main-icon">콘팔이</a>
 			<form class="d-flex" role="search" method="post" action="./product_list.jsp">
-				<input class="form-control nav-search  rounded-0" type="search" aria-label="Search" name="search">
+				<input class="form-control nav-search  rounded-0" type="search" aria-label="Search" name="search" placeholder="상품 검색">
 				<button class="btn rounded-0 search-btn" type="submit">검색</button>
 
 			</form>

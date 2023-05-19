@@ -51,6 +51,6 @@ $(function() {
 	});
 
 	$(".temp-link").click(function() {
-		location.href = "./product_list.jsp";
+		location.href = "./product_list.jsp?search=";
 	});
 });

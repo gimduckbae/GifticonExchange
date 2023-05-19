@@ -14,33 +14,38 @@ GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(no);
 <div class="container">
 	<div class="item-view">
 		<div class="row">
+			<h2 class="it-info">
+				상품명 : <span><%=gifticonDTO.getCoupon_name()%></span>
+			</h2>
+			<hr>
 			<div class="col">
-				<div class="col">
-					<img src="./images/<%=gifticonDTO.getCoupon_name()%>.png" class="item-img" alt="...">
-				</div>
+				<img src="./images/<%=gifticonDTO.getCoupon_name()%>.png" class="item-img" alt="...">
 			</div>
-			<div class="col" style="margin-top: 100px;">
+			<div class="col">
 				<div>
-					<h4 class="it-info"></h4>
-					</h3>
+					<br> <br>
+					<h2 class="it-info">
+						가격 : <span><%=gifticonDTO.getSale_price_char()%></span>
+					</h2>
+				</div>
+				<div class="row pr-detail">
+					<div class="col">
+						<p class="it-text fs-5">선물하기</p>
+						<p class="it-text fs-5">교환처</p>
+						<p class="it-text fs-5">쿠폰 이용안내</p>
+					</div>
+					<div class="col">
+						<p class="fs-5">가능</p>
+						<p class="fs-5"><%=gifticonDTO.getBrand_name()%></p>
+						<p class="fs-5">구매 후 환불 불가</p>
+					</div>
 				</div>
 				<br>
-				<div class="row">
-					<div class="col">
-						<p class="it-text">선물하기</p>
-						<p class="it-text">교환처</p>
-						<p class="it-text">쿠폰 이용안내</p>
-					</div>
-					<div class="col">
-						<p>가능</p>
-						<p><%=gifticonDTO.getBrand_name()%></p>
-						<p>구매 후 환불 불가</p>
-					</div>
-				</div>
-				<button type="button" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-red btn-lg buy">구매하기</button>
+				<button type="button" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-purple btn-lg buy">구매하기</button>
 				<button type="button" class="btn btn-blue btn-lg">판매하기</button>
 
 			</div>
+			<hr>
 		</div>
 		<div class="banner d-flex flex-row">
 			<ul>

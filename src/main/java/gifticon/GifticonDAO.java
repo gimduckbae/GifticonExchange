@@ -70,6 +70,8 @@ public class GifticonDAO {
 			String validityStartDate = (String) virtualCouponInfo.get("validityStartDate"); // 발급일
 			String validityEndDate = (String) virtualCouponInfo.get("validityEndDate"); // 유효기간
 			String status = (String) virtualCouponInfo.get("status"); // 사용가능 여부
+			
+			System.out.println(resultData);
 
 			if (status.equals("N")) {
 				return null;
@@ -232,8 +234,9 @@ public class GifticonDAO {
 			conn = DBConnectionManager.getConnection();
 
 			String sql = "SELECT register_no, brand_name, coupon_name, sale_price, coupon_number,"
-					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date"
-					+ " FROM gifticon WHERE login_id IS NULL" + " AND register_no = ?";
+					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date,"
+					+ " TO_CHAR(sale_price, 'YYYY-MM-DD') sale_price_char" + " FROM gifticon WHERE login_id IS NULL"
+					+ " AND register_no = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, no);
@@ -245,6 +248,7 @@ public class GifticonDAO {
 				gifticonDTO.setBrand_name(rs.getString("brand_name"));
 				gifticonDTO.setCoupon_name(rs.getString("coupon_name"));
 				gifticonDTO.setSale_price(rs.getInt("sale_price"));
+				gifticonDTO.setSale_price_char(rs.getString("sale_price_char"));
 				gifticonDTO.setStart_date(rs.getString("start_date"));
 				gifticonDTO.setEnd_date(rs.getString("end_date"));
 				gifticonDTO.setCoupon_number(rs.getString("coupon_number"));
