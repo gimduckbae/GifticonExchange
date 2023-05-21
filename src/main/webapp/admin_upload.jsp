@@ -3,6 +3,10 @@
 <%@page import="image_file.Image_FileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+//비로그인 상태거나 admin 계정이 아니면 메인페이지로 이동
+if (session.getAttribute("login_id") == null || !(session.getAttribute("login_id").equals("admin"))) {
+	response.sendRedirect("index.jsp");
+}
 Image_FileDAO image_FileDAO = new Image_FileDAO();
 List<Image_FileDTO> banners = image_FileDAO.selectAllBannerImage();
 %>
@@ -30,8 +34,7 @@ List<Image_FileDTO> banners = image_FileDAO.selectAllBannerImage();
 	</form>
 
 	<form class="mt-5" method="post" action="./actions/delete_banner.jsp">
-		<input type="text" id="banner_input" name="banner_no" hidden>
-		<select class="form-select mb-3" id="select-banner">
+		<input type="text" id="banner_input" name="banner_no" hidden> <select class="form-select mb-3" id="select-banner">
 			<option selected>삭제할 배너를 선택하세요</option>
 			<%
 			for (Image_FileDTO banner : banners) {

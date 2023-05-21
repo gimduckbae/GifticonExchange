@@ -4,6 +4,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
 <%
+//비로그인 상태거나 admin 계정이 아니면 메인페이지로 이동
+if (session.getAttribute("login_id") == null || !(session.getAttribute("login_id").equals("admin"))) {
+	response.sendRedirect("index.jsp");
+}
 PointDAO pointDAO = new PointDAO();
 List<PointDTO> withdrawList = pointDAO.selectWaitingWithdraw();
 %>

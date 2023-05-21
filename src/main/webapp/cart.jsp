@@ -4,12 +4,12 @@
 <%@page import="gifticon.GifticonDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
+<script src="./scripts/loginCheck.js"></script>
 <%
 CartDAO cartDAO = new CartDAO();
 List<CartDTO> cartList = cartDAO.selectAllCartByLogin_Id(login_id);
 %>
 <link rel="stylesheet" href="./css/cart.css">
-
 
 <div class="container-fluid">
 	<table class="table align-middle">
@@ -26,11 +26,8 @@ List<CartDTO> cartList = cartDAO.selectAllCartByLogin_Id(login_id);
 			%>
 			<tr>
 				<th scope="row"><input type="checkbox" class="form-check-input" id="<%=item.getRegister_no()%>" name="checks" data-price="<%=item.getGifticonDTO().getSale_price()%>"></th>
-				<td>
-					<img src="./images/<%=item.getGifticonDTO().getCoupon_name()%>.png" class="img-fluid img-thumbnail me-3" style="max-width: 10%;"> <span class="fs-5 fw-bold"><%=item.getGifticonDTO().getCoupon_name()%></span>
-				</td>
-				<td class="fs-6 fw-semibold p-price"><%=item.getGifticonDTO().getSale_price_char()%>콘
-				</td>
+				<td><img src="./images/<%=item.getGifticonDTO().getCoupon_name()%>.png" class="img-fluid img-thumbnail me-3" style="max-width: 10%;"> <span class="fs-5 fw-bold"><%=item.getGifticonDTO().getCoupon_name()%></span></td>
+				<td class="fs-6 fw-semibold p-price"><%=item.getGifticonDTO().getSale_price_char()%>콘</td>
 			</tr>
 			<%
 			}

@@ -1,12 +1,12 @@
-<%@page import="gifticon.GifticonDTO"%>
-<%@page import="member.PointDAO"%>
-<%@page import="gifticon.GifticonDAO"%>
+<%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
-<%@page import="java.util.stream.Stream"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.stream.Stream"%>
+<%@page import="gifticon.GifticonDTO"%>
+<%@page import="gifticon.GifticonDAO"%>
+<%@page import="member.PointDAO"%>
 <%@page import="member.CartDTO"%>
-<%@page import="org.json.simple.JSONObject"%>
 <%@page import="member.CartDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
@@ -30,7 +30,7 @@ if (session.getAttribute("login_id") != null) {
 		int register_no = Integer.parseInt(request.getParameter("register_no"));
 		CartDTO checkCart = cartDAO.checkProductInCart(login_id, register_no);
 		if (checkCart == null) {
-			result = cartDAO.insertProductToCart(login_id, register_no);
+	result = cartDAO.insertProductToCart(login_id, register_no);
 		}
 	}
 
@@ -49,7 +49,7 @@ if (session.getAttribute("login_id") != null) {
 
 		// String[] 배열에 값 채워넣기
 		for (int i = 0; i < register_no_jsonArray.size(); i++) {
-			register_no_str[i] = (String) register_no_jsonArray.get(i);
+	register_no_str[i] = (String) register_no_jsonArray.get(i);
 		}
 
 		// String[] 배열을 int[] 배열로 변환
@@ -72,7 +72,7 @@ if (session.getAttribute("login_id") != null) {
 
 		// String[] 배열에 값 채워넣기
 		for (int i = 0; i < register_no_jsonArray.size(); i++) {
-			register_no_str[i] = (String) register_no_jsonArray.get(i);
+	register_no_str[i] = (String) register_no_jsonArray.get(i);
 		}
 
 		// String[] 배열을 int[] 배열로 변환
@@ -81,18 +81,19 @@ if (session.getAttribute("login_id") != null) {
 		// 선택한 상품번호로 총 상품가격 계산
 		int productPrice = 0;
 		for (int i : register_no_arr) {
-			GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(i);
-			productPrice += gifticonDTO.getSale_price();
+	GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(i);
+	productPrice += gifticonDTO.getSale_price();
 		}
 		// 소지 포인트 조회
 		int myPoint = pointDAO.selectPointById(login_id).getPoint();
 
 		// 소지 포인트가 충분할 때
 		if (myPoint >= productPrice) {
-			result = cartDAO.buyProductByRegister_no(login_id, register_no_arr);
+	result = cartDAO.buyProductByRegister_no(login_id, register_no_arr);
+	result = cartDAO.buyProcessPointModify(login_id, register_no_arr);
 	// 소지 포인트가 부족할 때
 		} else {
-			obj.put("point", "low"); // json 객체의 point 키에 low 넣기
+	obj.put("point", "low"); // json 객체의 point 키에 low 넣기
 		}
 
 		// 구매처리된 상품은 cart 테이블에서 제거

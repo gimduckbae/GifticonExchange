@@ -8,7 +8,7 @@ int post_no = Integer.parseInt(request.getParameter("post_no"));
 BoardDAO boardDAO = new BoardDAO();
 BoardDTO boardDTO = boardDAO.selectPostByPost_No(post_no);
 
-if (login_id.equals(boardDTO.getLogin_id()) || login_id.equals("admin")) {
+if (login_id != null && (login_id.equals(boardDTO.getLogin_id()) || login_id.equals("admin"))) {
 %>
 <link rel="stylesheet" href="./css/board_viewPost.css">
 

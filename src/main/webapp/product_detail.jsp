@@ -41,7 +41,7 @@ GifticonDTO gifticonDTO = gifticonDAO.selectProductByNo(no);
 					</div>
 				</div>
 				<br>
-				<button type="button" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-purple btn-lg buy">구매하기</button>
+				<button type="button" data-regno="<%=gifticonDTO.getRegister_no()%>" id="<%=gifticonDTO.getRegister_no()%>" class="btn btn-purple btn-lg buy">구매하기</button>
 				<button type="button" class="btn btn-blue btn-lg">판매하기</button>
 
 			</div>

@@ -70,7 +70,7 @@ public class GifticonDAO {
 			String validityStartDate = (String) virtualCouponInfo.get("validityStartDate"); // 발급일
 			String validityEndDate = (String) virtualCouponInfo.get("validityEndDate"); // 유효기간
 			String status = (String) virtualCouponInfo.get("status"); // 사용가능 여부
-			
+
 			System.out.println(resultData);
 
 			if (status.equals("N")) {
@@ -180,6 +180,48 @@ public class GifticonDAO {
 
 	}
 
+	/** 구매한 보유중인 모든 상품 조회하기 */
+	public List<GifticonDTO> selectAllMyProduct(String login_id) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		List<GifticonDTO> products = new ArrayList<GifticonDTO>();
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "SELECT register_no, brand_name, coupon_name, sale_price, coupon_number,"
+					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date,"
+					+ " TO_CHAR(sale_price, '999,999,999') sale_price_char"
+					+ " FROM gifticon WHERE login_id = ? ORDER BY register_no DESC";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, login_id);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				GifticonDTO dto = new GifticonDTO();
+				dto.setRegister_no(rs.getInt("register_no"));
+				dto.setBrand_name(rs.getString("brand_name"));
+				dto.setCoupon_name(rs.getString("coupon_name"));
+				dto.setCoupon_number(rs.getString("coupon_number"));
+				dto.setSale_price(rs.getInt("sale_price"));
+				dto.setSale_price_char(rs.getString("sale_price_char"));
+				dto.setStart_date(rs.getString("start_date"));
+				dto.setEnd_date(rs.getString("end_date"));
+				products.add(dto);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return products;
+
+	}
+
 	/** 키워드로 상품 조회하기 */
 	public List<GifticonDTO> searchProduct(String keyword) {
 		Connection conn = null;
@@ -192,8 +234,8 @@ public class GifticonDAO {
 
 			String sql = "SELECT register_no, brand_name, coupon_name, sale_price,"
 					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date,"
-					+ " TO_CHAR(sale_price, '999,999,999') sale_price_char"
-					+ " FROM gifticon WHERE login_id IS NULL AND coupon_name LIKE '%'||?||'%' OR brand_name LIKE '%'||?||'%'"
+					+ " TO_CHAR(sale_price, '999,999,999') sale_price_char" + " FROM gifticon WHERE login_id IS NULL"
+					+ " AND (coupon_name LIKE '%'||?||'%' OR brand_name LIKE '%'||?||'%')"
 					+ " ORDER BY register_no DESC";
 
 			psmt = conn.prepareStatement(sql);
@@ -218,7 +260,6 @@ public class GifticonDAO {
 		} finally {
 			DBConnectionManager.close(rs, psmt, conn);
 		}
-
 		return products;
 
 	}
@@ -235,7 +276,7 @@ public class GifticonDAO {
 
 			String sql = "SELECT register_no, brand_name, coupon_name, sale_price, coupon_number,"
 					+ " TO_CHAR(start_date, 'YYYY-MM-DD') start_date," + " TO_CHAR(end_date, 'YYYY-MM-DD') end_date,"
-					+ " TO_CHAR(sale_price, 'YYYY-MM-DD') sale_price_char" + " FROM gifticon WHERE login_id IS NULL"
+					+ " TO_CHAR(sale_price, '999,999,999') sale_price_char" + " FROM gifticon WHERE login_id IS NULL"
 					+ " AND register_no = ?";
 
 			psmt = conn.prepareStatement(sql);

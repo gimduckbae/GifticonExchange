@@ -69,10 +69,13 @@ a {
 	clear: both;
 }
 
-footer {
+.my-card {
+	width: 200px;
+	height: 400px;
+	padding: 0;
+}
+
+.my-card img {
 	width: 100%;
-	height: 10%; /* footer의 높이 */
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	height: 50%;
 }

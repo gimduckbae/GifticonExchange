@@ -7,8 +7,6 @@
 BoardDAO boardDAO = new BoardDAO();
 List<BoardDTO> postList = boardDAO.selectAllQuestionList();
 %>
-
-
 <div class="manager-wrap">
 	<%@ include file="./admin_menu.jsp"%>
 	<div class="waiting-answer">
@@ -32,9 +30,7 @@ List<BoardDTO> postList = boardDAO.selectAllQuestionList();
 				<tr>
 					<th scope="row"><%=post.getPost_no()%></th>
 					<td><%=post.getLogin_id()%></td>
-					<td>
-						<a href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a>
-					</td>
+					<td><a href="./board_viewPost.jsp?post_no=<%=post.getPost_no()%>"><%=post.getTitle()%></a></td>
 					<td><%=post.getCreate_date()%></td>
 					<td>
 						<button type="button" class="btn btn-secondary answer" id="answer_btn" data-postno="<%=post.getPost_no()%>">답변등록</button>

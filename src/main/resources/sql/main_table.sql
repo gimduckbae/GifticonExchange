@@ -1,11 +1,10 @@
 --------------------------------------------------------
---  파일이 생성됨 - 수요일-5월-17-2023   
+--  파일이 생성됨 - 일요일-5월-21-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table BOARD
 --------------------------------------------------------
 --SELECT 'DROP TABLE "' || TABLE_NAME || '" CASCADE CONSTRAINTS;' FROM user_tables;
-
 
   CREATE TABLE "SCOTT"."BOARD" 
    (	"BOARD_NO" NUMBER, 
@@ -37,9 +36,12 @@
   CREATE TABLE "SCOTT"."CART" 
    (	"LOGIN_ID" VARCHAR2(30 BYTE), 
 	"REGISTER_NO" NUMBER
-   ) SEGMENT CREATION DEFERRED 
+   ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "EXAMPLE" ;
 
    COMMENT ON COLUMN "SCOTT"."CART"."LOGIN_ID" IS '외래키/소유자';
@@ -206,12 +208,9 @@
    COMMENT ON COLUMN "SCOTT"."TRANSACTION_HISTORY"."TYPE" IS '거래타입';
 REM INSERTING into SCOTT.BOARD
 SET DEFINE OFF;
-Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,1,'admin','안녕하세요 문의드려요',to_date('23/05/14','RR/MM/DD'),to_date('23/05/14','RR/MM/DD'),0);
-Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,2,'admin','재채기가 나올 것 같아요',to_date('23/05/14','RR/MM/DD'),to_date('23/05/14','RR/MM/DD'),1);
-Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,3,'admin','드라이브 가고싶어요',to_date('23/05/14','RR/MM/DD'),to_date('23/05/14','RR/MM/DD'),0);
-Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,4,'admin','게시판 조회가 잘 되는 것 같아요',to_date('23/05/14','RR/MM/DD'),to_date('23/05/14','RR/MM/DD'),0);
-Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,5,'admin','퇴근합니다',to_date('23/05/14','RR/MM/DD'),to_date('23/05/14','RR/MM/DD'),0);
-Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,6,'admin','ㄴㅁ허ㅏ너ㅣ암허',to_date('23/05/16','RR/MM/DD'),to_date('23/05/16','RR/MM/DD'),0);
+Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,1,'chlgmlen','구매한 상품들을 찾을 수가 없어요.',to_date('23/05/21','RR/MM/DD'),to_date('23/05/21','RR/MM/DD'),0);
+Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,2,'test','출금 신청했는데 언제 승인 해주시나요?',to_date('23/05/21','RR/MM/DD'),to_date('23/05/21','RR/MM/DD'),0);
+Insert into SCOTT.BOARD (BOARD_NO,POST_NO,LOGIN_ID,TITLE,CREATE_DATE,MODIFY_DATE,STATUS) values (1,3,'chlgmlen','스타벅스 기프티콘 구매도 가능한가요?',to_date('23/05/21','RR/MM/DD'),to_date('23/05/21','RR/MM/DD'),0);
 REM INSERTING into SCOTT.CART
 SET DEFINE OFF;
 REM INSERTING into SCOTT.GIFTICON
@@ -506,28 +505,41 @@ Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (142,'흑임�
 Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (143,'흑임자 오트(ICED).png',null);
 Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (144,'흑임자 크림치즈 블라스트.png',null);
 Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (1,'복숭아 아이스티.png',null);
+Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (145,'evt11.png',1);
+Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (146,'evt21.png',2);
+Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (147,'evt31.png',3);
+Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (148,'evt41.png',4);
+Insert into SCOTT.IMAGE_FILE (FILE_NO,FILE_NAME,BANNER_NO) values (149,'evt51.png',5);
 REM INSERTING into SCOTT.MEMBER
 SET DEFINE OFF;
-Insert into SCOTT.MEMBER (MEMBER_NO,LOGIN_ID,PASSWORD,MEMBER_NAME,NICKNAME,JOIN_DATE) values (2,'test','1234','이파리','테스트',to_date('23/05/15','RR/MM/DD'));
+Insert into SCOTT.MEMBER (MEMBER_NO,LOGIN_ID,PASSWORD,MEMBER_NAME,NICKNAME,JOIN_DATE) values (2,'test','1234','이의성','마늘',to_date('23/05/15','RR/MM/DD'));
 Insert into SCOTT.MEMBER (MEMBER_NO,LOGIN_ID,PASSWORD,MEMBER_NAME,NICKNAME,JOIN_DATE) values (1,'admin','admin','admin','관리자',to_date('23/05/14','RR/MM/DD'));
+Insert into SCOTT.MEMBER (MEMBER_NO,LOGIN_ID,PASSWORD,MEMBER_NAME,NICKNAME,JOIN_DATE) values (3,'chlgmlen','chlgmlen','최희두','최희두',to_date('23/05/21','RR/MM/DD'));
 REM INSERTING into SCOTT.POINT
 SET DEFINE OFF;
-Insert into SCOTT.POINT (LOGIN_ID,POINT,WITHDRAW) values ('test',950000,0);
-Insert into SCOTT.POINT (LOGIN_ID,POINT,WITHDRAW) values ('admin',0,0);
+Insert into SCOTT.POINT (LOGIN_ID,POINT,WITHDRAW) values ('test',0,0);
+Insert into SCOTT.POINT (LOGIN_ID,POINT,WITHDRAW) values ('admin',46500,0);
+Insert into SCOTT.POINT (LOGIN_ID,POINT,WITHDRAW) values ('chlgmlen',248200,160000);
 REM INSERTING into SCOTT.POST
 SET DEFINE OFF;
-Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,1,'기프티콘을 샀는데 누가 훔쳐 썼는데요? 보상해주세요',null,null);
-Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,2,'살려주세요',null,to_date('23/05/13','RR/MM/DD'));
-Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,3,'맥드라이브 말고요',null,null);
-Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,4,'신기하네요 하하호호 ^^~',null,null);
-Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,5,'벌써 시간이; ㅠㅠ',null,null);
-Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,6,'하알아ㅏㄹㅇ',null,null);
+Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,1,'안녕하세요. 
+
+고생 많으십니다.
+
+어느 페이지로 가야 구매상품들을 볼 수 있을까요?',null,null);
+Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,2,'제가 돈이 급한데 빨리 처리좀 부탁드립니다.',null,null);
+Insert into SCOTT.POST (BOARD_NO,POST_NO,CONTENT,ANSWER,ANSWER_DATE) values (1,3,'스타벅스 커피가 마시고 싶어요!',null,null);
 REM INSERTING into SCOTT.SHOPPING_HISTORY
 SET DEFINE OFF;
 REM INSERTING into SCOTT.TRANSACTION_HISTORY
 SET DEFINE OFF;
 Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('test',to_date('23/05/15','RR/MM/DD'),50000,1);
 Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('test',to_date('23/05/15','RR/MM/DD'),50000,1);
+Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('chlgmlen',to_date('23/05/21','RR/MM/DD'),100000,1);
+Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('chlgmlen',to_date('23/05/21','RR/MM/DD'),10000,1);
+Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('chlgmlen',to_date('23/05/21','RR/MM/DD'),500000,1);
+Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('admin',to_date('23/05/21','RR/MM/DD'),50000,1);
+Insert into SCOTT.TRANSACTION_HISTORY (LOGIN_ID,HISTORY_DATE,AMOUNT,TYPE) values ('test',to_date('23/05/21','RR/MM/DD'),8000000,1);
 --------------------------------------------------------
 --  DDL for Index BORAD_PK
 --------------------------------------------------------
@@ -598,6 +610,7 @@ SET banner_no = banner_no - 1
 WHERE banner_no > param1;
 
 END DELETE_BANNER;
+
 
 /
 --------------------------------------------------------

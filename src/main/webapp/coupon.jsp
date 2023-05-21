@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
+<script src="./scripts/loginCheck.js"></script>
 <div class="container w-50 p-3 mt-5">
 	<form action="" method="post">
 		<div class="input-group mb-3">

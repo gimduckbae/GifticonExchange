@@ -1,6 +1,6 @@
+<%@page import="java.util.List"%>
 <%@page import="gifticon.GifticonDTO"%>
 <%@page import="gifticon.GifticonDAO"%>
-<%@page import="java.util.List"%>
 <%@page import="image_file.Image_FileDTO"%>
 <%@page import="image_file.Image_FileDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -11,10 +11,9 @@ GifticonDAO gifticonDAO = new GifticonDAO();
 List<GifticonDTO> product_infos = gifticonDAO.searchProduct(search);
 
 // 검색 결과가 없다면 전체상품 조회
-if(product_infos.size() < 1) {
+if (product_infos.size() < 1) {
 	product_infos = gifticonDAO.selectAllProduct();
 }
-
 %>
 <%@ include file="./header.jsp"%>
 <link rel="stylesheet" href="./css/product_list.css">
@@ -37,8 +36,8 @@ if(product_infos.size() < 1) {
 				<p class="br-text fs-5"><%=product.getSale_price()%>원
 				</p>
 			</a>
-			<button type="button" id="<%=product.getRegister_no()%>" class="btn btn-outline-dark pd-btn btn-red buy">장바구니</button>
-			<button type="button" class="btn btn-outline-dark pd-btn btn-blue">구매하기</button>
+			<button type="button" data-regno="<%=product.getRegister_no()%>" class="btn btn-outline-dark pd-btn btn-red cart">장바구니</button>
+			<button type="button" data-regno="<%=product.getRegister_no()%>" class="btn btn-outline-dark pd-btn btn-blue buy">구매하기</button>
 			<br> <br>
 		</div>
 		<%
@@ -48,6 +47,5 @@ if(product_infos.size() < 1) {
 </div>
 <br>
 <br>
-
 <script src="./scripts/cart.js"></script>
 <%@ include file="./footer.jsp"%>

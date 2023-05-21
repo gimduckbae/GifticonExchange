@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./header.jsp"%>
+<script src="./scripts/loginCheck.js"></script>
 <link rel="stylesheet" href="./css/board_register.css">
 <div class="inquiry-resister-wrap">
 	<div class="inquiry-resi-title">
@@ -8,8 +9,7 @@
 	</div>
 	<div class="inquiry-resister-main-wrap">
 		<div class="input-group mb-3">
-			<span class="input-group-text" id="basic-addon1">제목</span>
-			<input type="text" id="input_title" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+			<span class="input-group-text" id="basic-addon1">제목</span> <input type="text" id="input_title" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
 		</div>
 		<div class="inquiry-resister-main">
 			<p></p>

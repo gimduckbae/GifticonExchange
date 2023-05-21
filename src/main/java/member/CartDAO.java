@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dbconn.DBConnectionManager;
-import gifticon.GifticonDAO;
 import gifticon.GifticonDTO;
 
 public class CartDAO {
@@ -205,8 +204,8 @@ public class CartDAO {
 		try {
 			conn = DBConnectionManager.getConnection();
 
-			
-			String sql = "UPDATE gifticon SET login_id = ? WHERE login_id IS NULL AND register_no IN (" + sql_psmt + ")";
+			String sql = "UPDATE gifticon SET login_id = ? WHERE login_id IS NULL AND register_no IN (" + sql_psmt
+					+ ")";
 			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, login_id);
@@ -217,6 +216,52 @@ public class CartDAO {
 				psmt.setInt(i + 2, register_no[i]);
 			}
 
+			result = psmt.executeUpdate();
+			System.out.println(result + " 건 구매 처리완료");
+
+			if (result >= 1) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);
+		}
+
+		return false;
+	}
+
+	/** 상품 구매처리 할 때 포인트도 차감하는 메소드 */
+	public boolean buyProcessPointModify(String login_id, int[] register_no) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		int result = 0;
+
+		// 매개변수 register_no[] 길이만큼 ? 뒤에 ,? 를 반복해서 붙인다. ?,?,?,? ...
+		String sql_psmt = "?";
+		for (int i = 1; i < register_no.length; i++) {
+			sql_psmt += ", ?";
+			// System.out.println(register_no[i] + ", ? 갯수 늘리기");
+		}
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "UPDATE point SET point = point - (SELECT SUM(sale_price) FROM gifticon WHERE register_no IN ("
+					+ sql_psmt + "))" + " WHERE login_id = ?";
+
+			System.out.println(sql);
+			psmt = conn.prepareStatement(sql);
+			
+			// 늘어난 ? 만큼 psmt 값 설정
+			for (int i = 0; i < register_no.length; i++) {
+				System.out.printf("psmt.setInt(%d, %d) 추가\n", (i + 1), register_no[i]);
+				psmt.setInt(i + 1, register_no[i]);
+			}
+			// 마지막 자리에 login_id 채우기
+			psmt.setString(register_no.length+1, login_id);
 			result = psmt.executeUpdate();
 			System.out.println(result + " 건 구매 처리완료");
 
